@@ -17,7 +17,6 @@ class NewsTableController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +45,9 @@ class NewsTableController: UITableViewController {
         return cell
     }
 
+    func add(){
+        print("Added something!!!")
+    }
 
     /*
     // Override to support conditional editing of the table view.
