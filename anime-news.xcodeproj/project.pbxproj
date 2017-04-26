@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
+		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
+		7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E2D1EB04AE3003FC570 /* Main.storyboard */; };
+		7CC60E311EB04AE3003FC570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E301EB04AE3003FC570 /* Assets.xcassets */; };
+		7CC60E341EB04AE3003FC570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E321EB04AE3003FC570 /* LaunchScreen.storyboard */; };
+		7CC60E3F1EB04AE3003FC570 /* anime_newsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E3E1EB04AE3003FC570 /* anime_newsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CC60E3B1EB04AE3003FC570 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CC60E1E1EB04AE3003FC570 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CC60E251EB04AE3003FC570;
+			remoteInfo = "anime-news";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CC60E2B1EB04AE3003FC570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7CC60E2E1EB04AE3003FC570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7CC60E301EB04AE3003FC570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CC60E331EB04AE3003FC570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7CC60E351EB04AE3003FC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC60E3A1EB04AE3003FC570 /* anime-newsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "anime-newsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC60E3E1EB04AE3003FC570 /* anime_newsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = anime_newsTests.swift; sourceTree = "<group>"; };
+		7CC60E401EB04AE3003FC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CC60E231EB04AE3003FC570 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC60E371EB04AE3003FC570 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CC60E1D1EB04AE3003FC570 = {
+			isa = PBXGroup;
+			children = (
+				7CC60E281EB04AE3003FC570 /* anime-news */,
+				7CC60E3D1EB04AE3003FC570 /* anime-newsTests */,
+				7CC60E271EB04AE3003FC570 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CC60E271EB04AE3003FC570 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CC60E261EB04AE3003FC570 /* anime-news.app */,
+				7CC60E3A1EB04AE3003FC570 /* anime-newsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CC60E281EB04AE3003FC570 /* anime-news */ = {
+			isa = PBXGroup;
+			children = (
+				7CC60E291EB04AE3003FC570 /* AppDelegate.swift */,
+				7CC60E2B1EB04AE3003FC570 /* ViewController.swift */,
+				7CC60E2D1EB04AE3003FC570 /* Main.storyboard */,
+				7CC60E301EB04AE3003FC570 /* Assets.xcassets */,
+				7CC60E321EB04AE3003FC570 /* LaunchScreen.storyboard */,
+				7CC60E351EB04AE3003FC570 /* Info.plist */,
+			);
+			path = "anime-news";
+			sourceTree = "<group>";
+		};
+		7CC60E3D1EB04AE3003FC570 /* anime-newsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CC60E3E1EB04AE3003FC570 /* anime_newsTests.swift */,
+				7CC60E401EB04AE3003FC570 /* Info.plist */,
+			);
+			path = "anime-newsTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CC60E251EB04AE3003FC570 /* anime-news */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC60E431EB04AE3003FC570 /* Build configuration list for PBXNativeTarget "anime-news" */;
+			buildPhases = (
+				7CC60E221EB04AE3003FC570 /* Sources */,
+				7CC60E231EB04AE3003FC570 /* Frameworks */,
+				7CC60E241EB04AE3003FC570 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "anime-news";
+			productName = "anime-news";
+			productReference = 7CC60E261EB04AE3003FC570 /* anime-news.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CC60E391EB04AE3003FC570 /* anime-newsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC60E461EB04AE3003FC570 /* Build configuration list for PBXNativeTarget "anime-newsTests" */;
+			buildPhases = (
+				7CC60E361EB04AE3003FC570 /* Sources */,
+				7CC60E371EB04AE3003FC570 /* Frameworks */,
+				7CC60E381EB04AE3003FC570 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CC60E3C1EB04AE3003FC570 /* PBXTargetDependency */,
+			);
+			name = "anime-newsTests";
+			productName = "anime-newsTests";
+			productReference = 7CC60E3A1EB04AE3003FC570 /* anime-newsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CC60E1E1EB04AE3003FC570 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Lucy Zhang";
+				TargetAttributes = {
+					7CC60E251EB04AE3003FC570 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 65ZN6CM2H7;
+						ProvisioningStyle = Automatic;
+					};
+					7CC60E391EB04AE3003FC570 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 65ZN6CM2H7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7CC60E251EB04AE3003FC570;
+					};
+				};
+			};
+			buildConfigurationList = 7CC60E211EB04AE3003FC570 /* Build configuration list for PBXProject "anime-news" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CC60E1D1EB04AE3003FC570;
+			productRefGroup = 7CC60E271EB04AE3003FC570 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CC60E251EB04AE3003FC570 /* anime-news */,
+				7CC60E391EB04AE3003FC570 /* anime-newsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CC60E241EB04AE3003FC570 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC60E341EB04AE3003FC570 /* LaunchScreen.storyboard in Resources */,
+				7CC60E311EB04AE3003FC570 /* Assets.xcassets in Resources */,
+				7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC60E381EB04AE3003FC570 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CC60E221EB04AE3003FC570 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
+				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CC60E361EB04AE3003FC570 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CC60E3F1EB04AE3003FC570 /* anime_newsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CC60E3C1EB04AE3003FC570 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CC60E251EB04AE3003FC570 /* anime-news */;
+			targetProxy = 7CC60E3B1EB04AE3003FC570 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7CC60E2D1EB04AE3003FC570 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CC60E2E1EB04AE3003FC570 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7CC60E321EB04AE3003FC570 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CC60E331EB04AE3003FC570 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7CC60E411EB04AE3003FC570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CC60E421EB04AE3003FC570 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CC60E441EB04AE3003FC570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				INFOPLIST_FILE = "anime-news/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7CC60E451EB04AE3003FC570 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				INFOPLIST_FILE = "anime-news/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7CC60E471EB04AE3003FC570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				INFOPLIST_FILE = "anime-newsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-newsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/anime-news.app/anime-news";
+			};
+			name = Debug;
+		};
+		7CC60E481EB04AE3003FC570 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				INFOPLIST_FILE = "anime-newsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-newsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/anime-news.app/anime-news";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CC60E211EB04AE3003FC570 /* Build configuration list for PBXProject "anime-news" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC60E411EB04AE3003FC570 /* Debug */,
+				7CC60E421EB04AE3003FC570 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CC60E431EB04AE3003FC570 /* Build configuration list for PBXNativeTarget "anime-news" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC60E441EB04AE3003FC570 /* Debug */,
+				7CC60E451EB04AE3003FC570 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7CC60E461EB04AE3003FC570 /* Build configuration list for PBXNativeTarget "anime-newsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CC60E471EB04AE3003FC570 /* Debug */,
+				7CC60E481EB04AE3003FC570 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CC60E1E1EB04AE3003FC570 /* Project object */;
+}
