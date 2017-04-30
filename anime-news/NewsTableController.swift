@@ -9,6 +9,7 @@
 import UIKit
 
 class NewsTableController: UITableViewController {
+    var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,11 @@ class NewsTableController: UITableViewController {
     func add(){
         print("Added something!!!")
     }
+    
+    // MARK: - UITableViewDelegate Methods
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,14 +90,19 @@ class NewsTableController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var viewController = segue.destination as! InfoViewController
+        if let cell = sender as? UITableViewCell{
+            let selectedIndex = tableView.indexPath(for: cell)!.row
+            viewController.title = anime[selectedIndex]
+            print(selectedIndex)
+        }
+        
     }
-    */
+
 
 }

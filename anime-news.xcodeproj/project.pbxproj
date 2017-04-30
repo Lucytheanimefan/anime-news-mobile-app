@@ -15,6 +15,7 @@
 		7CC60E3F1EB04AE3003FC570 /* anime_newsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E3E1EB04AE3003FC570 /* anime_newsTests.swift */; };
 		7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E491EB04BC5003FC570 /* NewsTableController.swift */; };
 		7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4B1EB04CA8003FC570 /* Utilities.swift */; };
+		7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		7CC60E401EB04AE3003FC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC60E491EB04BC5003FC570 /* NewsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableController.swift; sourceTree = "<group>"; };
 		7CC60E4B1EB04CA8003FC570 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				7CC60E351EB04AE3003FC570 /* Info.plist */,
 				7CC60E491EB04BC5003FC570 /* NewsTableController.swift */,
 				7CC60E4B1EB04CA8003FC570 /* Utilities.swift */,
+				7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
+				7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
