@@ -33,7 +33,8 @@ func makeHTTPRequest(type: String, path: String, body: [String: Any]?) {
                 //let json:JSON = JSON(data: jsonData)
                 //onCompletion(json, nil)
                 print("The Response: ")
-                print(data!)
+                //print(data!)
+                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
             } else {
                 //onCompletion(nil, error)
             }
