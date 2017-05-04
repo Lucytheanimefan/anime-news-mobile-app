@@ -51,7 +51,10 @@ class NewsTableController: UITableViewController {
     }
     
     func processArticles(){
-        makeHTTPRequest(type: "GET", path: "https://lucys-anime-server.herokuapp.com/getNews", body: nil)
+        makeHTTPRequest(type: "GET", path: "https://lucys-anime-server.herokuapp.com/getNews", body: nil, completion: {(result: String?) in
+            print("In handler")
+            print(result!)
+        })
     }
     
     func add(){
