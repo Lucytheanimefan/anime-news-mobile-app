@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct Article{
+    var Id : Int = 0
+    var title = ""
+    var article = ""
+    var date = ""
+}
 
 //post request
 func makeHTTPRequest(type: String, path: String, body: [String: Any]?,completion: @escaping (_ result:String?) -> Void) {
@@ -30,11 +36,13 @@ func makeHTTPRequest(type: String, path: String, body: [String: Any]?,completion
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             if data != nil {
-                //let json:JSON = JSON(data: jsonData)
-                //onCompletion(json, nil)
-                //print("The Response: ")
-                //print(data!)
+                let arr2 = data?.withUnsafeBytes {
+                    Array(UnsafeBufferPointer<UInt32>(start: $0, count: (data?.count)!/MemoryLayout<UInt32>.size))
+                }
+                print(arr2!)
+                
                 let articles = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as String?
+ 
                 //if (completion) {
                 completion(articles!)
                 //}
@@ -48,3 +56,23 @@ func makeHTTPRequest(type: String, path: String, body: [String: Any]?,completion
         //onCompletion(nil, nil)
     }
 }
+func parseJson(anyObj:AnyObject) -> Array<Article>{
+    
+    var list:Array<Article> = []
+    
+    if  anyObj is Array<AnyObject> {
+        
+        var b:Article = Article()
+        
+        for json in anyObj as! Array<AnyObject>{
+            b.title = (json["title"] as AnyObject? as? String) ?? "" // to get rid of null
+            b.article  =  (json["article"]  as AnyObject? as? String) ?? ""
+            
+            list.append(b)
+        }// for
+        
+    } // if
+    
+    return list
+    
+}//func
