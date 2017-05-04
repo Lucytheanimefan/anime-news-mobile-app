@@ -9,22 +9,22 @@
 import Foundation
 
 
-
-
 //post request
-func makeHTTPPostRequest(path: String, body: [String: Any]) {
+func makeHTTPRequest(type: String, path: String, body: [String: Any]?) {
     print("Make POST request")
     let request = NSMutableURLRequest(url: NSURL(string: path)! as URL)
     
     // Set the method to POST
-    request.httpMethod = "POST"
+    request.httpMethod = type
     
     do {
         // Set the POST body for the request
         //let jsonBody = try NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
+        if let body = body{
+            request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
+        }
         //request.HTTPBody = jsonBody
         let session = URLSession.shared
         
@@ -33,11 +33,9 @@ func makeHTTPPostRequest(path: String, body: [String: Any]) {
                 //let json:JSON = JSON(data: jsonData)
                 //onCompletion(json, nil)
                 print("The Response: ")
-                //print(json)
+                print(data!)
             } else {
                 //onCompletion(nil, error)
-                print("The Response: ")
-                print("Hello")
             }
         })
         task.resume()

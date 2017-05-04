@@ -1,0 +1,3 @@
+[submodule "anime-news/submodules"]
+	path = anime-news/submodules
+	url = https://github.com/Alamofire/Alamofire.git
