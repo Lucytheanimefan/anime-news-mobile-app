@@ -10,7 +10,7 @@ import Foundation
 
 
 //post request
-func makeHTTPRequest(type: String, path: String, body: [String: Any]?) {
+func makeHTTPRequest(type: String, path: String, body: [String: Any]?,completion: @escaping (_ result:[String?]) -> Void) {
     print("Make POST request")
     let request = NSMutableURLRequest(url: NSURL(string: path)! as URL)
     
@@ -34,7 +34,10 @@ func makeHTTPRequest(type: String, path: String, body: [String: Any]?) {
                 //onCompletion(json, nil)
                 print("The Response: ")
                 //print(data!)
-                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+                let articles = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as? [String]
+                if ((completion) != nil) {
+                    completion(articles!)
+                }
             } else {
                 //onCompletion(nil, error)
             }
