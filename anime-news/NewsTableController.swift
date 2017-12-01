@@ -7,21 +7,48 @@
 //
 
 import UIKit
-
+import AnimeManager
+import os.log
 
 class NewsTableController: UITableViewController {
     var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
     
+    private var _numArticleRows:Int! = 0
+    var numArticleRows:Int {
+        get {
+            return self._numArticleRows
+        }
+        
+        set {
+            if (newValue != self._numArticleRows)
+            {
+                 self._numArticleRows = newValue
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    private var _articles:[[String:Any]] = [[String:Any]]()
+    
+    var articles:[[String:Any]] {
+        get {
+            return self._articles
+        }
+        
+        set {
+            self._articles = newValue
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        processArticles()
-        //make get request
         
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.processReviews()
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,36 +58,46 @@ class NewsTableController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.numArticleRows
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
-        // Configure the cell...
-        cell.textLabel?.text = "Some news \(indexPath.row)"
+        guard self.articles != nil, self.articles.count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, self.articles.count, indexPath.row)
+            
+            return cell
+        }
+        
+        let article = self.articles[indexPath.row]
+        
+        if let title = article["title"] as? String{
+            cell.textLabel?.text = title
+        }
+        else
+        {
+            cell.textLabel?.text = "No Title"
+        }
         return cell
     }
     
-    func processArticles(){
-        makeHTTPRequest(type: "GET", path: "https://lucys-anime-server.herokuapp.com/getNews", body: nil, completion: {(result: String?) in
-            print("In handler")
-            print(result!)
-   
-        })
+    func processReviews(){
+        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.Views.review) { (articles) in
+            os_log("%@: Article result: %@", self.description, articles)
+            self.numArticleRows = articles.count
+            self.articles = articles
+        }
     }
     
-    func add(){
-        print("Added something!!!")
-    }
     
     // MARK: - UITableViewDelegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

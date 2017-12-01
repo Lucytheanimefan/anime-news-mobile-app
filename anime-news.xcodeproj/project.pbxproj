@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C66B21B1FD2001D0016FACD /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */; };
+		7C66B21C1FD2001D0016FACD /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
 		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
 		7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E2D1EB04AE3003FC570 /* Main.storyboard */; };
@@ -16,12 +18,30 @@
 		7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E491EB04BC5003FC570 /* NewsTableController.swift */; };
 		7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4B1EB04CA8003FC570 /* Utilities.swift */; };
 		7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */; };
-		7CC60E691EBAC6D4003FC570 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC60E5C1EBAC635003FC570 /* Alamofire.framework */; };
-		7CC60E8C1EBAC7E0003FC570 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC60E5C1EBAC635003FC570 /* Alamofire.framework */; };
-		7CC60E8D1EBAC7E0003FC570 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC60E5C1EBAC635003FC570 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7C66B2171FD1FFBA0016FACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C66B1D61FCDF0C80016FACD;
+			remoteInfo = AnimeManager;
+		};
+		7C66B2191FD1FFBA0016FACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C66B1DF1FCDF0C90016FACD;
+			remoteInfo = AnimeManagerTests;
+		};
+		7C66B21D1FD2001D0016FACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C66B1D51FCDF0C80016FACD;
+			remoteInfo = AnimeManager;
+		};
 		7CC60E3B1EB04AE3003FC570 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CC60E1E1EB04AE3003FC570 /* Project object */;
@@ -78,13 +98,6 @@
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
-		7CC60E8A1EBAC777003FC570 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CC60E501EBAC635003FC570 /* Alamofire.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
-			remoteInfo = "Alamofire iOS";
-		};
 		7CC60E8E1EBAC7E0003FC570 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CC60E501EBAC635003FC570 /* Alamofire.xcodeproj */;
@@ -95,13 +108,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7CC60E891EBAC74C003FC570 /* Embed Frameworks */ = {
+		7C66B21F1FD2001D0016FACD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7CC60E8D1EBAC7E0003FC570 /* Alamofire.framework in Embed Frameworks */,
+				7C66B21C1FD2001D0016FACD /* AnimeManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +122,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
 		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC60E2B1EB04AE3003FC570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,8 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC60E691EBAC6D4003FC570 /* Alamofire.framework in Frameworks */,
-				7CC60E8C1EBAC7E0003FC570 /* Alamofire.framework in Frameworks */,
+				7C66B21B1FD2001D0016FACD /* AnimeManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,9 +158,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C66B2121FD1FFBA0016FACD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */,
+				7C66B21A1FD1FFBA0016FACD /* AnimeManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7CC60E1D1EB04AE3003FC570 = {
 			isa = PBXGroup;
 			children = (
+				7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */,
 				7CC60E281EB04AE3003FC570 /* anime-news */,
 				7CC60E3D1EB04AE3003FC570 /* anime-newsTests */,
 				7CC60E271EB04AE3003FC570 /* Products */,
@@ -221,13 +244,13 @@
 				7CC60E231EB04AE3003FC570 /* Frameworks */,
 				7CC60E221EB04AE3003FC570 /* Sources */,
 				7CC60E241EB04AE3003FC570 /* Resources */,
-				7CC60E891EBAC74C003FC570 /* Embed Frameworks */,
+				7C66B21F1FD2001D0016FACD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7CC60E8B1EBAC777003FC570 /* PBXTargetDependency */,
 				7CC60E8F1EBAC7E0003FC570 /* PBXTargetDependency */,
+				7C66B21E1FD2001D0016FACD /* PBXTargetDependency */,
 			);
 			name = "anime-news";
 			productName = "anime-news";
@@ -291,6 +314,10 @@
 					ProductGroup = 7CC60E511EBAC635003FC570 /* Products */;
 					ProjectRef = 7CC60E501EBAC635003FC570 /* Alamofire.xcodeproj */;
 				},
+				{
+					ProductGroup = 7C66B2121FD1FFBA0016FACD /* Products */;
+					ProjectRef = 7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -301,6 +328,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnimeManager.framework;
+			remoteRef = 7C66B2171FD1FFBA0016FACD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7C66B21A1FD1FFBA0016FACD /* AnimeManagerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AnimeManagerTests.xctest;
+			remoteRef = 7C66B2191FD1FFBA0016FACD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7CC60E5C1EBAC635003FC570 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -396,15 +437,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7C66B21E1FD2001D0016FACD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AnimeManager;
+			targetProxy = 7C66B21D1FD2001D0016FACD /* PBXContainerItemProxy */;
+		};
 		7CC60E3C1EB04AE3003FC570 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7CC60E251EB04AE3003FC570 /* anime-news */;
 			targetProxy = 7CC60E3B1EB04AE3003FC570 /* PBXContainerItemProxy */;
-		};
-		7CC60E8B1EBAC777003FC570 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Alamofire iOS";
-			targetProxy = 7CC60E8A1EBAC777003FC570 /* PBXContainerItemProxy */;
 		};
 		7CC60E8F1EBAC7E0003FC570 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -535,6 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = "anime-news/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,6 +591,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = "anime-news/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
