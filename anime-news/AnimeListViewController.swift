@@ -72,15 +72,21 @@ class AnimeListViewController: UIViewController {
             os_log("%@: Error: %@", self.description, error)
         }
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let viewController = segue.destination as! MALReviewViewController
+        if let cell = sender as? UITableViewCell{
+            let selectedIndex = tableView.indexPath(for: cell)!.row
+            let anime = self.animeList[selectedIndex]
+            viewController.title = anime["title"] as? String
+            viewController.titleText = anime["title"] as? String
+            viewController.status = anime["anime_airing_status"] as? Int
+            viewController.url = anime["anime_url"] as? String
+        }
+        
     }
-    */
 
 }
 
