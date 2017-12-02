@@ -90,7 +90,7 @@ extension AnimeListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MALCellID", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MALCellID", for: indexPath) as! MALTableViewCell
         
         guard self.animeList.count > indexPath.row else {
             os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, self.animeList.count, indexPath.row)
@@ -99,17 +99,58 @@ extension AnimeListViewController: UITableViewDataSource {
         }
         
         let anime = self.animeList[indexPath.row]
+        os_log("%@", anime)
         
         if let title = anime["anime_title"] as? String{
-            cell.textLabel?.text = title
+            cell.title.text =  title
         }
         else
         {
             cell.textLabel?.text = "No Title"
         }
+        
+        if let status = anime["anime_airing_status"] as? Int{
+            cell.statusView.layer.addSublayer(createCircle(status: status))
+        }
         return cell
     }
+    
+    func createCircle(status:Int) -> CAShapeLayer{
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 15,y: 15), radius: CGFloat(10), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        
+        //change the fill color
+        var color:CGColor!
+        switch status {
+        case MyAnimeList.Status.completed.rawValue:
+            color = UIColor.blue.cgColor
+            break
+        case MyAnimeList.Status.currentlyWatching.rawValue:
+            color = UIColor.green.cgColor
+            break
+        case MyAnimeList.Status.dropped.rawValue:
+            color = UIColor.gray.cgColor
+            break
+        case MyAnimeList.Status.planToWatch.rawValue:
+            color = UIColor.orange.cgColor
+            break
+        default:
+            color = UIColor.clear.cgColor
+        }
+        shapeLayer.fillColor = color
+
+        //shapeLayer.strokeColor = UIColor.red.cgColor
+        
+        //shapeLayer.lineWidth = 3.0
+        
+        return shapeLayer
+    
+    }
 }
+
+
 
 extension AnimeListViewController: UITableViewDelegate{
     
