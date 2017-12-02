@@ -80,8 +80,8 @@ class AnimeListViewController: UIViewController {
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
             let anime = self.animeList[selectedIndex]
-            viewController.title = anime["title"] as? String
-            viewController.titleText = anime["title"] as? String
+            viewController.title = anime["anime_title"] as? String
+            viewController.titleText = anime["anime_title"] as? String
             viewController.status = anime["anime_airing_status"] as? Int
             viewController.url = anime["anime_url"] as? String
             viewController.imagePath = anime["anime_image_path"] as? String
@@ -117,43 +117,9 @@ extension AnimeListViewController: UITableViewDataSource {
         }
         
         if let status = anime["anime_airing_status"] as? Int{
-            cell.statusView.layer.addSublayer(createCircle(status: status))
+            cell.statusView.createCircle(status: status)//layer.addSublayer(Shape.shared.createCircle(status: status))
         }
         return cell
-    }
-    
-    func createCircle(status:Int) -> CAShapeLayer{
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 15,y: 15), radius: CGFloat(10), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = circlePath.cgPath
-        
-        //change the fill color
-        var color:CGColor!
-        switch status {
-        case MyAnimeList.Status.completed.rawValue:
-            color = UIColor.blue.cgColor
-            break
-        case MyAnimeList.Status.currentlyWatching.rawValue:
-            color = UIColor.green.cgColor
-            break
-        case MyAnimeList.Status.dropped.rawValue:
-            color = UIColor.gray.cgColor
-            break
-        case MyAnimeList.Status.planToWatch.rawValue:
-            color = UIColor.orange.cgColor
-            break
-        default:
-            color = UIColor.clear.cgColor
-        }
-        shapeLayer.fillColor = color
-
-        //shapeLayer.strokeColor = UIColor.red.cgColor
-        
-        //shapeLayer.lineWidth = 3.0
-        
-        return shapeLayer
-    
     }
 }
 

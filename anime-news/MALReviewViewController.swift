@@ -11,7 +11,8 @@ import AnimeManager
 import os.log
 
 class MALReviewViewController: UIViewController {
-
+    @IBOutlet weak var statusCircleView: ShapeView!
+    
     @IBOutlet weak var titleView: UITextView!
     
     @IBOutlet weak var mainTextView: UITextView!
@@ -30,6 +31,8 @@ class MALReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleView.text = self.titleText
+        
+        self.statusCircleView.createCircle(status: self.status)
         var label:String!
         switch self.status {
         case MyAnimeList.Status.completed.rawValue:

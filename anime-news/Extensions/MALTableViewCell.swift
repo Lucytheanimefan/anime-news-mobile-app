@@ -10,7 +10,7 @@ import UIKit
 
 class MALTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var statusView: ShapeView!
     
     @IBOutlet weak var title: UITextField!
     
