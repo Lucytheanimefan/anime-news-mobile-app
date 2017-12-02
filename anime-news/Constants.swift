@@ -11,6 +11,7 @@ import Foundation
 struct Constants {
     struct PreferenceKeys {
         static let LAST_REFRESH = "lastRefresh"
+        static let MAL_LAST_REFRESH = "MALLastRefresh"
         
     }
     

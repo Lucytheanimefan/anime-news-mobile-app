@@ -14,6 +14,29 @@ class AnimeListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var _lastAPICall:Date!
+    var lastAPICall:Date
+    {
+        get {
+            if (self._lastAPICall == nil)
+            {
+                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH) as? Date{
+                   self.lastAPICall = lastRefresh
+                }
+                else
+                {
+                    return Date().addingTimeInterval(-100000)
+                }
+            }
+            return self._lastAPICall
+        }
+        
+        set {
+            self._lastAPICall = newValue
+            UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH)
+        }
+    }
+    
     private var _animeList:[[String:Any]]!
     var animeList:[[String:Any]]
     {
@@ -53,7 +76,18 @@ class AnimeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        generateMAL()
+        if (self.lastAPICall.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
+        {
+            os_log("%@: Last API call date difference: %@", self.description, (self.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
+            generateMAL()
+        }
+        else
+        {
+            #if DEBUG
+                os_log("%@: Too soon to refresh", self.description)
+            #endif
+
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -67,6 +101,7 @@ class AnimeListViewController: UIViewController {
         // TODO: don't use my own username
         MAL.getAnimeList(status: .all, completion: { (animeList) in
             self.animeList = animeList
+            self.lastAPICall = Date()
         }) { (error) in
             // TODO: handle error
             os_log("%@: Error: %@", self.description, error)
