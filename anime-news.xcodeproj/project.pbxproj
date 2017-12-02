@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		7C66B21B1FD2001D0016FACD /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */; };
 		7C66B21C1FD2001D0016FACD /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C66B2181FD1FFBA0016FACD /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7C66B2211FD206F30016FACD /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2201FD206F30016FACD /* Articles.swift */; };
 		7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2221FD23DAB0016FACD /* Constants.swift */; };
 		7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */; };
 		7C66B2281FD2E80B0016FACD /* MALTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */; };
 		7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */; };
-		7C66B22C1FD311550016FACD /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B22B1FD311550016FACD /* Shape.swift */; };
 		7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B22D1FD312F70016FACD /* ShapeView.swift */; };
 		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
 		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
@@ -130,12 +128,10 @@
 
 /* Begin PBXFileReference section */
 		7C66B2111FD1FFBA0016FACD /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
-		7C66B2201FD206F30016FACD /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		7C66B2221FD23DAB0016FACD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
 		7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MALTableViewCell.swift; sourceTree = "<group>"; };
 		7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MALReviewViewController.swift; sourceTree = "<group>"; };
-		7C66B22B1FD311550016FACD /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		7C66B22D1FD312F70016FACD /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,11 +218,9 @@
 				7CC60E491EB04BC5003FC570 /* NewsTableController.swift */,
 				7CC60E4B1EB04CA8003FC570 /* Utilities.swift */,
 				7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */,
-				7C66B2201FD206F30016FACD /* Articles.swift */,
 				7C66B2221FD23DAB0016FACD /* Constants.swift */,
 				7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */,
 				7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */,
-				7C66B22B1FD311550016FACD /* Shape.swift */,
 				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 			);
 			path = "anime-news";
@@ -454,10 +448,8 @@
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,
-				7C66B22C1FD311550016FACD /* Shape.swift in Sources */,
 				7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
-				7C66B2211FD206F30016FACD /* Articles.swift in Sources */,
 				7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
