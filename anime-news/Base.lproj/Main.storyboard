@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="3724" y="1493.7031484257873"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Anime News-->
         <scene sceneID="Byv-yu-bzO">
             <objects>
                 <tableViewController id="bdu-pF-3um" customClass="NewsTableController" customModule="anime_news" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,7 +109,7 @@
                             <outlet property="delegate" destination="bdu-pF-3um" id="Zpd-3U-moB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="lXS-IN-iOd">
+                    <navigationItem key="navigationItem" title="Anime News" id="lXS-IN-iOd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="luy-hc-JpO">
                             <connections>
                                 <segue destination="nNJ-PE-jl8" kind="presentation" id="NyU-tq-ZMZ"/>
@@ -121,11 +121,11 @@
             </objects>
             <point key="canvasLocation" x="2266" y="734"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="yhs-4E-wbN">
             <objects>
                 <navigationController id="KbL-cA-K1M" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="CIM-O9-nCz"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="CIM-O9-nCz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mhZ-jn-xMX">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="1484" y="734"/>
         </scene>
-        <!--Item 1-->
+        <!--Anime List View Controller-->
         <scene sceneID="sK4-Uy-R5n">
             <objects>
-                <viewController id="pLz-9z-08V" sceneMemberID="viewController">
+                <viewController id="pLz-9z-08V" customClass="AnimeListViewController" customModule="anime_news" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LQM-Uo-erb"/>
                         <viewControllerLayoutGuide type="bottom" id="Aya-Bd-52b"/>
@@ -149,13 +149,37 @@
                     <view key="view" contentMode="scaleToFill" id="ade-aV-Mpu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cnm-QQ-CY8">
+                                <rect key="frame" x="16" y="28" width="343" height="590"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MALCellID" id="FL8-ZW-Ikf">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FL8-ZW-Ikf" id="M9B-UB-0ch">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pLz-9z-08V" id="k7c-Cz-JEY"/>
+                                    <outlet property="delegate" destination="pLz-9z-08V" id="QDB-zB-gva"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="MLo-4J-tJl"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="MLo-4J-tJl"/>
+                    <connections>
+                        <outlet property="tableView" destination="Cnm-QQ-CY8" id="LU6-qg-pVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mio-uI-ihM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1484" y="-72"/>
+            <point key="canvasLocation" x="1484" y="-72.413793103448285"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FOy-zE-sqI">
