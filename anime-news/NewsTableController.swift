@@ -91,7 +91,7 @@ class NewsTableController: UITableViewController {
     }
     
     func processReviews(){
-        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.Views.review) { (articles) in
+        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             os_log("%@: Article result: %@", self.description, articles)
             self.numArticleRows = articles.count
             self.articles = articles
@@ -144,14 +144,25 @@ class NewsTableController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var viewController = segue.destination as! InfoViewController
+        let viewController = segue.destination as! InfoViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            viewController.title = anime[selectedIndex]
-            print(selectedIndex)
+            let article = self.articles[selectedIndex]
+            viewController.title = article["title"] as? String
+            viewController.mainText = article["description"] as! String
+            let attributedStr = NSAttributedString(string: (article["link"] as! String).trimmingCharacters(in: .whitespacesAndNewlines))
+            viewController.url = attributedStr.trailingNewlineChopped.string
         }
         
     }
-    
-    
+}
+
+extension NSAttributedString{
+    var trailingNewlineChopped: NSAttributedString {
+        if self.string.hasSuffix("\n") {
+            return self.attributedSubstring(from: NSMakeRange(0, self.length - 1))
+        } else {
+            return self
+        }
+    }
 }
