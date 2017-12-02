@@ -8,6 +8,8 @@
 
 import UIKit
 import AnimeManager
+import os.log
+
 class MALReviewViewController: UIViewController {
 
     @IBOutlet weak var titleView: UITextView!
@@ -16,15 +18,18 @@ class MALReviewViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     var url:String!
     var titleText:String!
     var mainText:String!
     var status:Int!
+    var imagePath:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleView.text = self.titleText
-     
         var label:String!
         switch self.status {
         case MyAnimeList.Status.completed.rawValue:
@@ -38,7 +43,14 @@ class MALReviewViewController: UIViewController {
         }
         self.statusLabel.text = label
 
-        // Do any additional setup after loading the view.
+        if let imageURL = URL(string:self.imagePath){
+            do {
+            self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
+            }
+            catch {
+                os_log("%@: Error loading image: %@",  type: .error, self.description, self.imagePath)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +58,15 @@ class MALReviewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        // TODO: need to save text somewhere
+    }
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

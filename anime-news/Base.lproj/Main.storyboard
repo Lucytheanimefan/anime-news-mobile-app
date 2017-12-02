@@ -163,14 +163,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bkf-mE-IRN">
-                                                    <rect key="frame" x="15" y="6" width="284" height="30"/>
+                                                    <rect key="frame" x="0.0" y="6" width="299" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8rC-Nc-u6z">
-                                                    <rect key="frame" x="299" y="6" width="30" height="30"/>
+                                                    <rect key="frame" x="307" y="6" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -218,33 +218,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="efS-FJ-VvE">
-                                <rect key="frame" x="0.0" y="160" width="375" height="469"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Anime Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WLV-SW-SZM">
+                                <rect key="frame" x="16" y="61" width="199" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="4Bf-Xe-dk6"/>
+                                    <constraint firstAttribute="width" constant="199" id="zMh-Tc-We1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="efS-FJ-VvE">
+                                <rect key="frame" x="16" y="172" width="343" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9K-QX-cvc">
-                                <rect key="frame" x="16" y="99" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCF-mI-7yV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="BaM-Tj-8Uo">
+                                        <barButtonItem key="backBarButtonItem" title="Back" id="zsu-Gc-1vx"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lpQ-jT-eSC">
+                                            <connections>
+                                                <action selector="cancelAction:" destination="Xd8-AH-png" id="3SK-aP-lF6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="YnL-8X-pjS">
+                                            <connections>
+                                                <action selector="doneAction:" destination="Xd8-AH-png" id="mJL-g7-OXf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Fq-yz-Pnl">
+                                <rect key="frame" x="223" y="61" width="136" height="103"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9K-QX-cvc">
+                                <rect key="frame" x="16" y="143" width="199" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WLV-SW-SZM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WLV-SW-SZM" firstAttribute="top" secondItem="cCF-mI-7yV" secondAttribute="bottom" constant="17" id="2kK-uE-HPW"/>
+                            <constraint firstItem="7Fq-yz-Pnl" firstAttribute="trailing" secondItem="efS-FJ-VvE" secondAttribute="trailing" id="4HK-Ep-ESv"/>
+                            <constraint firstItem="efS-FJ-VvE" firstAttribute="trailing" secondItem="3Ha-Ee-caB" secondAttribute="trailingMargin" id="FIG-Da-Psq"/>
+                            <constraint firstItem="o9K-QX-cvc" firstAttribute="top" secondItem="WLV-SW-SZM" secondAttribute="bottom" constant="20" id="GiS-t6-J1l"/>
+                            <constraint firstItem="WLV-SW-SZM" firstAttribute="leading" secondItem="3Ha-Ee-caB" secondAttribute="leadingMargin" id="IRh-e6-YiR"/>
+                            <constraint firstItem="d4X-nl-aEp" firstAttribute="top" secondItem="efS-FJ-VvE" secondAttribute="bottom" id="KFI-eS-OPa"/>
+                            <constraint firstAttribute="trailing" secondItem="cCF-mI-7yV" secondAttribute="trailing" id="ORP-48-Zkg"/>
+                            <constraint firstItem="7Fq-yz-Pnl" firstAttribute="trailing" secondItem="3Ha-Ee-caB" secondAttribute="trailingMargin" id="PHg-Xt-nSI"/>
+                            <constraint firstItem="7Fq-yz-Pnl" firstAttribute="leading" secondItem="WLV-SW-SZM" secondAttribute="trailing" constant="8" symbolic="YES" id="Rlg-Zf-EmO"/>
+                            <constraint firstItem="WLV-SW-SZM" firstAttribute="leading" secondItem="efS-FJ-VvE" secondAttribute="leading" id="Ugs-zB-2bS"/>
+                            <constraint firstItem="cCF-mI-7yV" firstAttribute="leading" secondItem="3Ha-Ee-caB" secondAttribute="leading" id="VjX-WK-6eV"/>
+                            <constraint firstItem="7Fq-yz-Pnl" firstAttribute="bottom" secondItem="o9K-QX-cvc" secondAttribute="bottom" id="abt-X8-2xC"/>
+                            <constraint firstItem="o9K-QX-cvc" firstAttribute="leading" secondItem="3Ha-Ee-caB" secondAttribute="leadingMargin" id="b3x-aY-dSW"/>
+                            <constraint firstItem="WLV-SW-SZM" firstAttribute="trailing" secondItem="o9K-QX-cvc" secondAttribute="trailing" id="fYO-2Q-k1w"/>
+                            <constraint firstItem="efS-FJ-VvE" firstAttribute="leading" secondItem="3Ha-Ee-caB" secondAttribute="leadingMargin" id="fwQ-cd-aex"/>
+                            <constraint firstItem="efS-FJ-VvE" firstAttribute="top" secondItem="7Fq-yz-Pnl" secondAttribute="bottom" constant="8" symbolic="YES" id="iDZ-Ao-eJT"/>
+                            <constraint firstItem="cCF-mI-7yV" firstAttribute="top" secondItem="3Ha-Ee-caB" secondAttribute="top" id="ntU-dW-idd"/>
+                            <constraint firstItem="efS-FJ-VvE" firstAttribute="top" secondItem="o9K-QX-cvc" secondAttribute="bottom" constant="8" id="qxH-0e-oEP"/>
+                            <constraint firstItem="WLV-SW-SZM" firstAttribute="top" secondItem="7Fq-yz-Pnl" secondAttribute="top" id="sQx-tc-3tA"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="7Fq-yz-Pnl" id="rLM-Qy-312"/>
                         <outlet property="mainTextView" destination="efS-FJ-VvE" id="W18-KE-KQk"/>
                         <outlet property="statusLabel" destination="o9K-QX-cvc" id="LoS-2T-7EA"/>
                         <outlet property="titleView" destination="WLV-SW-SZM" id="8hX-s1-sXq"/>
