@@ -13,9 +13,20 @@ import os.log
 class NewsTableController: UITableViewController {
     var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
     
-    private var _numArticleRows:Int! = 0
+    private var _numArticleRows:Int!
     var numArticleRows:Int {
         get {
+            if (self._numArticleRows == nil)
+            {
+                let data = UserDefaults.standard.object(forKey: "ANNArticles") as! Data
+                if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+                    self._numArticleRows = articles.count
+                }
+                else
+                {
+                    self._numArticleRows = 0
+                }
+            }
             return self._numArticleRows
         }
         
@@ -30,15 +41,32 @@ class NewsTableController: UITableViewController {
         }
     }
     
-    private var _articles:[[String:Any]] = [[String:Any]]()
+    private var _articles:[[String:Any]]!// = nil
     
     var articles:[[String:Any]] {
         get {
+            if (self._articles == nil)
+            {
+                let data = UserDefaults.standard.object(forKey: "ANNArticles") as! Data
+                if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+                    self._articles = articles
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                else
+                {
+                    self._articles = [[String:Any]]()
+                }
+            }
             return self._articles
         }
         
         set {
             self._articles = newValue
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            UserDefaults.standard.set(data, forKey: "ANNArticles")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -48,7 +76,23 @@ class NewsTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.processReviews()
+        if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
+            os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
+            if (lastRefresh.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
+            {
+                self.fetchArticles()
+            }
+            else
+            {
+                #if DEBUG
+                    os_log("%@: Too soon to refresh", self.description)
+                #endif
+            }
+        }
+        else
+        {
+            self.fetchArticles()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,7 +116,7 @@ class NewsTableController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
-        guard self.articles != nil, self.articles.count > indexPath.row else {
+        guard self.articles.count > indexPath.row else {
             os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, self.articles.count, indexPath.row)
             
             return cell
@@ -90,9 +134,10 @@ class NewsTableController: UITableViewController {
         return cell
     }
     
-    func processReviews(){
+    func fetchArticles(){
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             os_log("%@: Article result: %@", self.description, articles)
+            UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
             self.numArticleRows = articles.count
             self.articles = articles
         }

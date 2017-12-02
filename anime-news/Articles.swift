@@ -16,11 +16,6 @@ class Articles: NSObject {
     
     var articles:[[String:Any]]!
     
-    func processReviews(){
-        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.Views.review) { (articles) in
-            os_log("%@: Article result: %@", self.description, articles)
-            self.articles = articles
-        }
-    }
+
 
 }
