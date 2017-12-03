@@ -12,6 +12,7 @@ struct Constants {
     struct PreferenceKeys {
         static let LAST_REFRESH = "lastRefresh"
         static let MAL_LAST_REFRESH = "MALLastRefresh"
+        static let ANN_ARTICLES = "ANNArticles"
         
     }
     

@@ -18,9 +18,10 @@ class NewsTableController: UITableViewController {
         get {
             if (self._numArticleRows == nil)
             {
-                let data = UserDefaults.standard.object(forKey: "ANNArticles") as! Data
-                if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-                    self._numArticleRows = articles.count
+                if let data = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.ANN_ARTICLES) as? Data{
+                    if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+                        self._numArticleRows = articles.count
+                    }
                 }
                 else
                 {
@@ -47,7 +48,7 @@ class NewsTableController: UITableViewController {
         get {
             if (self._articles == nil)
             {
-                let data = UserDefaults.standard.object(forKey: "ANNArticles") as! Data
+                let data = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.ANN_ARTICLES) as! Data
                 if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
                     self._articles = articles
                     
@@ -66,7 +67,7 @@ class NewsTableController: UITableViewController {
         set {
             self._articles = newValue
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            UserDefaults.standard.set(data, forKey: "ANNArticles")
+            UserDefaults.standard.set(data, forKey: Constants.PreferenceKeys.ANN_ARTICLES)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -78,7 +79,8 @@ class NewsTableController: UITableViewController {
         
         if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
             os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
-            if (lastRefresh.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
+            
+            if (refreshIntervalTimeUp(recordedDate: lastRefresh) && Reachability.isConnectedToNetwork())
             {
                 self.fetchArticles()
             }

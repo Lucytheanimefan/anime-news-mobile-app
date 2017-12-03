@@ -76,8 +76,9 @@ class AnimeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (self.lastAPICall.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
-        {
+        if (refreshIntervalTimeUp(recordedDate: self.lastAPICall) && Reachability.isConnectedToNetwork()){
+        //if (self.lastAPICall.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
+        //{
             os_log("%@: Last API call date difference: %@", self.description, (self.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
             generateMAL()
         }
@@ -95,7 +96,6 @@ class AnimeListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     func generateMAL(){
         // TODO: don't use my own username
@@ -141,7 +141,7 @@ extension AnimeListViewController: UITableViewDataSource {
         }
         
         let anime = self.animeList[indexPath.row]
-        os_log("%@", anime)
+        //os_log("%@", anime)
         
         if let title = anime["anime_title"] as? String{
             cell.title.text =  title
