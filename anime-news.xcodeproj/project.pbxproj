@@ -24,6 +24,8 @@
 		7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA817F1FD3943E00CAD489 /* Reachability.swift */; };
 		7CCA818F1FD3A4B500CAD489 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCA818C1FD3A4AD00CAD489 /* AnimeManager.framework */; };
 		7CCA81901FD3A4B500CAD489 /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCA818C1FD3A4AD00CAD489 /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7CCA81941FD4151800CAD489 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA81931FD4151800CAD489 /* AuthenticationViewController.swift */; };
+		7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		7CCA817F1FD3943E00CAD489 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7CCA81851FD3A4AC00CAD489 /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
+		7CCA81931FD4151800CAD489 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8899799C2347BD541A9FFACF /* Pods-anime-news.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anime-news.release.xcconfig"; path = "Pods/Target Support Files/Pods-anime-news/Pods-anime-news.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +176,8 @@
 				7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */,
 				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
+				7CCA81931FD4151800CAD489 /* AuthenticationViewController.swift */,
+				7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -390,11 +396,13 @@
 				7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */,
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
+				7CCA81941FD4151800CAD489 /* AuthenticationViewController.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,
 				7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */,
 				7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */,
+				7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
 				7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */,
 			);

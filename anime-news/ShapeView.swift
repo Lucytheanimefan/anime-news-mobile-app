@@ -8,6 +8,7 @@
 
 import UIKit
 import AnimeManager
+import os.log
 
 class ShapeView: UIView {
 
@@ -22,6 +23,7 @@ class ShapeView: UIView {
     func createCircle(status:Int)/* -> CAShapeLayer*/{
         let x = self.bounds.size.width/2
         let y = self.bounds.size.height/2
+        os_log("%@: Circle: %@,%@", self.description, x.description, y.description)
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: x,y: y), radius: CGFloat(x), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         
         let shapeLayer = CAShapeLayer()

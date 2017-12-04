@@ -51,6 +51,10 @@ class AnimeListViewController: UIViewController {
                             self.tableView.reloadData()
                         }
                     }
+                    else
+                    {
+                        self._animeList = [[String:Any]]()
+                    }
                 }
                 else
                 {
@@ -76,9 +80,10 @@ class AnimeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (refreshIntervalTimeUp(recordedDate: self.lastAPICall) && Reachability.isConnectedToNetwork()){
-        //if (self.lastAPICall.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date())
-        //{
+        //transitionVC(id: "authVCID")
+        
+        if (refreshIntervalTimeUp(recordedDate: self.lastAPICall) && Reachability.isConnectedToNetwork())
+        {
             os_log("%@: Last API call date difference: %@", self.description, (self.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
             generateMAL()
         }
@@ -145,15 +150,16 @@ extension AnimeListViewController: UITableViewDataSource {
         
         if let title = anime["anime_title"] as? String{
             cell.title.text =  title
+            
+            if let status = anime["anime_airing_status"] as? Int{
+                cell.statusView.createCircle(status: status)
+            }
         }
         else
         {
             cell.textLabel?.text = "No Title"
         }
         
-        if let status = anime["anime_airing_status"] as? Int{
-            cell.statusView.createCircle(status: status)//layer.addSublayer(Shape.shared.createCircle(status: status))
-        }
         return cell
     }
 }
