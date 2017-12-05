@@ -65,7 +65,7 @@ extension SettingsViewController: UITableViewDelegate{
         credentialReqs[loginType]?.forEach { (label) in
             
             alertController.addTextField { (pTextField) in
-                pTextField.placeholder = label
+                pTextField.placeholder = AdminSettings.shared.MALUsername//label
                 pTextField.clearButtonMode = .whileEditing
                 pTextField.borderStyle = .none
                 textFields.append(pTextField)
@@ -84,6 +84,11 @@ extension SettingsViewController: UITableViewDelegate{
             textFields.forEach({ (textField) in
                 let inputValue = textField.text!
                 os_log("%@: Text field input: %@", self.description, inputValue)
+                
+                if (loginType == "MyAnimeList")
+                {
+                    AdminSettings.shared.MALUsername = inputValue
+                }
             })
             
             alertController.dismiss(animated: true, completion: nil)

@@ -75,12 +75,15 @@ class AnimeListViewController: UIViewController {
         }
     }
     
-    let MAL:MyAnimeList = MyAnimeList(username: "Silent_Muse", password: nil)
+    lazy var MAL:MyAnimeList =
+        {
+            return MyAnimeList(username: AdminSettings.shared.MALUsername, password: nil)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //transitionVC(id: "authVCID")
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
         
         if (refreshIntervalTimeUp(recordedDate: self.lastAPICall) && Reachability.isConnectedToNetwork())
         {
@@ -101,7 +104,15 @@ class AnimeListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func labelDidChange(notification:Notification){
+        if let type = notification.userInfo!["Type"] as? String{
+            if type == Constants.PreferenceKeys.MAL_USERNAME{
+                generateMAL()
+            }
+        }
+    }
+    
     func generateMAL(){
         // TODO: don't use my own username
         MAL.getAnimeList(status: .all, completion: { (animeList) in

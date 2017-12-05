@@ -26,109 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/AnimeListViewController.swift"
-            timestampString = "534097226.555951"
+            timestampString = "534132024.519169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "generateMAL()"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "labelDidChange(notification:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "anime-news/AnimeListViewController.swift"
-            timestampString = "534097226.556083"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "generateMAL()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "anime-news/AnimeListViewController.swift"
-            timestampString = "534097226.556141"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "animeList"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "anime-news/AnimeListViewController.swift"
-            timestampString = "534097226.556191"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "animeList"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "anime-news/AnimeListViewController.swift"
-            timestampString = "534097226.55624"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "animeList"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "anime_news.AnimeListViewController.animeList.setter : Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;"
-                  moduleName = "anime-news"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucyzhang/Github/anime-news-mobile-app/anime-news/AnimeListViewController.swift"
-                  timestampString = "534096962.983234"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "528">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in anime_news.AnimeListViewController.animeList.setter : Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;"
-                  moduleName = "anime-news"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucyzhang/Github/anime-news-mobile-app/anime-news/AnimeListViewController.swift"
-                  timestampString = "534096962.988166"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
