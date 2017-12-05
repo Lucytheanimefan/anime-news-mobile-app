@@ -142,6 +142,36 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7C9BD4381FD6374600C13E62 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C9BD43A1FD6379400C13E62 /* Anime List */,
+				7C9BD4391FD6377600C13E62 /* News */,
+				7CC60E2B1EB04AE3003FC570 /* ViewController.swift */,
+				7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */,
+				7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7C9BD4391FD6377600C13E62 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				7CC60E491EB04BC5003FC570 /* NewsTableController.swift */,
+				7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		7C9BD43A1FD6379400C13E62 /* Anime List */ = {
+			isa = PBXGroup;
+			children = (
+				7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */,
+				7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */,
+			);
+			path = "Anime List";
+			sourceTree = "<group>";
+		};
 		7CC60E1D1EB04AE3003FC570 = {
 			isa = PBXGroup;
 			children = (
@@ -166,23 +196,17 @@
 		7CC60E281EB04AE3003FC570 /* anime-news */ = {
 			isa = PBXGroup;
 			children = (
+				7C9BD4381FD6374600C13E62 /* ViewControllers */,
 				7C66B2261FD2E7F30016FACD /* Extensions */,
 				7CC60E291EB04AE3003FC570 /* AppDelegate.swift */,
-				7CC60E2B1EB04AE3003FC570 /* ViewController.swift */,
 				7CC60E2D1EB04AE3003FC570 /* Main.storyboard */,
 				7CC60E301EB04AE3003FC570 /* Assets.xcassets */,
 				7CC60E321EB04AE3003FC570 /* LaunchScreen.storyboard */,
 				7CC60E351EB04AE3003FC570 /* Info.plist */,
-				7CC60E491EB04BC5003FC570 /* NewsTableController.swift */,
 				7CC60E4B1EB04CA8003FC570 /* Utilities.swift */,
-				7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */,
 				7C66B2221FD23DAB0016FACD /* Constants.swift */,
-				7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */,
-				7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */,
 				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
-				7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */,
-				7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */,
 				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
 			);
 			path = "anime-news";
