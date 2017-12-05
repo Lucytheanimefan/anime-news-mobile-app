@@ -14,6 +14,13 @@ class AnimeListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     private var _lastAPICall:Date!
     var lastAPICall:Date
     {
@@ -82,6 +89,8 @@ class AnimeListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.addSubview(self.refreshControl)
        
         NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
         
@@ -113,14 +122,27 @@ class AnimeListViewController: UIViewController {
         }
     }
     
-    func generateMAL(){
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        os_log("%@: Start refreshing", self.description)
+        self.generateMAL {
+            os_log("%@: Done refreshing", self.description)
+            DispatchQueue.main.async {
+                refreshControl.endRefreshing()
+            }
+        }
+        //refreshControl.endRefreshing()
+    }
+    
+    func generateMAL(onFinish: @escaping () -> () = { _ in }){
         // TODO: don't use my own username
         MAL.getAnimeList(status: .all, completion: { (animeList) in
             self.animeList = animeList
             self.lastAPICall = Date()
+            onFinish()
         }) { (error) in
             // TODO: handle error
             os_log("%@: Error: %@", self.description, error)
+            onFinish()
         }
     }
     

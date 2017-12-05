@@ -13,6 +13,8 @@ import os.log
 class NewsTableController: UITableViewController {
     var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
     
+    
+    
     private var _numArticleRows:Int!
     var numArticleRows:Int {
         get {
@@ -97,10 +99,25 @@ class NewsTableController: UITableViewController {
         }
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func refreshNews(_ sender: UIRefreshControl) {
+        
+        os_log("%@: REFRESH", self.description)
+        self.fetchArticles {
+            os_log("%@: DONE REFRESHING", self.description)
+            DispatchQueue.main.async {
+                sender.endRefreshing()
+            }
+        }
+    }
+    
+    
     
     // MARK: - Table view data source
     
@@ -136,12 +153,14 @@ class NewsTableController: UITableViewController {
         return cell
     }
     
-    func fetchArticles(){
+    func fetchArticles(onFinish: @escaping () -> () = { _ in }){
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
-            os_log("%@: Article result: %@", self.description, articles)
+            //os_log("%@: Article result: %@", self.description, articles)
             UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
             self.numArticleRows = articles.count
             self.articles = articles
+            
+            onFinish()
         }
     }
     
