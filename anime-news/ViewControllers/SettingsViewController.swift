@@ -12,9 +12,9 @@ import os.log
 class SettingsViewController: UIViewController {
     
     let sections = ["Accounts", "Database"]
-    let sectionRows = ["Accounts": ["MyAnimeList", "Kitsu", "AniList"], "Database":["URI"]]
+    let sectionRows = ["Accounts": [Constants.MAL, "Kitsu", "AniList"], "Database":["URI"]]
     //let accountRows = ["MyAnimeList", "Kitsu", "AniList"]
-    let credentialReqs = ["MyAnimeList":["Username"], "Kitsu":["Username"], "AniList":["Client ID", "Client Secret"]]
+    let credentialReqs = [Constants.MAL:["Username"], "Kitsu":["Username"], "AniList":["Client ID", "Client Secret"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,7 @@ extension SettingsViewController: UITableViewDelegate{
                 let inputValue = textField.text!
                 os_log("%@: Text field input: %@", self.description, inputValue)
                 
-                if (loginType == "MyAnimeList")
+                if (loginType == Constants.MAL)
                 {
                     AdminSettings.shared.MALUsername = inputValue
                 }

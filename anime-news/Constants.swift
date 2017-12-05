@@ -9,6 +9,9 @@
 import Foundation
 
 struct Constants {
+    
+    static let MAL = "MyAnimeList"
+    
     struct PreferenceKeys {
         static let LAST_REFRESH = "lastRefresh"
         static let MAL_LAST_REFRESH = "MALLastRefresh"
@@ -24,4 +27,6 @@ struct Constants {
     struct Notification {
         static let SETTING_CHANGE = "changedSetting"
     }
+    
+    
 }

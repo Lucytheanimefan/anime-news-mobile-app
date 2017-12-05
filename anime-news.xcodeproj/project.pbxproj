@@ -245,13 +245,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CC60E431EB04AE3003FC570 /* Build configuration list for PBXNativeTarget "anime-news" */;
 			buildPhases = (
-				357BB8C29BBF215256E04715 /* [CP] Check Pods Manifest.lock */,
 				7CC60E231EB04AE3003FC570 /* Frameworks */,
 				7CC60E221EB04AE3003FC570 /* Sources */,
 				7CC60E241EB04AE3003FC570 /* Resources */,
 				7C66B21F1FD2001D0016FACD /* Embed Frameworks */,
-				7BD2AB978F4BF83B72F12255 /* [CP] Embed Pods Frameworks */,
-				1E3DE0D32CFB705D4B457362 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,57 +362,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1E3DE0D32CFB705D4B457362 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-anime-news/Pods-anime-news-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		357BB8C29BBF215256E04715 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-anime-news-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7BD2AB978F4BF83B72F12255 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-anime-news/Pods-anime-news-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CC60E221EB04AE3003FC570 /* Sources */ = {
