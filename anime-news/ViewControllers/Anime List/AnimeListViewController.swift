@@ -158,6 +158,7 @@ class AnimeListViewController: UIViewController {
             viewController.status = anime["anime_airing_status"] as? Int
             viewController.url = anime["anime_url"] as? String
             viewController.imagePath = anime["anime_image_path"] as? String
+            viewController.animeID = anime["anime_id"] as? Int
         }
         
     }

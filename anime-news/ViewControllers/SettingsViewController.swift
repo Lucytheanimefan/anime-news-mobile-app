@@ -11,7 +11,9 @@ import os.log
 
 class SettingsViewController: UIViewController {
     
-    let sections = ["MyAnimeList", "Kitsu", "AniList"]
+    let sections = ["Accounts", "Database"]
+    let sectionRows = ["Accounts": ["MyAnimeList", "Kitsu", "AniList"], "Database":["URI"]]
+    //let accountRows = ["MyAnimeList", "Kitsu", "AniList"]
     let credentialReqs = ["MyAnimeList":["Username"], "Kitsu":["Username"], "AniList":["Client ID", "Client Secret"]]
 
     override func viewDidLoad() {
@@ -40,16 +42,24 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate{
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return sections.count
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         let section = sections[section]
+        return (sectionRows[section]?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "authCellID", for: indexPath)
-        
-        cell.textLabel?.text = sections[indexPath.row]
+        let section = sections[indexPath.section]
+        cell.textLabel?.text = sectionRows[section]?[indexPath.row]
         
         return cell
     
@@ -57,8 +67,8 @@ extension SettingsViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var textFields = [UITextField]()
-        
-        let loginType = sections[indexPath.row]
+        let section = sections[indexPath.section]
+        let loginType = sectionRows[section]![indexPath.row]
         // create alertController
         let alertController = UIAlertController(title: "Authentication", message: "Credentials for \(loginType)", preferredStyle: .alert)
         
@@ -105,7 +115,5 @@ extension SettingsViewController: UIAlertViewDelegate{
 }
 
 extension SettingsViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections.count
-    }
+    
 }

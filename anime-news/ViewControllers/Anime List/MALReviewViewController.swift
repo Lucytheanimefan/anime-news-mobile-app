@@ -27,11 +27,12 @@ class MALReviewViewController: UIViewController {
     var mainText:String!
     var status:Int!
     var imagePath:String!
+    var animeID:Int! // Not using yet
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleView.text = self.titleText
-        
+        self.mainTextView.text = mainText
         self.statusCircleView.createCircle(status: self.status)
         var label:String!
         switch self.status {
