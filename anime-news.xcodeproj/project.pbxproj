@@ -15,6 +15,8 @@
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
+		7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */; };
+		7C9BD4411FD7795600C13E62 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */; };
 		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
 		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
 		7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E2D1EB04AE3003FC570 /* Main.storyboard */; };
@@ -86,6 +88,8 @@
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
+		7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC60E2B1EB04AE3003FC570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			children = (
 				7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */,
 				7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */,
+				7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
 				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
+				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -372,7 +378,9 @@
 				7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */,
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */,
+				7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */,
 				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
+				7C9BD4411FD7795600C13E62 /* SwitchTableViewCell.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,

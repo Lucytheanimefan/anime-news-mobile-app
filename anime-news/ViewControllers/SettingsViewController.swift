@@ -11,8 +11,8 @@ import os.log
 
 class SettingsViewController: UIViewController {
     
-    let sections = ["Accounts", "Database"]
-    let sectionRows = ["Accounts": [Constants.MAL, "Kitsu", "AniList"], "Database":["URI"]]
+    let sections = ["Accounts", "Database", "Other"]
+    let sectionRows = ["Accounts": [Constants.MAL, "Kitsu", "AniList"], "Database":["URI"], "Other":["Anime event notifications"]]
     //let accountRows = ["MyAnimeList", "Kitsu", "AniList"]
     let credentialReqs = [Constants.MAL:["Username"], "Kitsu":["Username"], "AniList":["Client ID", "Client Secret"]]
 
@@ -56,13 +56,21 @@ extension SettingsViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "authCellID", for: indexPath)
+        var cell:UITableViewCell!
         let section = sections[indexPath.section]
-        cell.textLabel?.text = sectionRows[section]?[indexPath.row]
+        let rowTitle = sectionRows[section]?[indexPath.row]
+        if (indexPath.section < 2){
+            cell = tableView.dequeueReusableCell(withIdentifier: "authCellID", for: indexPath)
+            cell.textLabel?.text = rowTitle
+        }
+        else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "switchFieldID", for: indexPath) as! SwitchTableViewCell
+            (cell as! SwitchTableViewCell).delegate = self
+        }
+         cell.textLabel?.text = rowTitle
         
         return cell
-    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -116,4 +124,14 @@ extension SettingsViewController: UIAlertViewDelegate{
 
 extension SettingsViewController: UITableViewDataSource{
     
+}
+
+extension SettingsViewController:SwitchCellDelegate{
+    func switchOn() {
+        os_log("%@: Switch on", self.description)
+    }
+    
+    func switchOff() {
+        os_log("%@: Switch off", self.description)
+    }
 }

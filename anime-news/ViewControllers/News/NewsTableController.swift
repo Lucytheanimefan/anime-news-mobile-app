@@ -78,6 +78,7 @@ class NewsTableController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LocationManager.shared.requestPermissions()
         
         if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
             os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
@@ -149,7 +150,7 @@ class NewsTableController: UITableViewController {
             if let link = article["link"] as? String{
                 let components = link.components(separatedBy: "/")
                 let type = components[3]
-                os_log("Type: %@", type)
+                //os_log("Type: %@", type)
                 if (type == "review")
                 {
                     cell.backgroundColor = UIColor.blue
@@ -206,43 +207,10 @@ class NewsTableController: UITableViewController {
     
     // MARK: - UITableViewDelegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        // TODO
+        transitionVC(id: "")
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
+
     
     
     // MARK: - Navigation
@@ -258,7 +226,6 @@ class NewsTableController: UITableViewController {
             let attributedStr = NSAttributedString(string: (article["link"] as! String).trimmingCharacters(in: .whitespacesAndNewlines))
             viewController.url = attributedStr.trailingNewlineChopped.string
         }
-        
     }
 }
 
