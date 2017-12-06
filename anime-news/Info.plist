@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs to use your location to identify anime events near you.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs to use your location to identify anime events near you.</string>
 </dict>
 </plist>

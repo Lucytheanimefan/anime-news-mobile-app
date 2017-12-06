@@ -129,6 +129,7 @@ extension SettingsViewController: UITableViewDataSource{
 extension SettingsViewController:SwitchCellDelegate{
     func switchOn() {
         os_log("%@: Switch on", self.description)
+        LocationManager.shared.requestPermissions()
     }
     
     func switchOff() {
