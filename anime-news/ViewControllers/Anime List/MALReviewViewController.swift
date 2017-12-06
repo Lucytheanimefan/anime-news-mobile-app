@@ -32,7 +32,8 @@ class MALReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleView.text = self.titleText
-        self.mainTextView.text = mainText
+        self.mainTextView.setBorder()
+
         self.statusCircleView.createCircle(status: self.status)
         var label:String!
         switch self.status {
@@ -81,4 +82,12 @@ class MALReviewViewController: UIViewController {
     }
     */
 
+}
+
+
+extension UITextView{
+    func setBorder(color:UIColor = .black, borderWidth:Float = 2){
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = CGFloat(borderWidth)
+    }
 }

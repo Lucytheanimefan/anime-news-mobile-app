@@ -18,6 +18,7 @@
 		7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */; };
 		7C9BD4411FD7795600C13E62 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */; };
 		7C9BD4431FD77DE500C13E62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9BD4421FD77DE500C13E62 /* CoreLocation.framework */; };
+		7C9BD4471FD811FD00C13E62 /* ArticleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */; };
 		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
 		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
 		7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E2D1EB04AE3003FC570 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4421FD77DE500C13E62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleStorage.swift; sourceTree = "<group>"; };
 		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC60E2B1EB04AE3003FC570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
 				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
 				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
+				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,
 				7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */,
 				7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */,
+				7C9BD4471FD811FD00C13E62 /* ArticleStorage.swift in Sources */,
 				7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */,
 				7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,

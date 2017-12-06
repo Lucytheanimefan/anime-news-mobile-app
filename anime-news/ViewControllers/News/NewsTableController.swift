@@ -13,75 +13,15 @@ import os.log
 class NewsTableController: UITableViewController {
     var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
     
-    
-    
-    private var _numArticleRows:Int!
-    var numArticleRows:Int {
-        get {
-            if (self._numArticleRows == nil)
-            {
-                if let data = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.ANN_ARTICLES) as? Data{
-                    if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-                        self._numArticleRows = articles.count
-                    }
-                }
-                else
-                {
-                    self._numArticleRows = 0
-                }
-            }
-            return self._numArticleRows
-        }
-        
-        set {
-            if (newValue != self._numArticleRows)
-            {
-                 self._numArticleRows = newValue
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    private var _articles:[[String:Any]]!// = nil
-    
-    var articles:[[String:Any]] {
-        get {
-            if (self._articles == nil)
-            {
-                let data = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.ANN_ARTICLES) as! Data
-                if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-                    self._articles = articles
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                else
-                {
-                    self._articles = [[String:Any]]()
-                }
-            }
-            return self._articles
-        }
-        
-        set {
-            self._articles = newValue
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            UserDefaults.standard.set(data, forKey: Constants.PreferenceKeys.ANN_ARTICLES)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        LocationManager.shared.requestPermissions()
+        
+        ArticleStorage.shared.delegate = self
         
         if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
+            #if DEBUG
             os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
+            #endif
             
             if (refreshIntervalTimeUp(recordedDate: lastRefresh) && Reachability.isConnectedToNetwork())
             {
@@ -129,20 +69,20 @@ class NewsTableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.numArticleRows
+        return ArticleStorage.shared.numArticleRows//self.numArticleRows
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
-        guard self.articles.count > indexPath.row else {
-            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, self.articles.count, indexPath.row)
+        guard ArticleStorage.shared.articles.count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, ArticleStorage.shared.articles.count, indexPath.row)
             
             return cell
         }
         
-        let article = self.articles[indexPath.row]
+        let article = ArticleStorage.shared.articles[indexPath.row]
         //os_log("Article: %@", article)
         
         if let title = article["title"] as? String{
@@ -197,8 +137,8 @@ class NewsTableController: UITableViewController {
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             //os_log("%@: Article result: %@", self.description, articles)
             UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
-            self.numArticleRows = articles.count
-            self.articles = articles
+            ArticleStorage.shared.numArticleRows = ArticleStorage.shared.articles.count
+            ArticleStorage.shared.articles = articles
             
             onFinish()
         }
@@ -220,7 +160,7 @@ class NewsTableController: UITableViewController {
         let viewController = segue.destination as! InfoViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let article = self.articles[selectedIndex]
+            let article = ArticleStorage.shared.articles[selectedIndex]
             viewController.title = article["title"] as? String
             viewController.mainText = article["description"] as! String
             let attributedStr = NSAttributedString(string: (article["link"] as! String).trimmingCharacters(in: .whitespacesAndNewlines))
@@ -237,4 +177,14 @@ extension NSAttributedString{
             return self
         }
     }
+}
+
+extension NewsTableController: ReloadViewDelegate{
+    func onSet() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
 }
