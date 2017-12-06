@@ -42,9 +42,6 @@ class ArticleStorage: NSObject {
                 self._numArticleRows = newValue
                 
                 self.delegate.onSet()
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
             }
         }
     }
@@ -60,10 +57,6 @@ class ArticleStorage: NSObject {
                     self._articles = articles
                     
                     self.delegate.onSet()
-                    
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
                 }
                 else
                 {
@@ -79,9 +72,6 @@ class ArticleStorage: NSObject {
             UserDefaults.standard.set(data, forKey: Constants.PreferenceKeys.ANN_ARTICLES)
             
             self.delegate.onSet()
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
         }
     }
 
