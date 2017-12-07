@@ -1,6 +1,18 @@
 {
   "images" : [
     {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "appIcon40-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "appIcon1024-4.jpg",
+      "scale" : "3x"
+    },
+    {
       "idiom" : "iphone",
       "size" : "29x29",
       "scale" : "2x"
@@ -11,24 +23,40 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "appIcon76-2.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "appIcon512.jpg",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "appIcon512-2.jpg",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "appIcon512-1.jpg",
       "scale" : "3x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "appIcon20.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "appIcon40-2.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "ipad",
@@ -41,24 +69,37 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "appIcon40.png",
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
       "size" : "40x40",
       "scale" : "2x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "appIcon76.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
       "size" : "76x76",
-      "scale" : "1x"
+      "scale" : "2x"
     },
     {
       "idiom" : "ipad",
-      "size" : "76x76",
+      "size" : "83.5x83.5",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "wallpaper-1615166.jpg",
+      "scale" : "1x"
     }
   ],
   "info" : {
