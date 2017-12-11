@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C5D99D21FDE4A9800FB1D5C /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99D11FDE4A9800FB1D5C /* EventController.swift */; };
 		7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2221FD23DAB0016FACD /* Constants.swift */; };
 		7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */; };
 		7C66B2281FD2E80B0016FACD /* MALTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 /* Begin PBXFileReference section */
 		652B71CD3E6B9AB3714BBB96 /* Pods_anime_news.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_anime_news.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		765AE32F5C8C868B6C7F2C62 /* Pods-anime-news.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anime-news.debug.xcconfig"; path = "Pods/Target Support Files/Pods-anime-news/Pods-anime-news.debug.xcconfig"; sourceTree = "<group>"; };
+		7C5D99D11FDE4A9800FB1D5C /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		7C66B2221FD23DAB0016FACD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
 		7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MALTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
 				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
 				7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */,
+				7C5D99D11FDE4A9800FB1D5C /* EventController.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			files = (
 				7C66B2281FD2E80B0016FACD /* MALTableViewCell.swift in Sources */,
 				7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */,
+				7C5D99D21FDE4A9800FB1D5C /* EventController.swift in Sources */,
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */,
 				7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */,

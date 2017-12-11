@@ -28,6 +28,10 @@ class AnimeListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Just for testing events
+        EventController().getEvents()
+        
         AnimeListStorage.shared.delegate = self
         self.tableView.addSubview(self.refreshControl)
        

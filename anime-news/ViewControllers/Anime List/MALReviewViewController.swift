@@ -33,7 +33,7 @@ class MALReviewViewController: UIViewController {
         super.viewDidLoad()
         self.titleView.text = self.titleText
         self.mainTextView.setBorder()
-
+        
         self.statusCircleView.createCircle(status: self.status)
         var label:String!
         switch self.status {
@@ -47,7 +47,7 @@ class MALReviewViewController: UIViewController {
             label = "No known status"
         }
         self.statusLabel.text = label
-
+        
         if let imageURL = URL(string:self.imagePath){
             do {
             self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
