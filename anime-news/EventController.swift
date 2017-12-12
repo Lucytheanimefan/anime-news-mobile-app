@@ -34,7 +34,10 @@ class EventController: NSObject {
         tagger.string = title
         tagger.enumerateTags(in: NSMakeRange(0, title.count), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, range, pointer) in
             let token = (title as NSString).substring(with: tokenRange)
-            print("\(token): \(tag)")
+            if (tag == NSLinguisticTagPlaceName){
+                // Found a location!
+                print("\(token): \(tag)")
+            }
            
             
         }
