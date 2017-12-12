@@ -26,43 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/EventController.swift"
-            timestampString = "534661942.391183"
+            timestampString = "534730253.372523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "getEvents()"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "parseLocation(title:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "anime_news.EventController.getEvents() -&gt; ()"
+                  symbolName = "anime_news.EventController.parseLocation(title: Swift.String) -&gt; ()"
                   moduleName = "anime-news"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/EventController.swift"
-                  timestampString = "534661942.555859"
+                  timestampString = "534730253.549281"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "160">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1033">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in anime_news.EventController.getEvents() -&gt; ()"
+                  symbolName = "closure #1 (Swift.String, __C._NSRange, __C._NSRange, Swift.UnsafeMutablePointer&lt;ObjectiveC.ObjCBool&gt;) -&gt; () in anime_news.EventController.parseLocation(title: Swift.String) -&gt; ()"
                   moduleName = "anime-news"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/EventController.swift"
-                  timestampString = "534661942.558561"
+                  timestampString = "534730253.552017"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "285">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "985">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/EventController.swift"
-            timestampString = "534661957.205278"
+            timestampString = "534730253.372878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "getEvents()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "parseLocation(title:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
