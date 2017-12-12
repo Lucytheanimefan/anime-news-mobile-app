@@ -32,22 +32,6 @@ class LocationManager: NSObject {
     func reload(){
         locationManager.requestLocation()
     }
-    
-    func nameForLocation(location:CLLocation){
-        let geoCoder = CLGeocoder()
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if (error != nil){
-                os_log("%@: Error reverse geocode location: %@", type:.error, self.description, error.debugDescription)
-                return
-            }
-            var placeMark: CLPlacemark!
-            placeMark = placemarks?[0]
-            
-            if let locationCity = placeMark.addressDictionary!["City"] as? String{
-                os_log("%@: Location city: %@", self.description, locationCity)
-            }
-        }
-    }
 
 }
 
@@ -55,16 +39,41 @@ extension LocationManager: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         os_log("%@: Entered region", self.description)
-        nameForLocation(location: manager.location!)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         os_log("%@: Current location: %@, %@", self.description, locValue.latitude.description, locValue.longitude.description)
-        nameForLocation(location: manager.location!)
+        manager.location?.locationDictionary { (locationDict) in
+            if let state = locationDict["State"] as? String{
+                os_log("%@: State: %@", self.description, state)
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         os_log("%@: Location monitoring failed: %@", type: .error, self.description, error.localizedDescription)
+    }
+}
+
+extension CLLocation{
+    func locationDictionary(completion:@escaping (_ locationDict:[AnyHashable:Any]) -> Void){
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(self) { (placemarks, error) in
+            if (error != nil){
+                os_log("%@: Error reverse geocode location: %@", type:.error, self.description, error.debugDescription)
+                return
+            }
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            let locationDict = placeMark.addressDictionary!
+            #if DEBUG
+                os_log("%@: Placemark dictionar: %@", self.description, locationDict)
+            #endif
+            
+            completion(locationDict)
+            
+        }
     }
 }

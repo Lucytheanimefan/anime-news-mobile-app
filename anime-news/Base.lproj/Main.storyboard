@@ -149,22 +149,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cJm-XY-WVa">
-                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="authCellID" id="Ppz-r4-dt8">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ppz-r4-dt8" id="5wd-J0-4WZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchFieldID" id="Ij2-TT-vgl" customClass="SwitchTableViewCell" customModule="anime_news" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ij2-TT-vgl" id="vLV-zG-QoI">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDq-An-KoZ">
@@ -189,9 +189,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cJm-XY-WVa" firstAttribute="leading" secondItem="vtw-2l-2Rv" secondAttribute="leadingMargin" id="21c-FF-oJd"/>
+                            <constraint firstItem="cJm-XY-WVa" firstAttribute="leading" secondItem="vtw-2l-2Rv" secondAttribute="leadingMargin" constant="-16" id="21c-FF-oJd"/>
                             <constraint firstItem="RGO-fK-G1j" firstAttribute="top" secondItem="cJm-XY-WVa" secondAttribute="bottom" id="B4i-CM-Rex"/>
-                            <constraint firstItem="cJm-XY-WVa" firstAttribute="trailing" secondItem="vtw-2l-2Rv" secondAttribute="trailingMargin" id="uqe-0j-mpg"/>
+                            <constraint firstItem="cJm-XY-WVa" firstAttribute="trailing" secondItem="vtw-2l-2Rv" secondAttribute="trailingMargin" constant="16" id="uqe-0j-mpg"/>
                             <constraint firstItem="cJm-XY-WVa" firstAttribute="top" secondItem="Vp5-K8-oss" secondAttribute="bottom" id="zYg-H4-633"/>
                         </constraints>
                     </view>
