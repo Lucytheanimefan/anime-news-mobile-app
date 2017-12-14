@@ -64,7 +64,9 @@ class MALReviewViewController: UIViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        // TODO: need to save text somewhere
+        CustomAnimeServer().updateReview(title: self.titleText, animeID: String(self.animeID), review: self.mainTextView.text) { (response) in
+            os_log("%@: Response: %@", self.description, response)
+        }
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
