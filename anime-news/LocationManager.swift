@@ -32,6 +32,24 @@ class LocationManager: NSObject {
     func reload(){
         locationManager.requestLocation()
     }
+    
+    func trackAnimeLocation(location:String)
+    {
+        if let region = geofenceForLocation(location: location){
+            trackGeofence(geofence: region)
+        }
+    }
+    
+    func geofenceForLocation(location:String) -> Geofence?
+    {
+        return nil
+    }
+    
+    func trackGeofence(geofence:Geofence){
+        let region = CLCircularRegion(center: geofence.coordinate, radius: geofence.radius, identifier: geofence.identifier)
+        region.notifyOnEntry = true
+        locationManager.startMonitoring(for: region)
+    }
 
 }
 

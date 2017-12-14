@@ -37,6 +37,9 @@ class EventController: NSObject {
             if (tag == NSLinguisticTagPlaceName){
                 // Found a location!
                 print("\(token): \(tag)")
+                // Track the location
+                
+                LocationManager.shared.trackAnimeLocation(location: token)
             }
            
             

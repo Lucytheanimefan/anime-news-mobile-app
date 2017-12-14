@@ -13,6 +13,7 @@
 		7C66B2281FD2E80B0016FACD /* MALTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */; };
 		7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */; };
 		7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B22D1FD312F70016FACD /* ShapeView.swift */; };
+		7C8665F61FE21742003022D1 /* Geofence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665F51FE21742003022D1 /* Geofence.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -90,6 +91,7 @@
 		7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MALTableViewCell.swift; sourceTree = "<group>"; };
 		7C66B2291FD2F3100016FACD /* MALReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MALReviewViewController.swift; sourceTree = "<group>"; };
 		7C66B22D1FD312F70016FACD /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		7C8665F51FE21742003022D1 /* Geofence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geofence.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
 				7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */,
 				7C5D99D11FDE4A9800FB1D5C /* EventController.swift */,
+				7C8665F51FE21742003022D1 /* Geofence.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */,
 				7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */,
+				7C8665F61FE21742003022D1 /* Geofence.swift in Sources */,
 				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
 				7C9BD4411FD7795600C13E62 /* SwitchTableViewCell.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
