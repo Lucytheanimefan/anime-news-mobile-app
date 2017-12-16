@@ -24,7 +24,7 @@ class MALReviewViewController: UIViewController {
     
     var url:String!
     var titleText:String!
-    var mainText:String!
+    //var mainText:String!
     var status:Int!
     var imagePath:String!
     var animeID:Int! // Not using yet
@@ -33,6 +33,8 @@ class MALReviewViewController: UIViewController {
         super.viewDidLoad()
         self.titleView.text = self.titleText
         self.mainTextView.setBorder()
+        
+        populateReviewText()
         
         self.statusCircleView.createCircle(status: self.status)
         var label:String!
@@ -64,7 +66,7 @@ class MALReviewViewController: UIViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        CustomAnimeServer().updateReview(title: self.titleText, animeID: String(self.animeID), review: self.mainTextView.text) { (response) in
+        CustomAnimeServer().updateReview(title: self.titleText!, animeID: String(self.animeID), review: self.mainTextView.text!) { (response) in
             os_log("%@: Response: %@", self.description, response)
         }
     }
@@ -73,6 +75,13 @@ class MALReviewViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func populateReviewText(){
+        CustomAnimeServer().getReview(animeID: String(self.animeID)) { (review) in
+            DispatchQueue.main.async {
+                self.mainTextView.text = review
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation
