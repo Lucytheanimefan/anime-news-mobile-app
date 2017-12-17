@@ -76,11 +76,9 @@ class MALReviewViewController: UIViewController {
     }
     
     func populateReviewText(){
-        CustomAnimeServer().getReview(animeID: String(self.animeID)) { (review) in
-            DispatchQueue.main.async {
-                self.mainTextView.text = review
-            }
-        }
+        let predicate = NSPredicate(format: "anime_id=%@", self.animeID)
+        let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)
+        os_log("%@: Filtered reviews: %@", self.description, filtered)
     }
     
     /*

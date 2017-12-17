@@ -41,6 +41,7 @@ class AnimeListViewController: UIViewController {
         {
             os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
             generateMAL()
+            //loadReviews()
         }
         else
         {
@@ -49,6 +50,10 @@ class AnimeListViewController: UIViewController {
             #endif
 
         }
+        
+        #if DEBUG
+        loadReviews()
+        #endif
         // Do any additional setup after loading the view.
     }
 
@@ -86,6 +91,12 @@ class AnimeListViewController: UIViewController {
             // TODO: handle error
             os_log("%@: Error: %@", self.description, error)
             onFinish()
+        }
+    }
+    
+    func loadReviews(){
+        CustomAnimeServer().getReview(animeID: nil) { (review) in
+            AnimeListStorage.shared.animeReviews = review
         }
     }
     
