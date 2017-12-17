@@ -76,7 +76,7 @@ class MALReviewViewController: UIViewController {
     }
     
     func populateReviewText(){
-        let predicate = NSPredicate(format: "anime_id=%@", self.animeID)
+        let predicate = NSPredicate(format: "anime_id == %@", String(self.animeID))
         let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)
         os_log("%@: Filtered reviews: %@", self.description, filtered)
     }
