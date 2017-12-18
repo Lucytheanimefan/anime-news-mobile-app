@@ -23,11 +23,7 @@ class MALReviewViewController: UIViewController {
     
     
     var url:String!
-//    var titleText:String!
-    //var mainText:String!
-//    var status:Int!
-//    var imagePath:String!
-//    var animeID:Int! // Not using yet
+
     
     var anime:Anime!
     
@@ -54,11 +50,15 @@ class MALReviewViewController: UIViewController {
         
         if let imageURL = URL(string:self.anime.imagePath!){
             do {
-            self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
+                self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
             }
             catch {
                 os_log("%@: Error loading image: %@",  type: .error, self.description, self.anime.imagePath!)
             }
+        }
+        else
+        {
+            os_log("%@: Error loading image: %@",  type: .error, self.description, self.anime.imagePath!)
         }
     }
 
@@ -74,11 +74,12 @@ class MALReviewViewController: UIViewController {
             
             if (response == "success")
             {
-                
+                RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
             }
             // Update anime list storage
         }, errorcompletion:
             {
+                os_log("%@: Request failed, append %@ to queue", self.description, self.anime.description)
                 RequestQueue.shared.appendRequest(request: self.anime)
         })
     }
@@ -89,12 +90,16 @@ class MALReviewViewController: UIViewController {
     
     func populateReviewText(){
         let predicate = NSPredicate(format: "anime_id == %@", String(self.anime.anime_id))
-        let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)[0]
-        //os_log("%@: Filtered reviews: %@", self.description, filtered.description)
-        if let animeData = filtered as? [String:Any] {
-            if let review = animeData["review"] as? String{
-                DispatchQueue.main.async {
-                    self.mainTextView.text = review
+        let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)
+        if (filtered.count > 0) {
+            let filteredAnime = filtered[0]
+            
+            //os_log("%@: Filtered reviews: %@", self.description, filtered.description)
+            if let animeData = filteredAnime as? [String:Any] {
+                if let review = animeData["review"] as? String{
+                    DispatchQueue.main.async {
+                        self.mainTextView.text = review
+                    }
                 }
             }
         }

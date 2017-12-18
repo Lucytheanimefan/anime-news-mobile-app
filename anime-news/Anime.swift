@@ -18,6 +18,10 @@ class Anime: NSObject {
     
     var timestamp:Date?
     
+//    overide var debugDescription: String = {
+//        return String(describing: ["anime-id":self.anime_id, "review":self.review, "title":self.title])
+//    }
+    
     lazy var dict:[String:Any] = {
         return ["anime-id":self.anime_id, "review":self.review, "title":self.title]
     }()
@@ -30,5 +34,7 @@ class Anime: NSObject {
         self.imagePath = imagePath
         self.status = status
     }
+    
+    
 
 }
