@@ -81,6 +81,7 @@ class MALReviewViewController: UIViewController {
             if (response == "success")
             {
                 RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
+                self.presentSuccess(message: "Updated \(anime.title)")
             }
             // Update anime list storage
         }, errorcompletion:
