@@ -91,7 +91,7 @@ class MALReviewViewController: UIViewController {
                 AnimeListStorage.shared.animeReviews.append(self.anime.dict)
                 
                 DispatchQueue.main.async {
-                    self.presentSuccess(message: "Updated \(self.anime.title)")
+                    self.presentSuccess(message: "Updated \(self.anime.title!)")
                 }
                 
             }
