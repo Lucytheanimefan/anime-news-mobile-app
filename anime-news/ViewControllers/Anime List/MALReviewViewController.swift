@@ -78,10 +78,22 @@ class MALReviewViewController: UIViewController {
         CustomAnimeServer().updateReview(title: self.anime.title, animeID: self.anime.anime_id, review: self.anime.review!, completion: { (response) in
             os_log("%@: Response: %@", self.description, response)
             
-            if (response == "success")
+            if (response.lowercased() == "success")
             {
                 RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
-                self.presentSuccess(message: "Updated \(anime.title)")
+                
+                // Remove the stale entry
+                AnimeListStorage.shared.animeReviews = AnimeListStorage.shared.animeReviews.filter({ (animeDict) -> Bool in
+                    return (animeDict["anime_id"] as? String != self.anime.anime_id)
+                })
+                
+                // Add the newly updated anime
+                AnimeListStorage.shared.animeReviews.append(self.anime.dict)
+                
+                DispatchQueue.main.async {
+                    self.presentSuccess(message: "Updated \(self.anime.title)")
+                }
+                
             }
             // Update anime list storage
         }, errorcompletion:
