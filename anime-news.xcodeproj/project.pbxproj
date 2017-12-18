@@ -17,6 +17,7 @@
 		7C8665FC1FE80679003022D1 /* RequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665FB1FE80679003022D1 /* RequestQueue.swift */; };
 		7C8665FE1FE807C6003022D1 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665FD1FE807C6003022D1 /* Anime.swift */; };
 		7C8666001FE865A5003022D1 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665FF1FE865A5003022D1 /* ViewControllerExtension.swift */; };
+		7C8666021FE86F86003022D1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666011FE86F86003022D1 /* Article.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -98,6 +99,7 @@
 		7C8665FB1FE80679003022D1 /* RequestQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQueue.swift; sourceTree = "<group>"; };
 		7C8665FD1FE807C6003022D1 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		7C8665FF1FE865A5003022D1 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		7C8666011FE86F86003022D1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				7C8665F51FE21742003022D1 /* Geofence.swift */,
 				7C8665FB1FE80679003022D1 /* RequestQueue.swift */,
 				7C8665FD1FE807C6003022D1 /* Anime.swift */,
+				7C8666011FE86F86003022D1 /* Article.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				7C9BD4471FD811FD00C13E62 /* ArticleStorage.swift in Sources */,
 				7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */,
 				7C9BD4491FD81CA900C13E62 /* AnimeListStorage.swift in Sources */,
+				7C8666021FE86F86003022D1 /* Article.swift in Sources */,
 				7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */,
 				7C8666001FE865A5003022D1 /* ViewControllerExtension.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,

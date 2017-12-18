@@ -11,7 +11,6 @@ import AnimeManager
 import os.log
 
 class NewsTableController: UITableViewController {
-    var anime: [String] = ["Kimi no na wa", "Attack on Titan"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,11 +95,6 @@ class NewsTableController: UITableViewController {
                     cell.backgroundColor = UIColor.blue
                     cell.textLabel?.textColor = UIColor.white
                 }
-//                else if (type == "news")
-//                {
-//                    cell.backgroundColor = UIColor.darkGray
-//                    cell.textLabel?.textColor = UIColor.white
-//                }
                 else if (type == "interest")
                 {
                     cell.backgroundColor = UIColor.yellow

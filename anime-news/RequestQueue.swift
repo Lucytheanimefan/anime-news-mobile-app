@@ -25,8 +25,6 @@ class RequestQueue: NSObject {
     }
     
     func removeStaleAnime(anime_id:String){
-        //let predicate = NSPredicate(format: "anime_id == %@", String(anime_id))
-        //let filtered = (self.animeQueue as NSArray).filtered(using: predicate)
         let filtered = self.animeQueue.drop(while: { (anime) -> Bool in
             return anime.anime_id == anime_id
         })

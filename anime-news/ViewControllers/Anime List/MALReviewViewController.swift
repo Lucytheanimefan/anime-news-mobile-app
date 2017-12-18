@@ -23,8 +23,6 @@ class MALReviewViewController: UIViewController {
     
     
     var url:String!
-
-    
     var anime:Anime!
     
     override func viewDidLoad() {
@@ -35,18 +33,8 @@ class MALReviewViewController: UIViewController {
         populateReviewText()
         
         self.statusCircleView.createCircle(status: self.anime.status!)
-        var label:String!
-        switch self.anime.status! {
-        case MyAnimeList.Status.completed.rawValue:
-            label = "Completed"
-            break
-        case MyAnimeList.Status.currentlyWatching.rawValue:
-            label = "Currently Watching"
-            break
-        default:
-            label = "No known status"
-        }
-        self.statusLabel.text = label
+
+        self.statusLabel.text = MyAnimeList.statusKey[self.anime.status!]
         
         if let imageURL = URL(string:self.anime.imagePath!){
             do {
@@ -89,18 +77,23 @@ class MALReviewViewController: UIViewController {
                 
                 // Add the newly updated anime
                 AnimeListStorage.shared.animeReviews.append(self.anime.dict)
-                
                 self.presentMessage(title: "Sucess", message:  "Updated \(self.anime.title!)")
                 
             }
-            // Update anime list storage
-        }, errorcompletion:
+            else
             {
-                os_log("%@: Request failed, append %@ to queue", self.description, self.anime.description)
-                RequestQueue.shared.appendRequest(request: self.anime)
-        })
+                self.handleFailedServerRequest()
+            }
+            // Update anime list storage
+        }, errorcompletion: handleFailedServerRequest)
     }
     
+    func handleFailedServerRequest()
+    {
+        self.presentMessage(title: "Error", message: "Failed to update info for \(self.anime.title!), will try again later")
+        RequestQueue.shared.appendRequest(request: self.anime)
+    }
+
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
