@@ -68,7 +68,13 @@ class MALReviewViewController: UIViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        guard self.mainTextView.text != "" else {
+            os_log("%@: No review to update %@ with", self.description, self.anime.title)
+            return
+        }
+        
         self.anime.review = self.mainTextView.text!
+        
         CustomAnimeServer().updateReview(title: self.anime.title, animeID: self.anime.anime_id, review: self.anime.review!, completion: { (response) in
             os_log("%@: Response: %@", self.description, response)
             

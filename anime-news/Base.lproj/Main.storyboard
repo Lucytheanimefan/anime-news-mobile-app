@@ -329,7 +329,7 @@
                                                 <action selector="cancelAction:" destination="Xd8-AH-png" id="3SK-aP-lF6"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="YnL-8X-pjS">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="YnL-8X-pjS">
                                             <connections>
                                                 <action selector="doneAction:" destination="Xd8-AH-png" id="mJL-g7-OXf"/>
                                             </connections>
