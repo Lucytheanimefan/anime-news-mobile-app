@@ -107,12 +107,13 @@ class AnimeListViewController: UIViewController {
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
             let anime = AnimeListStorage.shared.animeList[selectedIndex]
-            viewController.title = anime["anime_title"] as? String
-            viewController.titleText = anime["anime_title"] as? String
-            viewController.status = anime["anime_airing_status"] as? Int
-            viewController.url = anime["anime_url"] as? String
-            viewController.imagePath = anime["anime_image_path"] as? String
-            viewController.animeID = anime["anime_id"] as? Int
+            viewController.anime = Anime(id: String(describing: anime["anime_id"]), title: anime["anime_title"] as! String, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
+//            viewController.title = anime["anime_title"] as? String
+//            viewController.titleText = anime["anime_title"] as? String
+//            viewController.status = anime["anime_airing_status"] as? Int
+//            viewController.url = anime["anime_url"] as? String
+//            viewController.imagePath = anime["anime_image_path"] as? String
+//            viewController.animeID = anime["anime_id"] as? Int
         }
         
     }

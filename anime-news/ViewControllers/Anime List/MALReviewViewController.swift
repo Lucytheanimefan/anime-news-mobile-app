@@ -23,22 +23,24 @@ class MALReviewViewController: UIViewController {
     
     
     var url:String!
-    var titleText:String!
+//    var titleText:String!
     //var mainText:String!
-    var status:Int!
-    var imagePath:String!
-    var animeID:Int! // Not using yet
+//    var status:Int!
+//    var imagePath:String!
+//    var animeID:Int! // Not using yet
+    
+    var anime:Anime!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleView.text = self.titleText
+        self.titleView.text = self.anime.title
         self.mainTextView.setBorder()
         
         populateReviewText()
         
-        self.statusCircleView.createCircle(status: self.status)
+        self.statusCircleView.createCircle(status: self.anime.status!)
         var label:String!
-        switch self.status {
+        switch self.anime.status! {
         case MyAnimeList.Status.completed.rawValue:
             label = "Completed"
             break
@@ -50,12 +52,12 @@ class MALReviewViewController: UIViewController {
         }
         self.statusLabel.text = label
         
-        if let imageURL = URL(string:self.imagePath){
+        if let imageURL = URL(string:self.anime.imagePath!){
             do {
             self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
             }
             catch {
-                os_log("%@: Error loading image: %@",  type: .error, self.description, self.imagePath)
+                os_log("%@: Error loading image: %@",  type: .error, self.description, self.anime.imagePath!)
             }
         }
     }
@@ -66,9 +68,19 @@ class MALReviewViewController: UIViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        CustomAnimeServer().updateReview(title: self.titleText!, animeID: String(self.animeID), review: self.mainTextView.text!) { (response) in
+        self.anime.review = self.mainTextView.text!
+        CustomAnimeServer().updateReview(title: self.anime.title, animeID: self.anime.anime_id, review: self.anime.review!, completion: { (response) in
             os_log("%@: Response: %@", self.description, response)
-        }
+            
+            if (response == "success")
+            {
+                
+            }
+            // Update anime list storage
+        }, errorcompletion:
+            {
+                RequestQueue.shared.appendRequest(request: self.anime)
+        })
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
@@ -76,7 +88,7 @@ class MALReviewViewController: UIViewController {
     }
     
     func populateReviewText(){
-        let predicate = NSPredicate(format: "anime_id == %@", String(self.animeID))
+        let predicate = NSPredicate(format: "anime_id == %@", String(self.anime.anime_id))
         let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)[0]
         //os_log("%@: Filtered reviews: %@", self.description, filtered.description)
         if let animeData = filtered as? [String:Any] {
@@ -86,7 +98,6 @@ class MALReviewViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     /*
