@@ -29,9 +29,6 @@ class AnimeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Just for testing events
-        //EventController().getEvents()
-        
         AnimeListStorage.shared.delegate = self
         self.tableView.addSubview(self.refreshControl)
        
@@ -39,9 +36,13 @@ class AnimeListViewController: UIViewController {
         
         if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall) && Reachability.isConnectedToNetwork())
         {
+            
+            #if DEBUG
             os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
+            #endif
             generateMAL()
-            //loadReviews()
+            loadReviews()
+
         }
         else
         {
@@ -50,10 +51,7 @@ class AnimeListViewController: UIViewController {
             #endif
 
         }
-        
-        #if DEBUG
-        loadReviews()
-        #endif
+
         // Do any additional setup after loading the view.
     }
 
@@ -78,7 +76,6 @@ class AnimeListViewController: UIViewController {
                 refreshControl.endRefreshing()
             }
         }
-        //refreshControl.endRefreshing()
     }
     
     func generateMAL(onFinish: @escaping () -> () = { _ in }){
@@ -90,6 +87,7 @@ class AnimeListViewController: UIViewController {
         }) { (error) in
             // TODO: handle error
             os_log("%@: Error: %@", self.description, error)
+            self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
             onFinish()
         }
     }
@@ -108,12 +106,6 @@ class AnimeListViewController: UIViewController {
             let selectedIndex = tableView.indexPath(for: cell)!.row
             let anime = AnimeListStorage.shared.animeList[selectedIndex]
             viewController.anime = Anime(id: String(describing: anime["anime_id"]), title: anime["anime_title"] as! String, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
-//            viewController.title = anime["anime_title"] as? String
-//            viewController.titleText = anime["anime_title"] as? String
-//            viewController.status = anime["anime_airing_status"] as? Int
-//            viewController.url = anime["anime_url"] as? String
-//            viewController.imagePath = anime["anime_image_path"] as? String
-//            viewController.animeID = anime["anime_id"] as? Int
         }
         
     }
@@ -135,7 +127,6 @@ extension AnimeListViewController: UITableViewDataSource {
         }
         
         let anime = AnimeListStorage.shared.animeList[indexPath.row]
-        //os_log("%@", anime)
         
         if let title = anime["anime_title"] as? String{
             cell.title.text =  title
