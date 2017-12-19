@@ -17,6 +17,7 @@ struct Constants {
         static let MAL_LAST_REFRESH = "MALLastRefresh"
         static let ANN_ARTICLES = "ANNArticles"
         static let MAL_USERNAME = "MALUsername"
+        static let REQUEST_QUEUE = "animeRequestQueue"
         
     }
     

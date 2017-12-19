@@ -62,7 +62,12 @@ class MALReviewViewController: UIViewController {
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         guard self.mainTextView.text != "" else {
-            os_log("%@: No review to update %@ with", self.description, self.anime.title)
+            os_log("%@:No review to update for %@", self.description, self.anime.title)
+            return
+        }
+        
+        guard Reachability.isConnectedToNetwork() else {
+            handleFailedServerRequest()
             return
         }
         
