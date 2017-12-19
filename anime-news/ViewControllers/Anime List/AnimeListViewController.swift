@@ -93,6 +93,7 @@ class AnimeListViewController: UIViewController {
     }
     
     func loadReviews(){
+        os_log("%@: Load reviews", self.description)
         CustomAnimeServer().getReview(animeID: nil) { (review) in
             AnimeListStorage.shared.animeReviews = review
         }

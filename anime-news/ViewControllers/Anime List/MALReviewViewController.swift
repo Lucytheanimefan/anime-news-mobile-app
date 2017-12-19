@@ -21,8 +21,6 @@ class MALReviewViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    
-    var url:String!
     var anime:Anime!
     
     override func viewDidLoad() {
@@ -36,6 +34,18 @@ class MALReviewViewController: UIViewController {
 
         self.statusLabel.text = MyAnimeList.statusKey[self.anime.status!]
         
+        if (Reachability.isConnectedToNetwork())
+        {
+            self.setImage()
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setImage(){
         if let imageURL = URL(string:self.anime.imagePath!){
             do {
                 self.imageView.image = try UIImage(data: Data(contentsOf: imageURL))
@@ -48,11 +58,6 @@ class MALReviewViewController: UIViewController {
         {
             os_log("%@: Error loading image: %@",  type: .error, self.description, self.anime.imagePath!)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
