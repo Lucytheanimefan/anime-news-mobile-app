@@ -22,6 +22,9 @@ class RequestQueue: NSObject {
                     }
                 }
             }
+            #if DEBUG
+                os_log("%@: Current queue: %@", self.description, self._animeQueue.debugDescription)
+            #endif
             return self._animeQueue
         }
         set {
@@ -37,9 +40,9 @@ class RequestQueue: NSObject {
         request.timestamp = Date()
         self.animeQueue.append(request.dict)
         
-        #if DEBUG
-            os_log("%@: Current queue: %@", self.description, self.animeQueue.debugDescription)
-        #endif
+//        #if DEBUG
+//            os_log("%@: Current queue: %@", self.description, self.animeQueue.debugDescription)
+//        #endif
     }
     
     func nextRequest() -> Anime{

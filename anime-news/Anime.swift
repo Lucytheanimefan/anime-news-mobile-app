@@ -23,7 +23,7 @@ class Anime: NSObject {
 //    }
     
     lazy var dict:[String:Any] = {
-        return ["anime_id":self.anime_id, "review":self.review, "title":self.title, "timestamp":self.timestamp]
+        return ["anime_id":self.anime_id!, "review":self.review, "title":self.title!, "timestamp":self.timestamp]
     }()
     
     convenience init(id:String, title:String, imagePath:String?, review:String?, status:Int?) {
