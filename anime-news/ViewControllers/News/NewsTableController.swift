@@ -81,36 +81,38 @@ class NewsTableController: UITableViewController {
             return cell
         }
         
-        let article = ArticleStorage.shared.articles[indexPath.row]
+        let articleData = ArticleStorage.shared.articles[indexPath.row]
+        let article = Article(params: articleData)
         //os_log("Article: %@", article)
         
-        if let title = article["title"] as? String{
-            cell.textLabel?.text = title
-            if let link = article["link"] as? String{
-                let components = link.components(separatedBy: "/")
-                let type = components[3]
-                //os_log("Type: %@", type)
-                if (type == "review")
-                {
-                    cell.backgroundColor = UIColor.blue
-                    cell.textLabel?.textColor = UIColor.white
-                }
-                else if (type == "interest")
-                {
-                    cell.backgroundColor = UIColor.yellow
-                    cell.textLabel?.textColor = UIColor.black
-                }
-                else
-                {
-                    cell.backgroundColor = UIColor.white
-                    cell.textLabel?.textColor = UIColor.black
-                }
-            }
-        }
-        else
-        {
-            cell.textLabel?.text = "No Title"
-        }
+        //if let title = article["title"] as? String{
+            cell.textLabel?.text = article.title
+            cell.backgroundColor = article.color
+//            if let link = article["link"] as? String{
+//                let components = link.components(separatedBy: "/")
+//                let type = components[3]
+//                //os_log("Type: %@", type)
+//                if (type == "review")
+//                {
+//                    cell.backgroundColor = UIColor.blue
+//                    cell.textLabel?.textColor = UIColor.white
+//                }
+//                else if (type == "interest")
+//                {
+//                    cell.backgroundColor = UIColor.yellow
+//                    cell.textLabel?.textColor = UIColor.black
+//                }
+//                else
+//                {
+//                    cell.backgroundColor = UIColor.white
+//                    cell.textLabel?.textColor = UIColor.black
+//                }
+//            }
+//        }
+//        else
+//        {
+//            cell.textLabel?.text = "No Title"
+//        }
         return cell
     }
     
@@ -154,11 +156,10 @@ class NewsTableController: UITableViewController {
         let viewController = segue.destination as! InfoViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let article = ArticleStorage.shared.articles[selectedIndex]
-            viewController.title = article["title"] as? String
-            viewController.mainText = article["description"] as! String
-            let attributedStr = NSAttributedString(string: (article["link"] as! String).trimmingCharacters(in: .whitespacesAndNewlines))
-            viewController.url = attributedStr.trailingNewlineChopped.string
+            let articleData = ArticleStorage.shared.articles[selectedIndex]
+            let article = Article(params: articleData)
+            viewController.article = article
+
         }
     }
 }

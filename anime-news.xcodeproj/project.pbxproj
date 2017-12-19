@@ -167,6 +167,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7C8666031FE8C4A2003022D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
+				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
+				7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */,
+				7C8665FB1FE80679003022D1 /* RequestQueue.swift */,
+				7C8665FD1FE807C6003022D1 /* Anime.swift */,
+				7C8666011FE86F86003022D1 /* Article.swift */,
+				7C8665F51FE21742003022D1 /* Geofence.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7C9BD4381FD6374600C13E62 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +235,7 @@
 		7CC60E281EB04AE3003FC570 /* anime-news */ = {
 			isa = PBXGroup;
 			children = (
+				7C8666031FE8C4A2003022D1 /* Model */,
 				7C9BD4381FD6374600C13E62 /* ViewControllers */,
 				7C66B2261FD2E7F30016FACD /* Extensions */,
 				7CC60E291EB04AE3003FC570 /* AppDelegate.swift */,
@@ -233,14 +248,7 @@
 				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
 				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
-				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
-				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
-				7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */,
 				7C5D99D11FDE4A9800FB1D5C /* EventController.swift */,
-				7C8665F51FE21742003022D1 /* Geofence.swift */,
-				7C8665FB1FE80679003022D1 /* RequestQueue.swift */,
-				7C8665FD1FE807C6003022D1 /* Anime.swift */,
-				7C8666011FE86F86003022D1 /* Article.swift */,
 			);
 			path = "anime-news";
 			sourceTree = "<group>";

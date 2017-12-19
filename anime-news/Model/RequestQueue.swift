@@ -39,10 +39,6 @@ class RequestQueue: NSObject {
     {
         request.timestamp = Date()
         self.animeQueue.append(request.dict)
-        
-//        #if DEBUG
-//            os_log("%@: Current queue: %@", self.description, self.animeQueue.debugDescription)
-//        #endif
     }
     
     func nextRequest() -> Anime{

@@ -31,8 +31,6 @@ class Geofence: NSObject {
         return note
     }
     
-//    var subtitle: String? {
-//    }
     
     init(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, identifier: String, note: String) {
         self.coordinate = coordinate

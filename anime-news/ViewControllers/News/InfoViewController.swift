@@ -11,23 +11,25 @@ import os.log
 
 class InfoViewController: UIViewController {
     
-    var myTitle = String()
-    
-    private var _mainText:String! = ""
-    
-    var mainText:String!
-    
-    var url:String!
+//    var myTitle = String()
+//
+//    private var _mainText:String! = ""
+//
+//    var mainText:String!
+//
+//    var url:String!
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var urlButton: UIButton!
     
+    var article:Article!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textView.text = mainText
-        self.titleTextView.text = self.title
-        self.urlButton.titleLabel?.text = self.url
+        self.textView.text = article.summary
+        self.titleTextView.text = article.title
+        self.urlButton.titleLabel?.text = article.link
         
     }
     
@@ -42,12 +44,12 @@ class InfoViewController: UIViewController {
     }
     
     @IBAction func goToURL(_ sender: UIButton) {
-        if let url = URL(string:url){
+        if let url = URL(string:article.link){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         else
         {
-            os_log("%@: Not valid url %@", type: .error, self.description, url)
+            os_log("%@: Not valid url %@", type: .error, self.description, article.link)
         }
     }
     
