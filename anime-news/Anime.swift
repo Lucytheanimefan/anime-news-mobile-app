@@ -23,7 +23,7 @@ class Anime: NSObject {
 //    }
     
     lazy var dict:[String:Any] = {
-        return ["anime_id":self.anime_id, "review":self.review, "title":self.title]
+        return ["anime_id":self.anime_id, "review":self.review, "title":self.title, "timestamp":self.timestamp]
     }()
     
     convenience init(id:String, title:String, imagePath:String?, review:String?, status:Int?) {
@@ -33,6 +33,25 @@ class Anime: NSObject {
         self.review = review
         self.imagePath = imagePath
         self.status = status
+    }
+    
+    convenience init(params:[String:Any]) {
+        self.init()
+        if let anime_id = params["anime_id"] as? String{
+            self.anime_id = anime_id
+        }
+        if let title = params["title"] as? String{
+            self.title = title
+        }
+        if let review = params["review"] as? String{
+            self.review = review
+        }
+        if let imagePath = params["imagePath"] as? String{
+            self.imagePath = imagePath
+        }
+        if let status = params["status"] as? Int{
+            self.status = status
+        }
     }
     
     

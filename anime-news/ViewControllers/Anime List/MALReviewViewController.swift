@@ -66,12 +66,12 @@ class MALReviewViewController: UIViewController {
             return
         }
         
+        self.anime.review = self.mainTextView.text!
+        
         guard Reachability.isConnectedToNetwork() else {
             handleFailedServerRequest()
             return
         }
-        
-        self.anime.review = self.mainTextView.text!
         
         CustomAnimeServer().updateReview(title: self.anime.title, animeID: self.anime.anime_id, review: self.anime.review!, completion: { (response) in
             os_log("%@: Response: %@", self.description, response)
@@ -101,6 +101,7 @@ class MALReviewViewController: UIViewController {
     func handleFailedServerRequest()
     {
         self.presentMessage(title: "Error", message: "Failed to update info for \(self.anime.title!), will try again later")
+        RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
         RequestQueue.shared.appendRequest(request: self.anime)
     }
 

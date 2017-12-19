@@ -12,12 +12,12 @@ class RequestQueue: NSObject {
     
     static let shared = RequestQueue()
     
-    private var _animeQueue:[Anime]! = [Anime]()
-    var animeQueue:[Anime]! {
+    private var _animeQueue:[[String:Any]]! = [[String:Any]]()
+    var animeQueue:[[String:Any]]! {
         get {
             if (self._animeQueue.count < 1){
                 if let data = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.REQUEST_QUEUE) as? Data{
-                    if let queue = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Anime]{
+                    if let queue = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
                         self._animeQueue = queue
                     }
                 }
@@ -35,7 +35,7 @@ class RequestQueue: NSObject {
     func appendRequest(request:Anime)
     {
         request.timestamp = Date()
-        self.animeQueue.append(request)
+        self.animeQueue.append(request.dict)
         
         #if DEBUG
             os_log("%@: Current queue: %@", self.description, self.animeQueue.debugDescription)
@@ -43,15 +43,14 @@ class RequestQueue: NSObject {
     }
     
     func nextRequest() -> Anime{
-        return self.animeQueue.removeFirst()
+        return Anime(params: self.animeQueue.removeFirst())
     }
     
     func removeStaleAnime(anime_id:String){
-        let filtered = self.animeQueue.drop(while: { (anime) -> Bool in
-            return anime.anime_id == anime_id
+        self.animeQueue = self.animeQueue.filter({ (animeDict) -> Bool in
+            return (animeDict["anime_id"] as? String != anime_id)
         })
-        
-        os_log("%@: filtered queue: %@", self.description, filtered.debugDescription)
+        os_log("%@: filtered queue: %@", self.description, self.animeQueue.debugDescription)
     }
 
 }
