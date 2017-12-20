@@ -61,31 +61,17 @@ class RequestQueue: NSObject {
     }
     
     private func makeRequest(){
+        guard Reachability.isConnectedToNetwork() else {
+            return
+        }
         let body = nextRequest().dict
         delegate.makeRequest(body: body)
     }
     
-    func scheduleRequests(){
-        // Create an empty XPC dictionary
-        var criteria = xpc_dictionary_create(nil, nil, 0)
-        
-        // Tell XPC that this is a non-repeating activity
-        xpc_dictionary_set_bool(criteria, XPC_ACTIVITY_REPEATING, false)
-        
-        // The activity should start in 1 hour (3600 seconds)
-        xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_DELAY, XPC_ACTIVITY_INTERVAL_1_HOUR)
-        
-        // Allow XPC to defer the activity by as much as 12 hours
-        xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_GRACE_PERIOD, XPC_ACTIVITY_INTERVAL_1_HOUR)
-        
-        // Indicate that this is a user-invisible activity
-        xpc_dictionary_set_string(criteria, XPC_ACTIVITY_PRIORITY, XPC_ACTIVITY_PRIORITY_MAINTENANCE)
-        
-        // Register the new XPC dictionary and pass it the handler block that performs the activity
-        xpc_activity_register("com.anime-news.makeRequest", criteria) { (activity)
-            makeRequest()
-        })
-        
+    func completeQueuedTasks(){
+        while self.animeQueue.count > 0
+        {
+            self.makeRequest()
+        }
     }
-
 }

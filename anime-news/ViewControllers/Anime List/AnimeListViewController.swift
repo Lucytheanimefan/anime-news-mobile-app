@@ -36,23 +36,17 @@ class AnimeListViewController: UIViewController {
         
         if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall) && Reachability.isConnectedToNetwork())
         {
-            
             #if DEBUG
             os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
             #endif
             generateMAL()
             loadReviews()
-
-        }
-        else
-        {
-            #if DEBUG
-                os_log("%@: Too soon to refresh", self.description)
-            #endif
-
         }
 
-        // Do any additional setup after loading the view.
+        // Try to complete any old failed entries in the request queue
+        RequestQueue.shared.delegate = self
+        RequestQueue.shared.completeQueuedTasks()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,6 +149,16 @@ extension AnimeListViewController: ReloadViewDelegate{
     func onSet() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+}
+
+extension AnimeListViewController: RequestQueueDelegate{
+    func makeRequest(body: [String : Any]) {
+        CustomAnimeServer().updateReview(title: body["title"] as! String, animeID: body["anime_id"] as! String, review: body["review"] as! String, completion: { (response) in
+            print(response)
+        }) {
+            // TODO
         }
     }
     
