@@ -60,6 +60,7 @@ class MALReviewViewController: UIViewController {
         }
     }
     
+    // On save
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         guard self.mainTextView.text != "" else {
             os_log("%@:No review to update for %@", self.description, self.anime.title)
@@ -87,14 +88,14 @@ class MALReviewViewController: UIViewController {
                 
                 // Add the newly updated anime
                 AnimeListStorage.shared.animeReviews.append(self.anime.dict)
-                self.presentMessage(title: "Sucess", message:  "Updated \(self.anime.title!)")
-                
+                self.presentMessage(title: "Success", message:  "Updated \(self.anime.title!)")
             }
             else
             {
                 self.handleFailedServerRequest()
             }
-            // Update anime list storage
+            
+            
         }, errorcompletion: handleFailedServerRequest)
     }
     
