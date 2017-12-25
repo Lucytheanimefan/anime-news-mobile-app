@@ -12,6 +12,10 @@ import os.log
 
 class NewsTableController: UITableViewController {
     
+    var searchActive:Bool = false
+    
+    var filtered:[[String:Any]]!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -48,10 +52,6 @@ class NewsTableController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func initSearchBar(){
-        let searchController = UISearchController(searchResultsController: nil)
-        
-    }
     
     @IBAction func refreshNews(_ sender: UIRefreshControl) {
         
@@ -75,20 +75,33 @@ class NewsTableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        if (searchActive){
+            return filtered.count
+        }
+        
         return ArticleStorage.shared.numArticleRows//self.numArticleRows
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var tmpArticles:[[String:Any]]!
+        if (searchActive)
+        {
+            tmpArticles = filtered
+        }
+        else
+        {
+            tmpArticles = ArticleStorage.shared.articles
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
-        guard ArticleStorage.shared.articles.count > indexPath.row else {
-            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, ArticleStorage.shared.articles.count, indexPath.row)
+        guard tmpArticles.count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, tmpArticles.count, indexPath.row)
             
             return cell
         }
         
-        let articleData = ArticleStorage.shared.articles[indexPath.row]
+        let articleData = tmpArticles[indexPath.row]
         let article = Article(params: articleData)
 
         cell.textLabel?.text = article.title
@@ -170,5 +183,41 @@ extension NewsTableController: UISearchBarDelegate{
 extension NewsTableController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         //TODO
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = ArticleStorage.shared.articles.filter({ (news) -> Bool in
+            if let title = news["title"] as? NSString
+            {
+                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+                return range.location != NSNotFound
+            }
+            else
+            {
+                return false
+            }
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
     }
 }
