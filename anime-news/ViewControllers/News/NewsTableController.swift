@@ -12,6 +12,8 @@ import os.log
 
 class NewsTableController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,11 @@ class NewsTableController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initSearchBar(){
+        let searchController = UISearchController(searchResultsController: nil)
+        
     }
     
     @IBAction func refreshNews(_ sender: UIRefreshControl) {
@@ -83,36 +90,10 @@ class NewsTableController: UITableViewController {
         
         let articleData = ArticleStorage.shared.articles[indexPath.row]
         let article = Article(params: articleData)
-        //os_log("Article: %@", article)
-        
-        //if let title = article["title"] as? String{
-            cell.textLabel?.text = article.title
-            cell.backgroundColor = article.color
-//            if let link = article["link"] as? String{
-//                let components = link.components(separatedBy: "/")
-//                let type = components[3]
-//                //os_log("Type: %@", type)
-//                if (type == "review")
-//                {
-//                    cell.backgroundColor = UIColor.blue
-//                    cell.textLabel?.textColor = UIColor.white
-//                }
-//                else if (type == "interest")
-//                {
-//                    cell.backgroundColor = UIColor.yellow
-//                    cell.textLabel?.textColor = UIColor.black
-//                }
-//                else
-//                {
-//                    cell.backgroundColor = UIColor.white
-//                    cell.textLabel?.textColor = UIColor.black
-//                }
-//            }
-//        }
-//        else
-//        {
-//            cell.textLabel?.text = "No Title"
-//        }
+
+        cell.textLabel?.text = article.title
+        cell.backgroundColor = article.color
+
         return cell
     }
     
@@ -180,6 +161,14 @@ extension NewsTableController: ReloadViewDelegate{
             self.tableView.reloadData()
         }
     }
+}
+
+extension NewsTableController: UISearchBarDelegate{
     
-    
+}
+
+extension NewsTableController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        //TODO
+    }
 }

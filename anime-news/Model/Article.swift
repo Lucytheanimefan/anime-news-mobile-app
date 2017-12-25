@@ -9,9 +9,11 @@
 import UIKit
 
 class Article: NSObject {
+    
     var title:String!
     
     private var _link:String = ""
+    
     var link:String {
         get{
             return self._link
@@ -25,6 +27,7 @@ class Article: NSObject {
             self.type = components[3]
         }
     }
+    
     var summary:String?
     var color:UIColor?
     
@@ -77,14 +80,4 @@ class Article: NSObject {
 
 }
 
-//class ANNReview:Article {
-//    override init(title: String, link: String, description: String) {
-//        super.init(title: title, link: link, description: description)
-//        self.color = UIColor.blue
-//    }
-//}
-//
-//class ANNInterest:Article {
-//
-//}
 
