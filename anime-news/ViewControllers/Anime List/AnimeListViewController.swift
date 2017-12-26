@@ -42,6 +42,10 @@ class AnimeListViewController: UIViewController {
             generateMAL()
             loadReviews()
         }
+        
+        #if DEBUG
+        generateMAL()
+        #endif
 
         // Try to complete any old failed entries in the request queue
         RequestQueue.shared.delegate = self

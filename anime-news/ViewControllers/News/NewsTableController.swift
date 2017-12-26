@@ -181,27 +181,25 @@ extension NewsTableController: UISearchBarDelegate{
 }
 
 extension NewsTableController: UISearchResultsUpdating{
+    
     func updateSearchResults(for searchController: UISearchController) {
-        //TODO
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = ArticleStorage.shared.articles.filter({ (news) -> Bool in
+            var toInclude:Bool = false
             if let title = news["title"] as? NSString
             {
                 let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-                return range.location != NSNotFound
+                toInclude = (range.location != NSNotFound)
             }
-            else
-            {
-                return false
-            }
+            
+            return toInclude
         })
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
+        
+        searchActive = (filtered.count > 0)
+
         self.tableView.reloadData()
     }
     
