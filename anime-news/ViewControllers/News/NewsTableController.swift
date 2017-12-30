@@ -10,18 +10,26 @@ import UIKit
 import AnimeManager
 import os.log
 
-class NewsTableController: UITableViewController {
+class NewsTableController: /*UITableViewController*/ InfoViewController {
     
     var searchActive:Bool = false
     
     var filtered:[[String:Any]]!
     
+    @IBOutlet var tableView: UITableView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    //@IBOutlet weak var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
+        
         ArticleStorage.shared.delegate = self
+        
+        self.tableView.addSubview(self.refreshControl)
         
         if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
             #if DEBUG
@@ -30,12 +38,12 @@ class NewsTableController: UITableViewController {
             
             if (refreshIntervalTimeUp(recordedDate: lastRefresh))
             {
-                self.fetchArticles()
+                self.fetchInfo()
             }
         }
         else
         {
-            self.fetchArticles()
+            self.fetchInfo()
         }
     }
 
@@ -46,51 +54,8 @@ class NewsTableController: UITableViewController {
     }
     
     
-    @IBAction func refreshNews(_ sender: UIRefreshControl) {
-        
-        os_log("%@: REFRESH", self.description)
-        self.fetchArticles {
-            os_log("%@: DONE REFRESHING", self.description)
-            DispatchQueue.main.async {
-                sender.endRefreshing()
-            }
-        }
-    }
-    
-    
-    
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return searchActive ? filtered.count : ArticleStorage.shared.numArticleRows
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.shared.articles
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
-        
-        guard tmpArticles.count > indexPath.row else {
-            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, tmpArticles.count, indexPath.row)
-            
-            return cell
-        }
-        
-        let articleData = tmpArticles[indexPath.row]
-        let article = Article(params: articleData)
-
-        cell.textLabel?.text = article.title
-        cell.backgroundColor = article.color
-
-        return cell
-    }
     
     func matches(for regex: String, in text: String) -> [String] {
         
@@ -104,22 +69,7 @@ class NewsTableController: UITableViewController {
             return []
         }
     }
-    
-    func fetchArticles(onFinish: @escaping () -> () = { _ in }){
-        guard Reachability.isConnectedToNetwork() else {
-            os_log("%@: Not connected to network", self.description)
-            onFinish()
-            return
-        }
-        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
-            //os_log("%@: Article result: %@", self.description, articles)
-            UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
-            ArticleStorage.shared.numArticleRows = ArticleStorage.shared.articles.count
-            ArticleStorage.shared.articles = articles
-            
-            onFinish()
-        }
-    }
+
     
     
     // MARK: - UITableViewDelegate Methods
@@ -142,6 +92,40 @@ class NewsTableController: UITableViewController {
 
         }
     }
+}
+
+extension NewsTableController: UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return searchActive ? filtered.count : ArticleStorage.shared.numArticleRows
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.shared.articles
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
+        
+        guard tmpArticles.count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, tmpArticles.count, indexPath.row)
+            
+            return cell
+        }
+        
+        let articleData = tmpArticles[indexPath.row]
+        let article = Article(params: articleData)
+        
+        cell.textLabel?.text = article.title
+        cell.backgroundColor = article.color
+        
+        return cell
+    }
+    
 }
 
 extension NSAttributedString{
@@ -204,4 +188,19 @@ extension NewsTableController: UISearchResultsUpdating{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
+}
+
+extension NewsTableController: InfoRetrieverDelegate{
+    func fetchInfoHandler(completion: @escaping () -> ()) {
+        AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
+            //os_log("%@: Article result: %@", self.description, articles)
+            UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
+            ArticleStorage.shared.numArticleRows = ArticleStorage.shared.articles.count
+            ArticleStorage.shared.articles = articles
+            
+            completion()
+        }
+    }
+    
+    
 }

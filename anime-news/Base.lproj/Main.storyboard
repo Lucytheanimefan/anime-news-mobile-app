@@ -128,15 +128,9 @@
                     <navigationItem key="navigationItem" title="Anime News" id="Hcb-xo-rKy">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="qlJ-8y-F1X"/>
                     </navigationItem>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3il-ng-BNj">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="refreshNews:" destination="bdu-pF-3um" eventType="valueChanged" id="yh3-zQ-1my"/>
-                        </connections>
-                    </refreshControl>
                     <connections>
                         <outlet property="searchBar" destination="j3Y-L0-SNP" id="fa9-tP-CuR"/>
+                        <outlet property="tableView" destination="hje-hV-JGQ" id="a5w-yi-tIQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fZ-9B-pwX" userLabel="First Responder" sceneMemberID="firstResponder"/>

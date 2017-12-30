@@ -16,9 +16,18 @@ protocol InfoRetrieverDelegate {
 class InfoViewController: UIViewController {
     
     var delegate:InfoRetrieverDelegate!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }

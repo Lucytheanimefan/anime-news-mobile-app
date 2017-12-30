@@ -16,14 +16,7 @@ class AnimeListViewController: InfoViewController {
     var filtered:[[String:Any]] = [[String:Any]]()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
-        
-        return refreshControl
-    }()
-    
+
     lazy var MAL:MyAnimeList =
         {
             return MyAnimeList(username: AdminSettings.shared.MALUsername, password: nil)
@@ -65,34 +58,6 @@ class AnimeListViewController: InfoViewController {
             }
         }
     }
-    
-//    func handleRefresh(refreshControl: UIRefreshControl) {
-//        os_log("%@: Start refreshing", self.description)
-//        self.generateMAL {
-//            os_log("%@: Done refreshing", self.description)
-//            DispatchQueue.main.async {
-//                refreshControl.endRefreshing()
-//            }
-//        }
-//    }
-//
-//    func generateMAL(onFinish: @escaping () -> () = { _ in }){
-//        guard Reachability.isConnectedToNetwork() else {
-//            os_log("%@: Not connected to network", self.description)
-//            onFinish()
-//            return
-//        }
-//
-//        // TODO: don't use my own username
-//        MAL.getAnimeList(status: .all, completion: { (animeList) in
-//            AnimeListStorage.shared.animeList = animeList
-//            AnimeListStorage.shared.lastAPICall = Date()
-//            onFinish()
-//        }) { (error) in
-//            self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
-//            onFinish()
-//        }
-//    }
     
     func loadReviews(){
         os_log("%@: Load reviews", self.description)
