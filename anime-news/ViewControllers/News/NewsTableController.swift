@@ -141,8 +141,7 @@ class NewsTableController: UITableViewController {
         transitionVC(id: "")
     }
 
-    
-    
+ 
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -12,6 +12,9 @@ import os.log
 
 class AnimeListViewController: UIViewController {
     
+    var searchActive:Bool! = false
+    var filtered:[[String:Any]] = [[String:Any]]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -113,6 +116,9 @@ class AnimeListViewController: UIViewController {
 
 extension AnimeListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchActive){
+            return filtered.count
+        }
         return AnimeListStorage.shared.animeList.count
     }
     
@@ -125,7 +131,18 @@ extension AnimeListViewController: UITableViewDataSource {
             return cell
         }
         
-        let anime = AnimeListStorage.shared.animeList[indexPath.row]
+        var tmpAniList:[[String:Any]]!
+        if (searchActive)
+        {
+            tmpAniList = filtered
+        }
+        else
+        {
+            tmpAniList = ArticleStorage.shared.articles
+        }
+        
+        
+        let anime = tmpAniList[indexPath.row]
         
         if let title = anime["anime_title"] as? String{
             cell.title.text =  title
@@ -165,6 +182,48 @@ extension AnimeListViewController: RequestQueueDelegate{
             // TODO
         }
     }
+}
+
+extension AnimeListViewController: UISearchBarDelegate{
     
+}
+
+extension AnimeListViewController: UISearchResultsUpdating{
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = AnimeListStorage.shared.animeList.filter({ (anime) -> Bool in
+            var toInclude:Bool = false
+            if let title = anime["anime_title"] as? NSString
+            {
+                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+                toInclude = (range.location != NSNotFound)
+            }
+            
+            return toInclude
+        })
+        
+        searchActive = (filtered.count > 0)
+        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
 }
