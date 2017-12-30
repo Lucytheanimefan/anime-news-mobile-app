@@ -19,6 +19,8 @@ class AnimeListViewController: InfoViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.titleKey = "anime_title"
 
         NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
 
@@ -103,14 +105,6 @@ extension AnimeListViewController: UITableViewDelegate{
     
 }
 
-//extension AnimeListViewController: ReloadViewDelegate{
-//    func onSet() {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
-//}
-
 extension AnimeListViewController: RequestQueueDelegate{
     func makeRequest(body: [String : Any]) {
         CustomAnimeServer().updateReview(title: body["title"] as! String, animeID: body["anime_id"] as! String, review: body["review"] as! String, completion: { (response) in
@@ -125,45 +119,45 @@ extension AnimeListViewController: UISearchBarDelegate{
     
 }
 
-extension AnimeListViewController: UISearchResultsUpdating{
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = AnimeListStorage.sharedStorage.listInfo.filter({ (anime) -> Bool in
-            var toInclude:Bool = false
-            if let title = anime["anime_title"] as? NSString
-            {
-                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-                toInclude = (range.location != NSNotFound)
-            }
-            
-            return toInclude
-        })
-        
-        searchActive = (filtered.count > 0)
-        
-        self.tableView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-}
+//extension AnimeListViewController: UISearchResultsUpdating{
+//    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        
+//    }
+//    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        filtered = AnimeListStorage.sharedStorage.listInfo.filter({ (anime) -> Bool in
+//            var toInclude:Bool = false
+//            if let title = anime["anime_title"] as? NSString
+//            {
+//                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+//                toInclude = (range.location != NSNotFound)
+//            }
+//            
+//            return toInclude
+//        })
+//        
+//        searchActive = (filtered.count > 0)
+//        
+//        self.tableView.reloadData()
+//    }
+//    
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        searchActive = true;
+//    }
+//    
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        searchActive = false;
+//    }
+//    
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchActive = false;
+//    }
+//    
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchActive = false;
+//    }
+//}
 
 extension AnimeListViewController: InfoRetrieverDelegate{
     func infoStorage() -> Storage {

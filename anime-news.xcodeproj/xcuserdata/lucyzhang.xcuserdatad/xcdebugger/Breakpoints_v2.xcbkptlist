@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/AnimeManagerTests/AnimeManagerTests.swift"
-            timestampString = "536353561.80162"
+            timestampString = "536354635.895257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "187"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/CustomAnimeServer.swift"
-            timestampString = "536353561.801661"
+            timestampString = "536354635.895456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/CustomAnimeServer.swift"
-            timestampString = "536353561.801743"
+            timestampString = "536354635.895691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/CustomAnimeServer.swift"
-            timestampString = "536353561.801811"
+            timestampString = "536354635.895755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/CustomAnimeServer.swift"
-            timestampString = "536353561.801867"
+            timestampString = "536354635.895811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/ViewControllers/Anime List/MALReviewViewController.swift"
-            timestampString = "536353561.801925"
+            timestampString = "536354635.895873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../AnimeManager/AnimeManager/Requester.swift"
-            timestampString = "536353561.801984"
+            timestampString = "536354635.896259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/Model/Storage.swift"
-            timestampString = "536353561.802027"
+            timestampString = "536354635.896446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/Model/Storage.swift"
-            timestampString = "536353561.802069"
+            timestampString = "536354635.896685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -218,13 +218,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/Model/Storage.swift"
-            timestampString = "536353561.80211"
+            timestampString = "536354635.896746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "listInfo"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "anime-news/ViewControllers/InfoViewController.swift"
+            timestampString = "536354635.896801"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "anime_news.InfoViewController.searchBar(__ObjC.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "anime-news"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/ViewControllers/InfoViewController.swift"
+                  timestampString = "536354636.104237"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Bool in anime_news.InfoViewController.searchBar(__ObjC.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "anime-news"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/ViewControllers/InfoViewController.swift"
+                  timestampString = "536354636.106281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "anime-news/Model/ArticleStorage.swift"
+            timestampString = "536354635.897007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ArticleStorage"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_39C0A449978EB94BB1A0D2B5EE40F75A_func0"
+                  moduleName = "anime-news"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/Model/ArticleStorage.swift"
+                  timestampString = "536354636.112951"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "anime_news.ArticleStorage.sharedStorage.unsafeMutableAddressor : anime_news.Storage"
+                  moduleName = "anime-news"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/Model/ArticleStorage.swift"
+                  timestampString = "536354636.115094"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static anime_news.ArticleStorage.sharedStorage.getter : anime_news.Storage"
+                  moduleName = "anime-news"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucyzhang/Github/anime-mobile-app/anime-news/Model/ArticleStorage.swift"
+                  timestampString = "536354636.116993"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
