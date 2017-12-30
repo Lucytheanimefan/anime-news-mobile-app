@@ -37,7 +37,7 @@ class AnimeListViewController: UIViewController {
        
         NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
         
-        if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall) && Reachability.isConnectedToNetwork())
+        if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall))
         {
             #if DEBUG
             os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
@@ -45,10 +45,6 @@ class AnimeListViewController: UIViewController {
             generateMAL()
             loadReviews()
         }
-        
-        #if DEBUG
-        generateMAL()
-        #endif
 
         // Try to complete any old failed entries in the request queue
         RequestQueue.shared.delegate = self
@@ -80,14 +76,17 @@ class AnimeListViewController: UIViewController {
     }
     
     func generateMAL(onFinish: @escaping () -> () = { _ in }){
+        guard Reachability.isConnectedToNetwork() else {
+            os_log("%@: Not connected to network", self.description)
+            return
+        }
+        
         // TODO: don't use my own username
         MAL.getAnimeList(status: .all, completion: { (animeList) in
             AnimeListStorage.shared.animeList = animeList
             AnimeListStorage.shared.lastAPICall = Date()
             onFinish()
         }) { (error) in
-            // TODO: handle error
-            os_log("%@: Error: %@", self.description, error)
             self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
             onFinish()
         }
@@ -115,11 +114,9 @@ class AnimeListViewController: UIViewController {
 }
 
 extension AnimeListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchActive){
-            return filtered.count
-        }
-        return AnimeListStorage.shared.animeList.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return searchActive ? filtered.count : AnimeListStorage.shared.animeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,16 +128,7 @@ extension AnimeListViewController: UITableViewDataSource {
             return cell
         }
         
-        var tmpAniList:[[String:Any]]!
-        if (searchActive)
-        {
-            tmpAniList = filtered
-        }
-        else
-        {
-            tmpAniList = AnimeListStorage.shared.animeList
-        }
-        
+        var tmpAniList:[[String:Any]] = searchActive ? filtered : AnimeListStorage.shared.animeList
         
         let anime = tmpAniList[indexPath.row]
         
@@ -179,7 +167,7 @@ extension AnimeListViewController: RequestQueueDelegate{
         CustomAnimeServer().updateReview(title: body["title"] as! String, animeID: body["anime_id"] as! String, review: body["review"] as! String, completion: { (response) in
             print(response)
         }) {
-            // TODO
+            self.presentMessage(title: "Error", message: "Review for \(body["title"] as! String) could not be made")
         }
     }
 }

@@ -28,15 +28,9 @@ class NewsTableController: UITableViewController {
             os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
             #endif
             
-            if (refreshIntervalTimeUp(recordedDate: lastRefresh) && Reachability.isConnectedToNetwork())
+            if (refreshIntervalTimeUp(recordedDate: lastRefresh))
             {
                 self.fetchArticles()
-            }
-            else
-            {
-                #if DEBUG
-                    os_log("%@: Too soon to refresh", self.description)
-                #endif
             }
         }
         else
@@ -44,8 +38,7 @@ class NewsTableController: UITableViewController {
             self.fetchArticles()
         }
     }
-    
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,24 +68,13 @@ class NewsTableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if (searchActive){
-            return filtered.count
-        }
-        
-        return ArticleStorage.shared.numArticleRows//self.numArticleRows
+        return searchActive ? filtered.count : ArticleStorage.shared.numArticleRows
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tmpArticles:[[String:Any]]!
-        if (searchActive)
-        {
-            tmpArticles = filtered
-        }
-        else
-        {
-            tmpArticles = ArticleStorage.shared.articles
-        }
+        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.shared.articles
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
         guard tmpArticles.count > indexPath.row else {
@@ -124,6 +106,10 @@ class NewsTableController: UITableViewController {
     }
     
     func fetchArticles(onFinish: @escaping () -> () = { _ in }){
+        guard Reachability.isConnectedToNetwork() else {
+            os_log("%@: Not connected to network", self.description)
+            return
+        }
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             //os_log("%@: Article result: %@", self.description, articles)
             UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
