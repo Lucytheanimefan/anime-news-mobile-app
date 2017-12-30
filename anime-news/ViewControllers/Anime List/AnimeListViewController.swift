@@ -11,11 +11,6 @@ import AnimeManager
 import os.log
 
 class AnimeListViewController: InfoViewController {
-    
-    var searchActive:Bool! = false
-    var filtered:[[String:Any]] = [[String:Any]]()
-    
-    @IBOutlet weak var tableView: UITableView!
 
     lazy var MAL:MyAnimeList =
         {

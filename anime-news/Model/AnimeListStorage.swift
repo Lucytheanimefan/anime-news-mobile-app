@@ -8,33 +8,34 @@
 
 import UIKit
 
-class AnimeListStorage: NSObject {
-    static let shared = AnimeListStorage()
+class AnimeListStorage: Storage {
+    //static let shared = AnimeListStorage()
     
-    var delegate:ReloadViewDelegate!
+    //var delegate:ReloadViewDelegate!
     
-    private var _lastAPICall:Date!
-    var lastAPICall:Date
-    {
-        get {
-            if (self._lastAPICall == nil)
-            {
-                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH) as? Date{
-                    self.lastAPICall = lastRefresh
-                }
-                else
-                {
-                    return Date().addingTimeInterval(-100000)
-                }
-            }
-            return self._lastAPICall
-        }
-        
-        set {
-            self._lastAPICall = newValue
-            UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH)
-        }
-    }
+    // TODO: fix custom last refresh
+//    private var _lastAPICall:Date!
+//    var lastAPICall:Date
+//    {
+//        get {
+//            if (self._lastAPICall == nil)
+//            {
+//                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH) as? Date{
+//                    self.lastAPICall = lastRefresh
+//                }
+//                else
+//                {
+//                    return Date().addingTimeInterval(-100000)
+//                }
+//            }
+//            return self._lastAPICall
+//        }
+//
+//        set {
+//            self._lastAPICall = newValue
+//            UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH)
+//        }
+//    }
     
     private var _animeList:[[String:Any]]!
     var animeList:[[String:Any]]

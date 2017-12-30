@@ -11,11 +11,18 @@ import os.log
 
 protocol InfoRetrieverDelegate {
     func fetchInfoHandler(completion: @escaping () -> ())
+    
+    func infoStorage() -> Storage
 }
 
 class InfoViewController: UIViewController {
     
     var delegate:InfoRetrieverDelegate!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var searchActive:Bool! = false
+    var filtered:[[String:Any]] = [[String:Any]]()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,7 +34,14 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate.infoStorage().delegate = self
         
+        self.tableView.addSubview(self.refreshControl)
+        
+        if (refreshIntervalTimeUp(recordedDate: self.delegate.infoStorage().lastAPICall))
+        {
+            self.fetchInfo()
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -57,4 +71,12 @@ class InfoViewController: UIViewController {
         }
     }
 
+}
+
+extension InfoViewController: ReloadViewDelegate{
+    func onSet() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }

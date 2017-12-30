@@ -12,11 +12,11 @@ protocol ReloadViewDelegate {
     func onSet()
 }
 
-class ArticleStorage: NSObject {
+class ArticleStorage: Storage {
     
-    var delegate:ReloadViewDelegate?
+    //var delegate:ReloadViewDelegate?
     
-    static let shared = ArticleStorage()
+    //static let shared = ArticleStorage()
     
     private var _numArticleRows:Int!
     var numArticleRows:Int {
@@ -74,5 +74,28 @@ class ArticleStorage: NSObject {
             self.delegate?.onSet()
         }
     }
+    
+//    private var _lastAPICall:Date!
+//    var lastAPICall:Date
+//    {
+//        get {
+//            if (self._lastAPICall == nil)
+//            {
+//                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
+//                    self.lastAPICall = lastRefresh
+//                }
+//                else
+//                {
+//                    return Date().addingTimeInterval(-100000)
+//                }
+//            }
+//            return self._lastAPICall
+//        }
+//
+//        set {
+//            self._lastAPICall = newValue
+//            UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.LAST_REFRESH)
+//        }
+//    }
 
 }

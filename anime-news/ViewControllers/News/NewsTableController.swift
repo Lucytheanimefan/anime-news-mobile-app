@@ -12,39 +12,22 @@ import os.log
 
 class NewsTableController: /*UITableViewController*/ InfoViewController {
     
-    var searchActive:Bool = false
-    
-    var filtered:[[String:Any]]!
-    
-    @IBOutlet var tableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    //@IBOutlet weak var refreshControl: UIRefreshControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.delegate = self
         
-        ArticleStorage.shared.delegate = self
-        
-        self.tableView.addSubview(self.refreshControl)
-        
-        if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
-            #if DEBUG
-            os_log("%@: Last refreshed %@", self.description, lastRefresh.debugDescription)
-            #endif
-            
-            if (refreshIntervalTimeUp(recordedDate: lastRefresh))
-            {
-                self.fetchInfo()
-            }
-        }
-        else
-        {
-            self.fetchInfo()
-        }
+//        ArticleStorage.shared.delegate = self
+//
+//        self.tableView.addSubview(self.refreshControl)
+//
+//        if (refreshIntervalTimeUp(recordedDate: ArticleStorage.shared.lastAPICall))
+//        {
+//            self.fetchInfo()
+//        }
+
     }
 
     
@@ -57,18 +40,18 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
     // MARK: - Table view data source
     
     
-    func matches(for regex: String, in text: String) -> [String] {
-        
-        do {
-            let regex = try NSRegularExpression(pattern: regex)
-            let nsString = text as NSString
-            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
-            return results.map { nsString.substring(with: $0.range)}
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
-    }
+//    func matches(for regex: String, in text: String) -> [String] {
+//
+//        do {
+//            let regex = try NSRegularExpression(pattern: regex)
+//            let nsString = text as NSString
+//            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
+//            return results.map { nsString.substring(with: $0.range)}
+//        } catch let error {
+//            print("invalid regex: \(error.localizedDescription)")
+//            return []
+//        }
+//    }
 
     
     
@@ -86,7 +69,7 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
         let viewController = segue.destination as! ArticleViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let articleData = ArticleStorage.shared.articles[selectedIndex]
+            let articleData = (ArticleStorage.shared as! ArticleStorage).articles[selectedIndex]
             let article = Article(params: articleData)
             viewController.article = article
 
@@ -95,10 +78,6 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
 }
 
 extension NewsTableController: UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -138,13 +117,13 @@ extension NSAttributedString{
     }
 }
 
-extension NewsTableController: ReloadViewDelegate{
-    func onSet() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-}
+//extension NewsTableController: ReloadViewDelegate{
+//    func onSet() {
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+//}
 
 extension NewsTableController: UISearchBarDelegate{
     
@@ -191,6 +170,7 @@ extension NewsTableController: UISearchResultsUpdating{
 }
 
 extension NewsTableController: InfoRetrieverDelegate{
+    
     func fetchInfoHandler(completion: @escaping () -> ()) {
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             //os_log("%@: Article result: %@", self.description, articles)
