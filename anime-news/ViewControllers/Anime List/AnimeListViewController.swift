@@ -19,21 +19,8 @@ class AnimeListViewController: InfoViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
-        
-        //AnimeListStorage.shared.delegate = self
-        //self.tableView.addSubview(self.refreshControl)
-       
+
         NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
-        
-//        if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall))
-//        {
-//            #if DEBUG
-//            os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
-//            #endif
-//            fetchInfo()
-//            loadReviews()
-//        }
 
         // Try to complete any old failed entries in the request queue
         RequestQueue.shared.delegate = self
@@ -184,6 +171,7 @@ extension AnimeListViewController: InfoRetrieverDelegate{
     }
     
     func fetchInfoHandler(completion: @escaping () -> ()) {
+        loadReviews()
         MAL.getAnimeList(status: .all, completion: { (animeList) in
             AnimeListStorage.sharedStorage.listInfo = animeList
             AnimeListStorage.sharedStorage.lastAPICall = Date()

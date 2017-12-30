@@ -84,3 +84,4 @@ extension InfoViewController: ReloadViewDelegate{
         }
     }
 }
+

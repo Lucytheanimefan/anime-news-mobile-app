@@ -10,26 +10,10 @@ import UIKit
 import AnimeManager
 import os.log
 
-class NewsTableController: /*UITableViewController*/ InfoViewController {
+class NewsTableController: InfoViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.delegate = self
-        
-//        ArticleStorage.shared.delegate = self
-//
-//        self.tableView.addSubview(self.refreshControl)
-//
-//        if (refreshIntervalTimeUp(recordedDate: ArticleStorage.shared.lastAPICall))
-//        {
-//            self.fetchInfo()
-//        }
-
     }
 
     
@@ -44,7 +28,6 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
     
     // MARK: - UITableViewDelegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO
         transitionVC(id: "")
     }
 
@@ -156,10 +139,9 @@ extension NewsTableController: InfoRetrieverDelegate{
     
     func fetchInfoHandler(completion: @escaping () -> ()) {
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
-            //os_log("%@: Article result: %@", self.description, articles)
-            UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
-            //(ArticleStorage.shared as! ArticleStorage).numArticleRows = (ArticleStorage.shared as! ArticleStorage).articles.count
-           ArticleStorage.sharedStorage.listInfo = articles
+            
+            ArticleStorage.sharedStorage.lastAPICall = Date()
+            ArticleStorage.sharedStorage.listInfo = articles
             
             completion()
         }
