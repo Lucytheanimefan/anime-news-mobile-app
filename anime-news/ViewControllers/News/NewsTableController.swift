@@ -13,11 +13,13 @@ import os.log
 class NewsTableController: /*UITableViewController*/ InfoViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
+        //self.delegate = self
         
 //        ArticleStorage.shared.delegate = self
 //
@@ -38,22 +40,7 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
     
     
     // MARK: - Table view data source
-    
-    
-//    func matches(for regex: String, in text: String) -> [String] {
-//
-//        do {
-//            let regex = try NSRegularExpression(pattern: regex)
-//            let nsString = text as NSString
-//            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
-//            return results.map { nsString.substring(with: $0.range)}
-//        } catch let error {
-//            print("invalid regex: \(error.localizedDescription)")
-//            return []
-//        }
-//    }
 
-    
     
     // MARK: - UITableViewDelegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -69,7 +56,7 @@ class NewsTableController: /*UITableViewController*/ InfoViewController {
         let viewController = segue.destination as! ArticleViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let articleData = (ArticleStorage.shared as! ArticleStorage).articles[selectedIndex]
+            let articleData = ArticleStorage.sharedStorage.listInfo[selectedIndex]//(ArticleStorage.shared as! ArticleStorage).articles[selectedIndex]
             let article = Article(params: articleData)
             viewController.article = article
 
@@ -81,12 +68,12 @@ extension NewsTableController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return searchActive ? filtered.count : ArticleStorage.shared.numArticleRows
+        return searchActive ? filtered.count : ArticleStorage.sharedStorage.listInfo.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.shared.articles
+        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.sharedStorage.listInfo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
@@ -117,14 +104,6 @@ extension NSAttributedString{
     }
 }
 
-//extension NewsTableController: ReloadViewDelegate{
-//    func onSet() {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
-//}
-
 extension NewsTableController: UISearchBarDelegate{
     
 }
@@ -136,7 +115,7 @@ extension NewsTableController: UISearchResultsUpdating{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = ArticleStorage.shared.articles.filter({ (news) -> Bool in
+        filtered = ArticleStorage.sharedStorage.listInfo.filter({ (news) -> Bool in
             var toInclude:Bool = false
             if let title = news["title"] as? NSString
             {
@@ -170,13 +149,17 @@ extension NewsTableController: UISearchResultsUpdating{
 }
 
 extension NewsTableController: InfoRetrieverDelegate{
+    func infoStorage() -> Storage {
+        return ArticleStorage.sharedStorage
+    }
+    
     
     func fetchInfoHandler(completion: @escaping () -> ()) {
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             //os_log("%@: Article result: %@", self.description, articles)
             UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
-            ArticleStorage.shared.numArticleRows = ArticleStorage.shared.articles.count
-            ArticleStorage.shared.articles = articles
+            //(ArticleStorage.shared as! ArticleStorage).numArticleRows = (ArticleStorage.shared as! ArticleStorage).articles.count
+           ArticleStorage.sharedStorage.listInfo = articles
             
             completion()
         }

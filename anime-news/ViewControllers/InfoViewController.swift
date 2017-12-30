@@ -13,6 +13,8 @@ protocol InfoRetrieverDelegate {
     func fetchInfoHandler(completion: @escaping () -> ())
     
     func infoStorage() -> Storage
+    
+    //func viewDidLoadExtras()
 }
 
 class InfoViewController: UIViewController {
@@ -33,6 +35,8 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self as! InfoRetrieverDelegate
         
         self.delegate.infoStorage().delegate = self
         

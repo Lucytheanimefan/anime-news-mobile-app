@@ -82,12 +82,12 @@ class MALReviewViewController: UIViewController {
                 RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
                 
                 // Remove the stale entry
-                AnimeListStorage.shared.animeReviews = AnimeListStorage.shared.animeReviews.filter({ (animeDict) -> Bool in
+                (AnimeListStorage.shared as! AnimeListStorage).animeReviews = (AnimeListStorage.shared as! AnimeListStorage).animeReviews.filter({ (animeDict) -> Bool in
                     return (animeDict["anime_id"] as? String != self.anime.anime_id)
                 })
                 
                 // Add the newly updated anime
-                AnimeListStorage.shared.animeReviews.append(self.anime.dict)
+                (AnimeListStorage.shared as! AnimeListStorage).animeReviews.append(self.anime.dict)
                 self.presentMessage(title: "Success", message:  "Updated \(self.anime.title!)")
             }
             else
@@ -112,7 +112,7 @@ class MALReviewViewController: UIViewController {
     
     func populateReviewText(){
         let predicate = NSPredicate(format: "anime_id == %@", String(self.anime.anime_id))
-        let filtered = (AnimeListStorage.shared.animeReviews as NSArray).filtered(using: predicate)
+        let filtered = ((AnimeListStorage.shared as! AnimeListStorage).animeReviews as NSArray).filtered(using: predicate)
         if (filtered.count > 0) {
             let filteredAnime = filtered[0]
             

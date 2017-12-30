@@ -13,13 +13,22 @@ class Storage: NSObject {
     
     static let shared = Storage()
     
+    var LAST_REFRESH:String!
+    var LIST_INFO:String!
+
+    class func sharedInstanceWithKeys(lastRefresh:String, info:String) -> Storage{
+        Storage.shared.LAST_REFRESH = lastRefresh
+        Storage.shared.LIST_INFO = info
+        return Storage.shared
+    }
+    
     private var _lastAPICall:Date!
     var lastAPICall:Date
     {
         get {
             if (self._lastAPICall == nil)
             {
-                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.LAST_REFRESH) as? Date{
+                if let lastRefresh = UserDefaults.standard.object(forKey: self.LAST_REFRESH) as? Date{
                     self.lastAPICall = lastRefresh
                 }
                 else
@@ -33,6 +42,40 @@ class Storage: NSObject {
         set {
             self._lastAPICall = newValue
             UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.LAST_REFRESH)
+        }
+    }
+    
+    private var _listInfo:[[String:Any]]!
+    var listInfo:[[String:Any]]
+    {
+        get {
+            if (self._listInfo == nil)
+            {
+                if let data = UserDefaults.standard.object(forKey: self.LIST_INFO) as? Data{
+                    if let listInfo = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+                        self._listInfo = listInfo
+                        
+                        delegate.onSet()
+                    }
+                    else
+                    {
+                        self._listInfo = [[String:Any]]()
+                    }
+                }
+                else
+                {
+                    self._listInfo = [[String:Any]]()
+                }
+            }
+            
+            return self._listInfo
+        }
+        
+        set {
+            self._listInfo = newValue
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            UserDefaults.standard.set(data, forKey: self.LIST_INFO)
+            delegate.onSet()
         }
     }
 }

@@ -9,67 +9,8 @@
 import UIKit
 
 class AnimeListStorage: Storage {
-    //static let shared = AnimeListStorage()
     
-    //var delegate:ReloadViewDelegate!
-    
-    // TODO: fix custom last refresh
-//    private var _lastAPICall:Date!
-//    var lastAPICall:Date
-//    {
-//        get {
-//            if (self._lastAPICall == nil)
-//            {
-//                if let lastRefresh = UserDefaults.standard.object(forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH) as? Date{
-//                    self.lastAPICall = lastRefresh
-//                }
-//                else
-//                {
-//                    return Date().addingTimeInterval(-100000)
-//                }
-//            }
-//            return self._lastAPICall
-//        }
-//
-//        set {
-//            self._lastAPICall = newValue
-//            UserDefaults.standard.set(newValue, forKey: Constants.PreferenceKeys.MAL_LAST_REFRESH)
-//        }
-//    }
-    
-    private var _animeList:[[String:Any]]!
-    var animeList:[[String:Any]]
-    {
-        get {
-            if (self._animeList == nil)
-            {
-                if let data = UserDefaults.standard.object(forKey: "MAL") as? Data{
-                    if let animeList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-                        self._animeList = animeList
-                        
-                        delegate.onSet()
-                    }
-                    else
-                    {
-                        self._animeList = [[String:Any]]()
-                    }
-                }
-                else
-                {
-                    self._animeList = [[String:Any]]()
-                }
-            }
-            
-            return self._animeList
-        }
-        
-        set {
-            self._animeList = newValue
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            UserDefaults.standard.set(data, forKey: "MAL")
-            delegate.onSet()
-        }
-    }
+    static let sharedStorage:Storage =  Storage.sharedInstanceWithKeys(lastRefresh: Constants.PreferenceKeys.MAL_LAST_REFRESH, info: Constants.PreferenceKeys.MAL)
     
     private var _animeReviews:[[String:Any]]!
     var animeReviews:[[String:Any]]

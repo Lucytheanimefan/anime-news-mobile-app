@@ -21,19 +21,19 @@ class AnimeListViewController: InfoViewController {
         super.viewDidLoad()
         self.delegate = self
         
-        AnimeListStorage.shared.delegate = self
-        self.tableView.addSubview(self.refreshControl)
+        //AnimeListStorage.shared.delegate = self
+        //self.tableView.addSubview(self.refreshControl)
        
         NotificationCenter.default.addObserver(self, selector: #selector(labelDidChange), name: NSNotification.Name(Constants.Notification.SETTING_CHANGE), object: nil)
         
-        if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall))
-        {
-            #if DEBUG
-            os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
-            #endif
-            fetchInfo()
-            loadReviews()
-        }
+//        if (refreshIntervalTimeUp(recordedDate: AnimeListStorage.shared.lastAPICall))
+//        {
+//            #if DEBUG
+//            os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
+//            #endif
+//            fetchInfo()
+//            loadReviews()
+//        }
 
         // Try to complete any old failed entries in the request queue
         RequestQueue.shared.delegate = self
@@ -57,7 +57,7 @@ class AnimeListViewController: InfoViewController {
     func loadReviews(){
         os_log("%@: Load reviews", self.description)
         CustomAnimeServer().getReview(animeID: nil) { (review) in
-            AnimeListStorage.shared.animeReviews = review
+            (AnimeListStorage.sharedStorage as! AnimeListStorage).animeReviews = review
         }
     }
     
@@ -67,7 +67,7 @@ class AnimeListViewController: InfoViewController {
         let viewController = segue.destination as! MALReviewViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let anime = AnimeListStorage.shared.animeList[selectedIndex]
+            let anime = AnimeListStorage.sharedStorage.listInfo[selectedIndex]
             viewController.anime = Anime(id: String(describing: anime["anime_id"]), title: anime["anime_title"] as! String, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
         }
         
@@ -78,19 +78,19 @@ class AnimeListViewController: InfoViewController {
 extension AnimeListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return searchActive ? filtered.count : AnimeListStorage.shared.animeList.count
+        return searchActive ? filtered.count : AnimeListStorage.sharedStorage.listInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MALCellID", for: indexPath) as! MALTableViewCell
         
-        guard AnimeListStorage.shared.animeList.count > indexPath.row else {
-            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, AnimeListStorage.shared.animeList.count, indexPath.row)
+        guard AnimeListStorage.sharedStorage.listInfo.count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, AnimeListStorage.sharedStorage.listInfo.count, indexPath.row)
             
             return cell
         }
         
-        var tmpAniList:[[String:Any]] = searchActive ? filtered : AnimeListStorage.shared.animeList
+        var tmpAniList:[[String:Any]] = searchActive ? filtered : AnimeListStorage.sharedStorage.listInfo
         
         let anime = tmpAniList[indexPath.row]
         
@@ -116,13 +116,13 @@ extension AnimeListViewController: UITableViewDelegate{
     
 }
 
-extension AnimeListViewController: ReloadViewDelegate{
-    func onSet() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-}
+//extension AnimeListViewController: ReloadViewDelegate{
+//    func onSet() {
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+//}
 
 extension AnimeListViewController: RequestQueueDelegate{
     func makeRequest(body: [String : Any]) {
@@ -145,7 +145,7 @@ extension AnimeListViewController: UISearchResultsUpdating{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = AnimeListStorage.shared.animeList.filter({ (anime) -> Bool in
+        filtered = AnimeListStorage.sharedStorage.listInfo.filter({ (anime) -> Bool in
             var toInclude:Bool = false
             if let title = anime["anime_title"] as? NSString
             {
@@ -179,10 +179,14 @@ extension AnimeListViewController: UISearchResultsUpdating{
 }
 
 extension AnimeListViewController: InfoRetrieverDelegate{
+    func infoStorage() -> Storage {
+        return AnimeListStorage.sharedStorage
+    }
+    
     func fetchInfoHandler(completion: @escaping () -> ()) {
         MAL.getAnimeList(status: .all, completion: { (animeList) in
-            AnimeListStorage.shared.animeList = animeList
-            AnimeListStorage.shared.lastAPICall = Date()
+            AnimeListStorage.sharedStorage.listInfo = animeList
+            AnimeListStorage.sharedStorage.lastAPICall = Date()
             completion()
         }) { (error) in
             self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
