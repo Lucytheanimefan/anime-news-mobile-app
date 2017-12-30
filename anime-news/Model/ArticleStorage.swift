@@ -14,7 +14,7 @@ protocol ReloadViewDelegate {
 
 class ArticleStorage: NSObject {
     
-    var delegate:ReloadViewDelegate!
+    var delegate:ReloadViewDelegate?
     
     static let shared = ArticleStorage()
     
@@ -41,7 +41,7 @@ class ArticleStorage: NSObject {
             {
                 self._numArticleRows = newValue
                 
-                self.delegate.onSet()
+                self.delegate?.onSet()
             }
         }
     }
@@ -56,7 +56,7 @@ class ArticleStorage: NSObject {
                 if let articles = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
                     self._articles = articles
                     
-                    self.delegate.onSet()
+                    self.delegate?.onSet()
                 }
                 else
                 {
@@ -71,7 +71,7 @@ class ArticleStorage: NSObject {
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
             UserDefaults.standard.set(data, forKey: Constants.PreferenceKeys.ANN_ARTICLES)
             
-            self.delegate.onSet()
+            self.delegate?.onSet()
         }
     }
 

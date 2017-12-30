@@ -138,7 +138,7 @@ extension AnimeListViewController: UITableViewDataSource {
         }
         else
         {
-            tmpAniList = ArticleStorage.shared.articles
+            tmpAniList = AnimeListStorage.shared.animeList
         }
         
         

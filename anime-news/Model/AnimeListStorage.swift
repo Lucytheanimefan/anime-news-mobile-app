@@ -80,7 +80,7 @@ class AnimeListStorage: NSObject {
                     if let animeReviews = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
                         self._animeReviews = animeReviews
                         
-                        //delegate.onSet()
+                        delegate.onSet()
                     }
                     else
                     {
@@ -100,7 +100,7 @@ class AnimeListStorage: NSObject {
             self._animeReviews = newValue
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
             UserDefaults.standard.set(data, forKey: "animeReviews")
-            //delegate.onSet()
+            delegate.onSet()
         }
     }
 }
