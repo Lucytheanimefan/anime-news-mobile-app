@@ -9,15 +9,7 @@
 import UIKit
 import os.log
 
-class InfoViewController: UIViewController {
-    
-//    var myTitle = String()
-//
-//    private var _mainText:String! = ""
-//
-//    var mainText:String!
-//
-//    var url:String!
+class ArticleViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var titleTextView: UITextView!
@@ -60,15 +52,5 @@ class InfoViewController: UIViewController {
         label.text = text
         self.view.addSubview(label)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

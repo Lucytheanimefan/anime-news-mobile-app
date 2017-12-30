@@ -10,7 +10,7 @@ import UIKit
 import AnimeManager
 import os.log
 
-class AnimeListViewController: UIViewController {
+class AnimeListViewController: InfoViewController {
     
     var searchActive:Bool! = false
     var filtered:[[String:Any]] = [[String:Any]]()
@@ -31,6 +31,7 @@ class AnimeListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         
         AnimeListStorage.shared.delegate = self
         self.tableView.addSubview(self.refreshControl)
@@ -42,7 +43,7 @@ class AnimeListViewController: UIViewController {
             #if DEBUG
             os_log("%@: Last API call date difference: %@", self.description, (AnimeListStorage.shared.lastAPICall.timeIntervalSince1970 - Date().timeIntervalSince1970).debugDescription)
             #endif
-            generateMAL()
+            fetchInfo()
             loadReviews()
         }
 
@@ -60,37 +61,38 @@ class AnimeListViewController: UIViewController {
     func labelDidChange(notification:Notification){
         if let type = notification.userInfo!["Type"] as? String{
             if type == Constants.PreferenceKeys.MAL_USERNAME{
-                generateMAL()
+                fetchInfo()
             }
         }
     }
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
-        os_log("%@: Start refreshing", self.description)
-        self.generateMAL {
-            os_log("%@: Done refreshing", self.description)
-            DispatchQueue.main.async {
-                refreshControl.endRefreshing()
-            }
-        }
-    }
-    
-    func generateMAL(onFinish: @escaping () -> () = { _ in }){
-        guard Reachability.isConnectedToNetwork() else {
-            os_log("%@: Not connected to network", self.description)
-            return
-        }
-        
-        // TODO: don't use my own username
-        MAL.getAnimeList(status: .all, completion: { (animeList) in
-            AnimeListStorage.shared.animeList = animeList
-            AnimeListStorage.shared.lastAPICall = Date()
-            onFinish()
-        }) { (error) in
-            self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
-            onFinish()
-        }
-    }
+//    func handleRefresh(refreshControl: UIRefreshControl) {
+//        os_log("%@: Start refreshing", self.description)
+//        self.generateMAL {
+//            os_log("%@: Done refreshing", self.description)
+//            DispatchQueue.main.async {
+//                refreshControl.endRefreshing()
+//            }
+//        }
+//    }
+//
+//    func generateMAL(onFinish: @escaping () -> () = { _ in }){
+//        guard Reachability.isConnectedToNetwork() else {
+//            os_log("%@: Not connected to network", self.description)
+//            onFinish()
+//            return
+//        }
+//
+//        // TODO: don't use my own username
+//        MAL.getAnimeList(status: .all, completion: { (animeList) in
+//            AnimeListStorage.shared.animeList = animeList
+//            AnimeListStorage.shared.lastAPICall = Date()
+//            onFinish()
+//        }) { (error) in
+//            self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
+//            onFinish()
+//        }
+//    }
     
     func loadReviews(){
         os_log("%@: Load reviews", self.description)
@@ -214,4 +216,19 @@ extension AnimeListViewController: UISearchResultsUpdating{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
+}
+
+extension AnimeListViewController: InfoRetrieverDelegate{
+    func fetchInfoHandler(completion: @escaping () -> ()) {
+        MAL.getAnimeList(status: .all, completion: { (animeList) in
+            AnimeListStorage.shared.animeList = animeList
+            AnimeListStorage.shared.lastAPICall = Date()
+            completion()
+        }) { (error) in
+            self.presentMessage(title: "Error", message: "Failed to generate MyAnimeList data, using cached data instead")
+            completion()
+        }
+    }
+    
+    
 }

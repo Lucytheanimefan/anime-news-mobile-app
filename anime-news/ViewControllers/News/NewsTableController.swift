@@ -108,6 +108,7 @@ class NewsTableController: UITableViewController {
     func fetchArticles(onFinish: @escaping () -> () = { _ in }){
         guard Reachability.isConnectedToNetwork() else {
             os_log("%@: Not connected to network", self.description)
+            onFinish()
             return
         }
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
@@ -132,7 +133,7 @@ class NewsTableController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as! InfoViewController
+        let viewController = segue.destination as! ArticleViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
             let articleData = ArticleStorage.shared.articles[selectedIndex]

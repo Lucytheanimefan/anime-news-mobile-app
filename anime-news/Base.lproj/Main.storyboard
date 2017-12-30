@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="3724" y="53.523238380809602"/>
         </scene>
-        <!--Info View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="j4u-hs-ztZ">
             <objects>
-                <viewController id="pTq-UO-3se" customClass="InfoViewController" customModule="anime_news" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pTq-UO-3se" customClass="ArticleViewController" customModule="anime_news" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lTg-Vj-IaR"/>
                         <viewControllerLayoutGuide type="bottom" id="FZ4-UE-fAh"/>

@@ -18,6 +18,7 @@
 		7C8665FE1FE807C6003022D1 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665FD1FE807C6003022D1 /* Anime.swift */; };
 		7C8666001FE865A5003022D1 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8665FF1FE865A5003022D1 /* ViewControllerExtension.swift */; };
 		7C8666021FE86F86003022D1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666011FE86F86003022D1 /* Article.swift */; };
+		7C86660B1FF7CB57003022D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660A1FF7CB57003022D1 /* InfoViewController.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -34,11 +35,10 @@
 		7CC60E3F1EB04AE3003FC570 /* anime_newsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E3E1EB04AE3003FC570 /* anime_newsTests.swift */; };
 		7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E491EB04BC5003FC570 /* NewsTableController.swift */; };
 		7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4B1EB04CA8003FC570 /* Utilities.swift */; };
-		7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */; };
+		7CC60E4E1EB58CA5003FC570 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E4D1EB58CA5003FC570 /* ArticleViewController.swift */; };
 		7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA817F1FD3943E00CAD489 /* Reachability.swift */; };
 		7CCA818F1FD3A4B500CAD489 /* AnimeManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCA818C1FD3A4AD00CAD489 /* AnimeManager.framework */; };
 		7CCA81901FD3A4B500CAD489 /* AnimeManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCA818C1FD3A4AD00CAD489 /* AnimeManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +100,7 @@
 		7C8665FD1FE807C6003022D1 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		7C8665FF1FE865A5003022D1 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		7C8666011FE86F86003022D1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		7C86660A1FF7CB57003022D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -120,10 +121,9 @@
 		7CC60E401EB04AE3003FC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC60E491EB04BC5003FC570 /* NewsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableController.swift; sourceTree = "<group>"; };
 		7CC60E4B1EB04CA8003FC570 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		7CC60E4D1EB58CA5003FC570 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		7CCA817F1FD3943E00CAD489 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7CCA81851FD3A4AC00CAD489 /* AnimeManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimeManager.xcodeproj; path = ../AnimeManager/AnimeManager.xcodeproj; sourceTree = "<group>"; };
-		7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8899799C2347BD541A9FFACF /* Pods-anime-news.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anime-news.release.xcconfig"; path = "Pods/Target Support Files/Pods-anime-news/Pods-anime-news.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,8 +187,8 @@
 				7C9BD43A1FD6379400C13E62 /* Anime List */,
 				7C9BD4391FD6377600C13E62 /* News */,
 				7CC60E2B1EB04AE3003FC570 /* ViewController.swift */,
-				7CCA81951FD4182F00CAD489 /* TabBarViewController.swift */,
 				7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */,
+				7C86660A1FF7CB57003022D1 /* InfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				7CC60E491EB04BC5003FC570 /* NewsTableController.swift */,
-				7CC60E4D1EB58CA5003FC570 /* InfoViewController.swift */,
+				7CC60E4D1EB58CA5003FC570 /* ArticleViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -427,13 +427,13 @@
 				7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */,
 				7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */,
 				7C9BD4471FD811FD00C13E62 /* ArticleStorage.swift in Sources */,
-				7CCA81961FD4182F00CAD489 /* TabBarViewController.swift in Sources */,
 				7C9BD4491FD81CA900C13E62 /* AnimeListStorage.swift in Sources */,
 				7C8666021FE86F86003022D1 /* Article.swift in Sources */,
 				7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */,
 				7C8666001FE865A5003022D1 /* ViewControllerExtension.swift in Sources */,
+				7C86660B1FF7CB57003022D1 /* InfoViewController.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
-				7CC60E4E1EB58CA5003FC570 /* InfoViewController.swift in Sources */,
+				7CC60E4E1EB58CA5003FC570 /* ArticleViewController.swift in Sources */,
 				7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
