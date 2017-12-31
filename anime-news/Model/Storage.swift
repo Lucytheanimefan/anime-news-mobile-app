@@ -11,16 +11,9 @@ import UIKit
 class Storage: NSObject {
     var delegate:ReloadViewDelegate!
     
-    static let shared = Storage()
-    
     var LAST_REFRESH:String!
     var LIST_INFO:String!
 
-    class func sharedInstanceWithKeys(lastRefresh:String, info:String) -> Storage{
-        Storage.shared.LAST_REFRESH = lastRefresh
-        Storage.shared.LIST_INFO = info
-        return Storage.shared
-    }
     
     convenience init(lastRefresh:String, info:String) {
         self.init()

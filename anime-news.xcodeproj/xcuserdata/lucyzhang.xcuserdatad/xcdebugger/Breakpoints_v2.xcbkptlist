@@ -186,22 +186,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/ViewControllers/News/NewsTableController.swift"
-            timestampString = "536379719.109312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "anime-news/ViewControllers/News/NewsTableController.swift"
             timestampString = "536379719.110221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

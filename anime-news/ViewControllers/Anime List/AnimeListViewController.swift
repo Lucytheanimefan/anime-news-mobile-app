@@ -128,46 +128,6 @@ extension AnimeListViewController: UISearchBarDelegate{
     
 }
 
-//extension AnimeListViewController: UISearchResultsUpdating{
-//    
-//    func updateSearchResults(for searchController: UISearchController) {
-//        
-//    }
-//    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filtered = AnimeListStorage.sharedStorage.listInfo.filter({ (anime) -> Bool in
-//            var toInclude:Bool = false
-//            if let title = anime["anime_title"] as? NSString
-//            {
-//                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-//                toInclude = (range.location != NSNotFound)
-//            }
-//            
-//            return toInclude
-//        })
-//        
-//        searchActive = (filtered.count > 0)
-//        
-//        self.tableView.reloadData()
-//    }
-//    
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchActive = true;
-//    }
-//    
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//    
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//    
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//}
-
 extension AnimeListViewController: InfoRetrieverDelegate{
     func infoStorage() -> Storage {
         return AnimeListStorage.sharedStorage

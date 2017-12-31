@@ -15,8 +15,6 @@ class NewsTableController: InfoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(ArticleStorage.sharedStorage.listInfo)
-        
     }
 
     
@@ -42,7 +40,7 @@ class NewsTableController: InfoViewController {
         let viewController = segue.destination as! ArticleViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let articleData = ArticleStorage.sharedStorage.listInfo[selectedIndex]//(ArticleStorage.shared as! ArticleStorage).articles[selectedIndex]
+            let articleData = ArticleStorage.sharedStorage.listInfo[selectedIndex]
             let article = Article(params: articleData)
             viewController.article = article
 
@@ -104,7 +102,6 @@ extension NewsTableController: InfoRetrieverDelegate{
         AnimeNewsNetwork.sharedInstance.allArticles(articleType: AnimeNewsNetwork.ANNArticle.all) { (articles) in
             
             ArticleStorage.sharedStorage.lastAPICall = Date()
-            //UserDefaults.standard.set(Date(), forKey: Constants.PreferenceKeys.LAST_REFRESH)
             
             ArticleStorage.sharedStorage.listInfo = articles
             
