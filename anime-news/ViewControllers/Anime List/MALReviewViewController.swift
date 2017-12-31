@@ -112,7 +112,8 @@ class MALReviewViewController: UIViewController {
     
     func populateReviewText(){
         let predicate = NSPredicate(format: "anime_id == %@", String(self.anime.anime_id))
-        let filtered = ((AnimeListStorage.shared as! AnimeListStorage).animeReviews as NSArray).filtered(using: predicate)
+
+        let filtered = (AnimeListStorage.sharedStorage.getInfo(key: Constants.PreferenceKeys.REVIEWS) as NSArray).filtered(using: predicate)
         if (filtered.count > 0) {
             let filteredAnime = filtered[0]
             

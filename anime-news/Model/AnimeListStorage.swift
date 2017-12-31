@@ -12,6 +12,8 @@ class AnimeListStorage: Storage {
     
     static let sharedStorage:Storage =  Storage.sharedInstanceWithKeys(lastRefresh: Constants.PreferenceKeys.MAL_LAST_REFRESH, info: Constants.PreferenceKeys.MAL)
     
+
+    
     private var _animeReviews:[[String:Any]]!
     var animeReviews:[[String:Any]]
     {

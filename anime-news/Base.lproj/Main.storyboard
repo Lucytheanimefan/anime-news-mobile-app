@@ -129,7 +129,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="qlJ-8y-F1X"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="j3Y-L0-SNP" id="fa9-tP-CuR"/>
                         <outlet property="tableView" destination="hje-hV-JGQ" id="a5w-yi-tIQ"/>
                     </connections>
                 </tableViewController>

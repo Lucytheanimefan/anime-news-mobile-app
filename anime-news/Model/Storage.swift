@@ -51,21 +51,22 @@ class Storage: NSObject {
         get {
             if (self._listInfo == nil)
             {
-                if let data = UserDefaults.standard.object(forKey: self.LIST_INFO) as? Data{
-                    if let listInfo = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-                        self._listInfo = listInfo
-                        
-                        delegate.onSet()
-                    }
-                    else
-                    {
-                        self._listInfo = [[String:Any]]()
-                    }
-                }
-                else
-                {
-                    self._listInfo = [[String:Any]]()
-                }
+                self._listInfo = getInfo(key: self.LIST_INFO)
+//                if let data = UserDefaults.standard.object(forKey: self.LIST_INFO) as? Data{
+//                    if let listInfo = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+//                        self._listInfo = listInfo
+//
+//                        delegate.onSet()
+//                    }
+//                    else
+//                    {
+//                        self._listInfo = [[String:Any]]()
+//                    }
+//                }
+//                else
+//                {
+//                    self._listInfo = [[String:Any]]()
+//                }
             }
             
             return self._listInfo
@@ -73,9 +74,24 @@ class Storage: NSObject {
         
         set {
             self._listInfo = newValue
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            UserDefaults.standard.set(data, forKey: self.LIST_INFO)
+            storeInfo(key: self.LIST_INFO, value: newValue)
+//            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+//            UserDefaults.standard.set(data, forKey: self.LIST_INFO)
             delegate.onSet()
         }
+    }
+    
+    func storeInfo(key:String, value:[[String:Any]]){
+        let data = NSKeyedArchiver.archivedData(withRootObject: value)
+        UserDefaults.standard.set(data, forKey: key)
+    }
+    
+    func getInfo(key:String) ->[[String:Any]]{
+        if let data = UserDefaults.standard.object(forKey: key) as? Data{
+            if let info = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
+                return info
+            }
+        }
+        return [[String:Any]]()
     }
 }

@@ -45,8 +45,8 @@ class AnimeListViewController: InfoViewController {
     
     func loadReviews(){
         os_log("%@: Load reviews", self.description)
-        CustomAnimeServer().getReview(animeID: nil) { (review) in
-            (AnimeListStorage.sharedStorage as! AnimeListStorage).animeReviews = review
+        CustomAnimeServer().getReview(animeID: nil) { (reviews) in
+            AnimeListStorage.sharedStorage.storeInfo(key: Constants.PreferenceKeys.REVIEWS, value: reviews)
         }
     }
     
@@ -57,7 +57,11 @@ class AnimeListViewController: InfoViewController {
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
             let anime = AnimeListStorage.sharedStorage.listInfo[selectedIndex]
-            viewController.anime = Anime(id: String(describing: anime["anime_id"]), title: anime["anime_title"] as! String, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
+            
+            if let id = anime["anime_id"] as? Int, let title = anime["anime_title"] as? String {
+                viewController.anime = Anime(id: String(describing: id), title: title, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
+            }
+            
         }
         
     }
