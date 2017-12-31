@@ -87,12 +87,17 @@ extension AnimeListViewController: UITableViewDataSource {
         
         let anime = tmpAniList[indexPath.row]
         
+        if let status = anime["anime_airing_status"] as? Int{
+            cell.statusView.createCircle(status: status)
+        }
+        
+        // TODO: fix this monster
         if let title = anime["anime_title"] as? String{
             cell.title.text =  title
-            
-            if let status = anime["anime_airing_status"] as? Int{
-                cell.statusView.createCircle(status: status)
-            }
+        }
+        else if let title = anime["title"] as? String
+        {
+            cell.title.text =  title
         }
         else
         {

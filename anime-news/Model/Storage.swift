@@ -22,6 +22,12 @@ class Storage: NSObject {
         return Storage.shared
     }
     
+    convenience init(lastRefresh:String, info:String) {
+        self.init()
+        self.LAST_REFRESH = lastRefresh
+        self.LIST_INFO = info
+    }
+    
     private var _lastAPICall:Date!
     var lastAPICall:Date
     {
@@ -52,21 +58,6 @@ class Storage: NSObject {
             if (self._listInfo == nil)
             {
                 self._listInfo = getInfo(key: self.LIST_INFO)
-//                if let data = UserDefaults.standard.object(forKey: self.LIST_INFO) as? Data{
-//                    if let listInfo = NSKeyedUnarchiver.unarchiveObject(with: data) as? [[String:Any]]{
-//                        self._listInfo = listInfo
-//
-//                        delegate.onSet()
-//                    }
-//                    else
-//                    {
-//                        self._listInfo = [[String:Any]]()
-//                    }
-//                }
-//                else
-//                {
-//                    self._listInfo = [[String:Any]]()
-//                }
             }
             
             return self._listInfo
@@ -75,8 +66,6 @@ class Storage: NSObject {
         set {
             self._listInfo = newValue
             storeInfo(key: self.LIST_INFO, value: newValue)
-//            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-//            UserDefaults.standard.set(data, forKey: self.LIST_INFO)
             delegate.onSet()
         }
     }

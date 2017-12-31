@@ -14,7 +14,7 @@ protocol ReloadViewDelegate {
 
 class ArticleStorage: Storage {
 
-    static let sharedStorage:Storage =  Storage.sharedInstanceWithKeys(lastRefresh: Constants.PreferenceKeys.LAST_REFRESH, info: Constants.PreferenceKeys.ANN_ARTICLES)
+    static let sharedStorage:Storage =  Storage(lastRefresh: Constants.PreferenceKeys.LAST_REFRESH, info: Constants.PreferenceKeys.ANN_ARTICLES)
 
 
 }

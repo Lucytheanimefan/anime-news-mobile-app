@@ -14,6 +14,9 @@ class NewsTableController: InfoViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(ArticleStorage.sharedStorage.listInfo)
+        
     }
 
     
@@ -90,46 +93,6 @@ extension NSAttributedString{
 extension NewsTableController: UISearchBarDelegate{
     
 }
-
-//extension NewsTableController: UISearchResultsUpdating{
-//    
-//    func updateSearchResults(for searchController: UISearchController) {
-//        
-//    }
-//    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filtered = ArticleStorage.sharedStorage.listInfo.filter({ (news) -> Bool in
-//            var toInclude:Bool = false
-//            if let title = news["title"] as? NSString
-//            {
-//                let range = title.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-//                toInclude = (range.location != NSNotFound)
-//            }
-//            
-//            return toInclude
-//        })
-//        
-//        searchActive = (filtered.count > 0)
-//
-//        self.tableView.reloadData()
-//    }
-//    
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchActive = true;
-//    }
-//    
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//    
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//    
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchActive = false;
-//    }
-//}
 
 extension NewsTableController: InfoRetrieverDelegate{
     func infoStorage() -> Storage {

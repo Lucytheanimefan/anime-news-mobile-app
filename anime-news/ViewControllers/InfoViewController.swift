@@ -64,7 +64,9 @@ class InfoViewController: UIViewController {
             return
         }
         
-        delegate.fetchInfoHandler {}
+        delegate.fetchInfoHandler {
+            onFinish()
+        }
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {

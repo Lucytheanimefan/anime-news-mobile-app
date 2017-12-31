@@ -82,12 +82,17 @@ class MALReviewViewController: UIViewController {
                 RequestQueue.shared.removeStaleAnime(anime_id: self.anime.anime_id)
                 
                 // Remove the stale entry
-                (AnimeListStorage.shared as! AnimeListStorage).animeReviews = (AnimeListStorage.shared as! AnimeListStorage).animeReviews.filter({ (animeDict) -> Bool in
+                
+                let filtered = AnimeListStorage.reviews().filter({ (animeDict) -> Bool in
                     return (animeDict["anime_id"] as? String != self.anime.anime_id)
                 })
+                AnimeListStorage.setReviews(value: filtered)
                 
                 // Add the newly updated anime
-                (AnimeListStorage.shared as! AnimeListStorage).animeReviews.append(self.anime.dict)
+                var reviews = AnimeListStorage.reviews()
+                reviews.append(self.anime.dict)
+                AnimeListStorage.setReviews(value: reviews)
+                //(AnimeListStorage.shared as! AnimeListStorage).animeReviews.append(self.anime.dict)
                 self.presentMessage(title: "Success", message:  "Updated \(self.anime.title!)")
             }
             else
