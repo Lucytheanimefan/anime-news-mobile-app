@@ -44,14 +44,19 @@ class InfoViewController: UIViewController {
         
         self.tableView.addSubview(self.refreshControl)
         
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if (refreshIntervalTimeUp(recordedDate: self.delegate.infoStorage().lastAPICall))
         {
             self.fetchInfo()
         }
 
-        // Do any additional setup after loading the view.
+        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
