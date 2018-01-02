@@ -29,6 +29,7 @@ class AnimeListViewController: InfoViewController {
         RequestQueue.shared.completeQueuedTasks()
 
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,7 +57,8 @@ class AnimeListViewController: InfoViewController {
         let viewController = segue.destination as! MALReviewViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let anime = AnimeListStorage.sharedStorage.listInfo[selectedIndex]
+            print(self.currentList())
+            let anime = self.currentList()[selectedIndex]
             
             if let id = anime["anime_id"] as? Int, let title = anime["anime_title"] as? String {
                 viewController.anime = Anime(id: String(describing: id), title: title, imagePath: anime["anime_image_path"] as? String, review: nil, status: anime["anime_airing_status"] as? Int)
@@ -71,7 +73,7 @@ class AnimeListViewController: InfoViewController {
 extension AnimeListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return searchActive ? filtered.count : AnimeListStorage.sharedStorage.listInfo.count
+        return self.currentList().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,9 +85,9 @@ extension AnimeListViewController: UITableViewDataSource {
             return cell
         }
         
-        var tmpAniList:[[String:Any]] = searchActive ? filtered : AnimeListStorage.sharedStorage.listInfo
+        //var tmpAniList:[[String:Any]] = searchActive ? filtered : AnimeListStorage.sharedStorage.listInfo
         
-        let anime = tmpAniList[indexPath.row]
+        let anime = self.currentList()[indexPath.row]
         
         if let status = anime["anime_airing_status"] as? Int{
             cell.statusView.createCircle(status: status)

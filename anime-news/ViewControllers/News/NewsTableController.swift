@@ -40,7 +40,7 @@ class NewsTableController: InfoViewController {
         let viewController = segue.destination as! ArticleViewController
         if let cell = sender as? UITableViewCell{
             let selectedIndex = tableView.indexPath(for: cell)!.row
-            let articleData = ArticleStorage.sharedStorage.listInfo[selectedIndex]
+            let articleData = self.currentList()[selectedIndex]
             let article = Article(params: articleData)
             viewController.article = article
 
@@ -52,22 +52,21 @@ extension NewsTableController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return searchActive ? filtered.count : ArticleStorage.sharedStorage.listInfo.count
+        return self.currentList().count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tmpArticles:[[String:Any]] = searchActive ? filtered : ArticleStorage.sharedStorage.listInfo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsId", for: indexPath)
         
-        guard tmpArticles.count > indexPath.row else {
-            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, tmpArticles.count, indexPath.row)
+        guard self.currentList().count > indexPath.row else {
+            os_log("%@: Article count (%@) less than row count (%@)", type: .error, self.description, self.currentList().count, indexPath.row)
             
             return cell
         }
         
-        let articleData = tmpArticles[indexPath.row]
+        let articleData = self.currentList()[indexPath.row]
         let article = Article(params: articleData)
         
         cell.textLabel?.text = article.title

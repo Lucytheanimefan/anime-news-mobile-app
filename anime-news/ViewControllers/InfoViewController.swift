@@ -23,8 +23,22 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var searchActive:Bool! = false
+    private var _searchActive:Bool = false
+    var searchActive:Bool! {
+        get {
+            return self._searchActive
+        }
+        
+        set {
+            self._searchActive = newValue
+            self.tableView.reloadData()
+        }
+    }
     var filtered:[[String:Any]] = [[String:Any]]()
+    
+//    lazy var currentList:[[String:Any]] = {
+//        return self.searchActive ? self.filtered : self.delegate.infoStorage().listInfo
+//    }()
     
     var titleKey:String! = "title"
     
@@ -60,6 +74,11 @@ class InfoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func currentList() -> [[String:Any]]
+    {
+         return self.searchActive ? self.filtered : self.delegate.infoStorage().listInfo
     }
     
     func fetchInfo(onFinish: @escaping () -> () = { _ in }){
@@ -114,11 +133,11 @@ extension InfoViewController: UISearchResultsUpdating{
         
         searchActive = (filtered.count > 0)
         
-        self.tableView.reloadData()
+        //sself.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
+        searchActive = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
