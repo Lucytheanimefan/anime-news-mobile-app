@@ -20,6 +20,9 @@
 		7C8666021FE86F86003022D1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666011FE86F86003022D1 /* Article.swift */; };
 		7C86660B1FF7CB57003022D1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660A1FF7CB57003022D1 /* InfoViewController.swift */; };
 		7C86660D1FF7D53B003022D1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660C1FF7D53B003022D1 /* Storage.swift */; };
+		7C86665B1FFD8DB1003022D1 /* ARAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */; };
+		7C86665D1FFD8E0C003022D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665C1FFD8E0C003022D1 /* ARViewController.swift */; };
+		7C8666601FFD8E53003022D1 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -29,7 +32,6 @@
 		7C9BD4471FD811FD00C13E62 /* ArticleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */; };
 		7C9BD4491FD81CA900C13E62 /* AnimeListStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */; };
 		7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E291EB04AE3003FC570 /* AppDelegate.swift */; };
-		7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC60E2B1EB04AE3003FC570 /* ViewController.swift */; };
 		7CC60E2F1EB04AE3003FC570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E2D1EB04AE3003FC570 /* Main.storyboard */; };
 		7CC60E311EB04AE3003FC570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E301EB04AE3003FC570 /* Assets.xcassets */; };
 		7CC60E341EB04AE3003FC570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC60E321EB04AE3003FC570 /* LaunchScreen.storyboard */; };
@@ -103,6 +105,9 @@
 		7C8666011FE86F86003022D1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7C86660A1FF7CB57003022D1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		7C86660C1FF7D53B003022D1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAnimeViewController.swift; sourceTree = "<group>"; };
+		7C86665C1FFD8E0C003022D1 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -113,7 +118,6 @@
 		7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListStorage.swift; sourceTree = "<group>"; };
 		7CC60E261EB04AE3003FC570 /* anime-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "anime-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC60E291EB04AE3003FC570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CC60E2B1EB04AE3003FC570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CC60E2E1EB04AE3003FC570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CC60E301EB04AE3003FC570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CC60E331EB04AE3003FC570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		7C66B2261FD2E7F30016FACD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7C66B2271FD2E80B0016FACD /* MALTableViewCell.swift */,
 				7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */,
 				7C9BD4401FD7795600C13E62 /* SwitchTableViewCell.swift */,
@@ -172,6 +177,7 @@
 		7C8666031FE8C4A2003022D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C86665E1FFD8E49003022D1 /* AR */,
 				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
 				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
 				7C9BD4481FD81CA900C13E62 /* AnimeListStorage.swift */,
@@ -180,16 +186,34 @@
 				7C8666011FE86F86003022D1 /* Article.swift */,
 				7C8665F51FE21742003022D1 /* Geofence.swift */,
 				7C86660C1FF7D53B003022D1 /* Storage.swift */,
+				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7C8666591FFD8CE3003022D1 /* ARAnimeLocation */ = {
+			isa = PBXGroup;
+			children = (
+				7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */,
+				7C86665C1FFD8E0C003022D1 /* ARViewController.swift */,
+			);
+			path = ARAnimeLocation;
+			sourceTree = "<group>";
+		};
+		7C86665E1FFD8E49003022D1 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		7C9BD4381FD6374600C13E62 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7C8666591FFD8CE3003022D1 /* ARAnimeLocation */,
 				7C9BD43A1FD6379400C13E62 /* Anime List */,
 				7C9BD4391FD6377600C13E62 /* News */,
-				7CC60E2B1EB04AE3003FC570 /* ViewController.swift */,
 				7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */,
 				7C86660A1FF7CB57003022D1 /* InfoViewController.swift */,
 			);
@@ -248,9 +272,7 @@
 				7CC60E351EB04AE3003FC570 /* Info.plist */,
 				7CC60E4B1EB04CA8003FC570 /* Utilities.swift */,
 				7C66B2221FD23DAB0016FACD /* Constants.swift */,
-				7C66B22D1FD312F70016FACD /* ShapeView.swift */,
 				7CCA817F1FD3943E00CAD489 /* Reachability.swift */,
-				7C9BD4361FD6311300C13E62 /* AdminSettings.swift */,
 				7C5D99D11FDE4A9800FB1D5C /* EventController.swift */,
 			);
 			path = "anime-news";
@@ -417,15 +439,16 @@
 				7C8665FC1FE80679003022D1 /* RequestQueue.swift in Sources */,
 				7C66B22A1FD2F3100016FACD /* MALReviewViewController.swift in Sources */,
 				7C8665FE1FE807C6003022D1 /* Anime.swift in Sources */,
+				7C8666601FFD8E53003022D1 /* VirtualPlane.swift in Sources */,
 				7C5D99D21FDE4A9800FB1D5C /* EventController.swift in Sources */,
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */,
 				7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */,
 				7C8665F61FE21742003022D1 /* Geofence.swift in Sources */,
-				7CC60E2C1EB04AE3003FC570 /* ViewController.swift in Sources */,
 				7C9BD4411FD7795600C13E62 /* SwitchTableViewCell.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
+				7C86665D1FFD8E0C003022D1 /* ARViewController.swift in Sources */,
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,
 				7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */,
 				7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */,
@@ -434,6 +457,7 @@
 				7C8666021FE86F86003022D1 /* Article.swift in Sources */,
 				7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */,
 				7C8666001FE865A5003022D1 /* ViewControllerExtension.swift in Sources */,
+				7C86665B1FFD8DB1003022D1 /* ARAnimeViewController.swift in Sources */,
 				7C86660B1FF7CB57003022D1 /* InfoViewController.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
 				7CC60E4E1EB58CA5003FC570 /* ArticleViewController.swift in Sources */,
@@ -588,7 +612,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = "anime-news/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -604,7 +628,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = "anime-news/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lucy.anime-news";
 				PRODUCT_NAME = "$(TARGET_NAME)";
