@@ -13,6 +13,9 @@ class ARAnimeObject: NSObject {
     
     var node: SCNNode!
     var title: String!
+    lazy var clonedNode: SCNNode = {
+        return self.node.clone()
+    }()
     
     init(imageFileName:String) {
         super.init()

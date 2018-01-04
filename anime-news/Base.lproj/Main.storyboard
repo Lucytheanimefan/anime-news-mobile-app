@@ -223,7 +223,9 @@
                                 <items>
                                     <barButtonItem systemItem="add" id="MoA-T9-aSK">
                                         <connections>
-                                            <segue destination="Rn1-Z1-33c" kind="show" id="ehd-CE-h7d"/>
+                                            <segue destination="Rn1-Z1-33c" kind="popoverPresentation" popoverAnchorBarButtonItem="MoA-T9-aSK" id="ehd-CE-h7d">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -289,7 +291,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Set object"/>
                                 <connections>
-                                    <segue destination="DWK-ZM-PU1" kind="presentation" id="dlM-P7-zAX"/>
+                                    <action selector="setObject:" destination="Rn1-Z1-33c" eventType="touchUpInside" id="Ovb-Vm-RG9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -510,7 +512,4 @@
             <point key="canvasLocation" x="533" y="255"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dlM-P7-zAX"/>
-    </inferredMetricsTieBreakers>
 </document>

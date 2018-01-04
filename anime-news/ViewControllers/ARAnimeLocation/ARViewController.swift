@@ -79,15 +79,6 @@ class ARViewController: UIViewController {
     }
     
     
-    func loadNodeObject(fileName:String, name:String) -> SCNNode
-    {
-        let box = SCNBox(width: 0.001, height: 0.1, length: 0.1, chamferRadius: 0)
-        box.firstMaterial?.diffuse.contents = UIImage(named: fileName)
-        let boxNode = SCNNode()
-        boxNode.geometry = box
-        return boxNode
-    }
-    
     func stopPlaneDetection(){
         if let configuration = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
         {

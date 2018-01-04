@@ -28,24 +28,19 @@ class ARCustomItemViewController: UIViewController {
     }
     
     
-    
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    @IBAction func setObject(_ sender: UIButton) {
+        let index = self.pickerView.selectedRow(inComponent: 0)
+        let fileName = self.pickerViewImageNames[index]
+        ARAnimeState.shared.animeObject = ARAnimeObject(imageFileName: fileName)
         self.dismiss(animated: true, completion: nil)
     }
     
-
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if let vc = segue.destination as? ARAnimeViewController {
-            let index = self.pickerView.selectedRow(inComponent: 0)
-            let fileName = self.pickerViewImageNames[index]
-            vc.animeObject = ARAnimeObject(imageFileName: fileName)
-        }
+
     }
  
 

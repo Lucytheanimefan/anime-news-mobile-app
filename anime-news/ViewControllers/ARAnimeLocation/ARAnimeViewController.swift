@@ -15,17 +15,6 @@ class ARAnimeViewController: ARViewController{
     // set isPlaneSelected to true when user taps on the anchor plane to select.
     var isPlaneSelected = false
     
-    private var _animeObject:ARAnimeObject?
-    var animeObject: ARAnimeObject {
-        get {
-            return (self._animeObject == nil) ? ARAnimeObject(imageFileName: "ReachPeng") : self._animeObject!
-        }
-        
-        set {
-            self._animeObject = newValue
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,15 +60,16 @@ class ARAnimeViewController: ARViewController{
         if hitResults.count > 0 {
             let result: ARHitTestResult = hitResults.first!
             let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-            //let newNode = loadNodeObject(fileName: "ReachPeng", name: "Peng")
             
-            animeObject.node.position = newLocation
-            //newNode.position = newLocation
+            let animeObject = ARAnimeState.shared.animeObject
+            let node = ARAnimeState.shared.animeObject.node
+            let clonedNode = node!.clone()
+            clonedNode.position = newLocation
             
             // Deal with offset since centered
-            let height = animeObject.node.boundingBox.max.y - animeObject.node.boundingBox.min.y
-            animeObject.node.position.y += height/2
-            sceneView.scene.rootNode.addChildNode(animeObject.node)
+            let height = clonedNode.boundingBox.max.y - clonedNode.boundingBox.min.y
+            clonedNode.position.y += height/2
+            sceneView.scene.rootNode.addChildNode(clonedNode)
             
             
         }
