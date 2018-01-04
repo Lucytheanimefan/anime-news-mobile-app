@@ -14,6 +14,8 @@ class ARCustomItemViewController: UIViewController {
     
     let pickerViewImageNames = ["penguinOctopus", "pengCucumber", "pengFriends", "pengDead"]
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,16 +27,27 @@ class ARCustomItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? ARAnimeViewController {
+            let index = self.pickerView.selectedRow(inComponent: 0)
+            let fileName = self.pickerViewImageNames[index]
+            vc.animeObject = ARAnimeObject(imageFileName: fileName)
+        }
     }
-    */
+ 
 
 }
 

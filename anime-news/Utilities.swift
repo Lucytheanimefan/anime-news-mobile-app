@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+enum AppStoryboard : String {
+    case Main = "Main"
+    
+    var instance : UIStoryboard {
+        return UIStoryboard(name: self.rawValue, bundle: Bundle.main)
+    }
+}
+
+
 func refreshIntervalTimeUp(recordedDate:Date) -> Bool
 {
     return recordedDate.addingTimeInterval(Constants.DefaultValues.REFRESH_INTERVAL) < Date()

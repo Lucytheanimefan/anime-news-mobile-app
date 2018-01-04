@@ -24,6 +24,7 @@
 		7C86665D1FFD8E0C003022D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665C1FFD8E0C003022D1 /* ARViewController.swift */; };
 		7C8666601FFD8E53003022D1 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */; };
 		7C8666631FFE6C13003022D1 /* ARCustomItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666621FFE6C13003022D1 /* ARCustomItemViewController.swift */; };
+		7C8666671FFE930F003022D1 /* ARAnimeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666661FFE930F003022D1 /* ARAnimeObject.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -110,6 +111,7 @@
 		7C86665C1FFD8E0C003022D1 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
 		7C8666621FFE6C13003022D1 /* ARCustomItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCustomItemViewController.swift; sourceTree = "<group>"; };
+		7C8666661FFE930F003022D1 /* ARAnimeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAnimeObject.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */,
+				7C8666661FFE930F003022D1 /* ARAnimeObject.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				7C86665B1FFD8DB1003022D1 /* ARAnimeViewController.swift in Sources */,
 				7C86660B1FF7CB57003022D1 /* InfoViewController.swift in Sources */,
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
+				7C8666671FFE930F003022D1 /* ARAnimeObject.swift in Sources */,
 				7CC60E4E1EB58CA5003FC570 /* ArticleViewController.swift in Sources */,
 				7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */,
 				7C86660D1FF7D53B003022D1 /* Storage.swift in Sources */,
