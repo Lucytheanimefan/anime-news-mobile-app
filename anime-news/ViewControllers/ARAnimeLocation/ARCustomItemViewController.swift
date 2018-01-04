@@ -12,6 +12,8 @@ class ARCustomItemViewController: UIViewController {
 
     let pengImage = UIImage(named: "ReachPeng")
     
+    let pickerViewImageNames = ["penguinOctopus", "pengCucumber", "pengFriends", "pengDead"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +40,7 @@ class ARCustomItemViewController: UIViewController {
 
 extension ARCustomItemViewController: UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return self.pickerViewImageNames.count
     }
     
     
@@ -47,7 +49,7 @@ extension ARCustomItemViewController: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return (pengImage?.size.height)!
+        return 100
     }
 }
 
@@ -55,10 +57,17 @@ extension ARCustomItemViewController: UIPickerViewDelegate{
     
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var imageView:UIImageView!
         
-        imageView = UIImageView(image: pengImage)
+        guard row <= self.pickerViewImageNames.count else {
+            return view!
+        }
         
+        let image = UIImage(named: self.pickerViewImageNames[row])
+        
+        
+        let imageView = UIImageView(image: image)
+
+        view?.addSubview(imageView)
         return imageView
         
     }
