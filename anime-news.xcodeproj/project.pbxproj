@@ -23,6 +23,7 @@
 		7C86665B1FFD8DB1003022D1 /* ARAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */; };
 		7C86665D1FFD8E0C003022D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665C1FFD8E0C003022D1 /* ARViewController.swift */; };
 		7C8666601FFD8E53003022D1 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */; };
+		7C8666631FFE6C13003022D1 /* ARCustomItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666621FFE6C13003022D1 /* ARCustomItemViewController.swift */; };
 		7C9BD4331FD62C5E00C13E62 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */; };
 		7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */; };
 		7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BD4361FD6311300C13E62 /* AdminSettings.swift */; };
@@ -108,6 +109,7 @@
 		7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAnimeViewController.swift; sourceTree = "<group>"; };
 		7C86665C1FFD8E0C003022D1 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		7C86665F1FFD8E53003022D1 /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		7C8666621FFE6C13003022D1 /* ARCustomItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCustomItemViewController.swift; sourceTree = "<group>"; };
 		7C9BD4321FD62C5E00C13E62 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7C9BD4341FD62D0700C13E62 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		7C9BD4361FD6311300C13E62 /* AdminSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettings.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				7C86665A1FFD8DB1003022D1 /* ARAnimeViewController.swift */,
 				7C86665C1FFD8E0C003022D1 /* ARViewController.swift */,
+				7C8666621FFE6C13003022D1 /* ARCustomItemViewController.swift */,
 			);
 			path = ARAnimeLocation;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				7C8665FE1FE807C6003022D1 /* Anime.swift in Sources */,
 				7C8666601FFD8E53003022D1 /* VirtualPlane.swift in Sources */,
 				7C5D99D21FDE4A9800FB1D5C /* EventController.swift in Sources */,
+				7C8666631FFE6C13003022D1 /* ARCustomItemViewController.swift in Sources */,
 				7CC60E4A1EB04BC5003FC570 /* NewsTableController.swift in Sources */,
 				7C9BD4351FD62D0700C13E62 /* TextInputTableViewCell.swift in Sources */,
 				7C9BD43D1FD72F9F00C13E62 /* LocationManager.swift in Sources */,
