@@ -9,7 +9,9 @@
 import UIKit
 
 class ARCustomItemViewController: UIViewController {
-
+    
+    @IBOutlet weak var titleTextView: UITextView!
+    
     let pengImage = UIImage(named: "ReachPeng")
     
     let pickerViewImageNames = ["penguinOctopus", "pengCucumber", "pengFriends", "pengDead"]
@@ -18,7 +20,7 @@ class ARCustomItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +34,8 @@ class ARCustomItemViewController: UIViewController {
         let index = self.pickerView.selectedRow(inComponent: 0)
         let fileName = self.pickerViewImageNames[index]
         ARAnimeState.shared.animeObject = ARAnimeObject(imageFileName: fileName)
+        ARAnimeState.shared.title = self.titleTextView.text
+        //print(ARAnimeState.shared.title)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -42,7 +46,6 @@ class ARCustomItemViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
- 
 
 }
 

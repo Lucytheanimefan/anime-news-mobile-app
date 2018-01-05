@@ -58,24 +58,40 @@ class ARAnimeViewController: ARViewController{
         
         let hitResults = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
         if hitResults.count > 0 {
-            let result: ARHitTestResult = hitResults.first!
-            let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
             
-            let animeObject = ARAnimeState.shared.animeObject
+            guard let pointOfView = sceneView.pointOfView else { return }
+            
             let node = ARAnimeState.shared.animeObject.node
             let clonedNode = node!.clone()
-            clonedNode.position = newLocation
+            
             
             // Deal with offset since centered
             let height = clonedNode.boundingBox.max.y - clonedNode.boundingBox.min.y
-            clonedNode.position.y += height/2
+            
+            let result: ARHitTestResult = hitResults.first!
+            let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y + height/2, result.worldTransform.columns.3.z)
+            
+            clonedNode.position = newLocation
+            
             sceneView.scene.rootNode.addChildNode(clonedNode)
             
+            let titleText = ARAnimeState.shared.title
+            if (titleText!.count > 0){
+                let textNode = self.createTextNode(text: titleText!)
+                let position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
+                textNode.position =
+                    SCNVector3Make(position.x, position.y, position.z)  //newLocation
+                //textNode.position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
+                //textNode.position.y += 10 // so that the text is visible
+                sceneView.scene.rootNode.addChildNode(textNode)
+            }
             
         }
     }
-
+    
+   
 }
+
 
 extension ARAnimeViewController: ARSCNViewDelegate{
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {

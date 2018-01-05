@@ -98,12 +98,47 @@ class ARViewController: UIViewController {
         let node = SCNNode()
         node.light = spotlight
         node.position = position
-        
-        node.eulerAngles = SCNVector3Make(Float(-Double.pi/2), 0, 0)
+        node.eulerAngles = self.sceneView.cameraFacingRotation()//SCNVector3Make(Float(-Double.pi/2), 0, 0)
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
+    func createTextNode(text:String, extrusionDepth:CGFloat = 0.03, font: UIFont = UIFont(name: "Times", size: 0.1)!, fontColor: UIColor = UIColor.blue) -> SCNNode {
+        let material = SCNMaterial()
+        material.diffuse.contents = fontColor
+        let text = SCNText(string: text, extrusionDepth: extrusionDepth)
+        text.font = font
+        text.firstMaterial = material
+        let textNode = SCNNode(geometry: text)
+        textNode.eulerAngles = self.sceneView.cameraFacingRotation()
+        return textNode
+    }
     
+    func textLayer(title:String, fontSize:CGFloat = 12, color: CGColor = UIColor.green.cgColor) -> CALayer{
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        layer.backgroundColor = UIColor.orange.cgColor
+        
+        let textLayer = CATextLayer()
+        textLayer.frame = layer.bounds
+        textLayer.fontSize = fontSize
+        textLayer.string = title
+        textLayer.alignmentMode = kCAAlignmentLeft
+        textLayer.foregroundColor = color
+        textLayer.display()
+        layer.addSublayer(textLayer)
+        
+        return layer
+    }
+}
+
+extension ARSCNView{
+    
+    func cameraFacingRotation() -> SCNVector3{
+        let pitch = self.session.currentFrame?.camera.eulerAngles.x
+        let yawn = self.session.currentFrame?.camera.eulerAngles.y
+        let roll = self.session.currentFrame?.camera.eulerAngles.z
+        return SCNVector3Make(pitch!, yawn!, roll!)
+    }
     
 }
 

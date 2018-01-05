@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "anime-news/ViewControllers/ARAnimeLocation/ARCustomItemViewController.swift"
-            timestampString = "536794399.927649"
+            timestampString = "536887811.239398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "setObject(_:)"
             landmarkType = "7">
          </BreakpointContent>

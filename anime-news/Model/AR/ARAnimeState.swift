@@ -22,5 +22,7 @@ class ARAnimeState: NSObject {
             self._animeObject = newValue
         }
     }
+    
+    var title:String! = ""
 
 }
