@@ -18,10 +18,13 @@ class ARAnimeObject: NSObject {
         return self.node.clone()
     }()
     
-    init(imageFileName:String, width:CGFloat = 0.001, height:CGFloat = 0.1, length:CGFloat = 0.1) {
-        super.init()
+    convenience init(imageFileName:String) {
         if let image = UIImage(named: imageFileName){
-            self.node = loadNodeObject(image: image, width: width, height: height, length: length)
+            self.init(image: image)
+        }
+        else
+        {
+            self.init(image: UIImage(named: "pengCucumber")!)
         }
     }
 
