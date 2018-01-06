@@ -113,7 +113,7 @@ class ARViewController: UIViewController {
         text.font = font
         text.firstMaterial = material
         let textNode = SCNNode(geometry: text)
-        textNode.eulerAngles = self.sceneView.cameraFacingRotation()
+        textNode.eulerAngles = self.sceneView.textFacingRotation()
         
         // account for the fact that SCNText origin point is positioned at bottom left corner
         let (min, max) = textNode.boundingBox
@@ -157,8 +157,11 @@ extension ARSCNView{
     }
     
     func cameraFacingRotation() -> SCNVector3{
-        return SCNVector3Make(Float.pi/2, 0, self.eulerZ())
+        return SCNVector3Make(Float.pi/2, 3*Float.pi/2, self.eulerZ())
     }
     
+    func textFacingRotation() -> SCNVector3{
+        return SCNVector3Make(3*Float.pi/2, Float.pi/2, self.eulerZ())
+    }
 }
 
