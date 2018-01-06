@@ -24,35 +24,9 @@ class ARAnimeObject: NSObject {
         }
     }
     
-    init(imageURL:String) {
+    init(image:UIImage){
         super.init()
-        
-        if let url = URL(string: imageURL){
-            let sema = DispatchSemaphore(value: 0)
-            
-            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                
-                guard error != nil else {
-                    os_log("%@: Error with url: %@", self.description, (error?.localizedDescription)!)
-                    sema.signal()
-                    return
-                }
-                if (data != nil)
-                {
-                    if let image = UIImage(data: data!){
-                        self.node = self.loadNodeObject(image: image)
-                    }
-                    sema.signal()
-                }
-                sema.signal()
-            })
-            _ = sema.wait(timeout: .distantFuture)
-        }
-        else
-        {
-            os_log("%@: Not url: %@", self.description, imageURL)
-        }
-        
+        self.node = loadNodeObject(image: image)
     }
     
     func loadNodeObject(image: UIImage) -> SCNNode

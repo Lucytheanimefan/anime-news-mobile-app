@@ -10,22 +10,16 @@ import UIKit
 
 class ARCustomItemViewController: UIViewController {
     
-    @IBOutlet weak var imageURLField: UITextField!
+    @IBOutlet weak var imagePicked: UIImageView!
     
     @IBOutlet weak var titleTextView: UITextView!
-    
-    let pengImage = UIImage(named: "ReachPeng")
-    
-    let pickerViewImageNames = ["penguinOctopus", "pengCucumber", "pengFriends", "pengDead"]
-    
-    @IBOutlet weak var pickerView: UIPickerView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,63 +27,30 @@ class ARCustomItemViewController: UIViewController {
     
     
     @IBAction func setObject(_ sender: UIButton) {
-        let index = self.pickerView.selectedRow(inComponent: 0)
-        let fileName = self.pickerViewImageNames[index]
-        if self.imageURLField.text != nil
-        {
-            ARAnimeState.shared.animeObject = ARAnimeObject(imageURL: self.imageURLField.text!)
-        }
-        else
-        {
-            ARAnimeState.shared.animeObject = ARAnimeObject(imageFileName: fileName)
-        }
+        ARAnimeState.shared.animeObject = ARAnimeObject(image: self.imagePicked.image!)
         ARAnimeState.shared.title = self.titleTextView.text
-
+        
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-    }
-
-}
-
-extension ARCustomItemViewController: UIPickerViewDataSource{
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.pickerViewImageNames.count
-    }
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 100
-    }
-}
-
-extension ARCustomItemViewController: UIPickerViewDelegate{
-    
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
-        guard row <= self.pickerViewImageNames.count else {
-            return view!
+    @IBAction func openPhotoLibrary(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
         }
-        
-        let image = UIImage(named: self.pickerViewImageNames[row])
-        
-        
-        let imageView = UIImageView(image: image)
+    }
+}
 
-        view?.addSubview(imageView)
-        return imageView
-        
+extension ARCustomItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            imagePicked.image = image
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
