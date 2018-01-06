@@ -47,6 +47,12 @@ class VirtualPlane: SCNNode {
         return material
     }
     
+    func noPlane(){
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.white.withAlphaComponent(0)
+        self.planeGeometry.materials = [material]
+    }
+    
     func setPlaneMaterial(imageName:String){
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: imageName)

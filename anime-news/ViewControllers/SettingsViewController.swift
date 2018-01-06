@@ -11,8 +11,8 @@ import os.log
 
 class SettingsViewController: UIViewController {
     
-    let sections = ["Accounts", "Database", "Other"]
-    let sectionRows = ["Accounts": [Constants.MAL, "Kitsu", "AniList"], "Database":["URI"], "Other":["Anime event notifications"]]
+    let sections = ["Accounts", "Database","Other"]
+    let sectionRows = ["Accounts": [Constants.MAL, "Kitsu", "AniList"], "Database":["URI"], "Other":["Anime event notifications", "Debug AR"]]
     //let accountRows = ["MyAnimeList", "Kitsu", "AniList"]
     let credentialReqs = [Constants.MAL:["Username"], "Kitsu":["Username"], "AniList":["Client ID", "Client Secret"]]
 
@@ -65,6 +65,7 @@ extension SettingsViewController: UITableViewDelegate{
         }
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: "switchFieldID", for: indexPath) as! SwitchTableViewCell
+            
             (cell as! SwitchTableViewCell).delegate = self
         }
          cell.textLabel?.text = rowTitle
@@ -127,12 +128,24 @@ extension SettingsViewController: UITableViewDataSource{
 }
 
 extension SettingsViewController:SwitchCellDelegate{
-    func switchOn() {
-        os_log("%@: Switch on", self.description)
-        LocationManager.shared.requestPermissions()
+    func switchOff(label: String?) {
+        #if DEBUG
+        os_log("%@: Switch off", self.description)
+        #endif
+        if (label == "Debug AR")
+        {
+            AdminSettings.shared.debugAR = false
+        }
     }
     
-    func switchOff() {
-        os_log("%@: Switch off", self.description)
+    func switchOn(label: String?) {
+        // Figure out a better way to do this
+        if (label == "Anime event notifications"){
+            LocationManager.shared.requestPermissions()
+        }
+        else if (label == "Debug AR")
+        {
+            AdminSettings.shared.debugAR = true
+        }
     }
 }

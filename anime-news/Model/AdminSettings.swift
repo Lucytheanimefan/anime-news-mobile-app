@@ -33,7 +33,28 @@ class AdminSettings: NSObject {
         }
     }
     
+    private var _debugAR:Bool!
     
+    var debugAR:Bool {
+        get {
+            if (self._debugAR == nil)
+            {
+                if let debugAR = UserDefaults.standard.value(forKey: Constants.PreferenceKeys.DEBUG_AR) as? Bool{
+                    self._debugAR = debugAR
+                }
+                else
+                {
+                    self._debugAR = false // Default MALUsername?
+                }
+            }
+            return self._debugAR
+        }
+        
+        set {
+            self._debugAR = newValue
+            UserDefaults.standard.set(self._debugAR, forKey: Constants.PreferenceKeys.DEBUG_AR)
+        }
+    }
     
     
 }

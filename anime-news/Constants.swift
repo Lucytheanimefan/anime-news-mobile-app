@@ -20,7 +20,7 @@ struct Constants {
         static let MAL_USERNAME = "MALUsername"
         static let REVIEWS = "animeReviews"
         static let REQUEST_QUEUE = "animeRequestQueue"
-        
+        static let DEBUG_AR = "debugAR"
         
     }
     

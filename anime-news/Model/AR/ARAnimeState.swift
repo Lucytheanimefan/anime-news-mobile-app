@@ -23,6 +23,6 @@ class ARAnimeState: NSObject {
         }
     }
     
-    var title:String! = "Test"
+    var title:String! = ""
 
 }

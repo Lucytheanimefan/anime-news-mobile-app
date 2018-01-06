@@ -10,6 +10,8 @@ import UIKit
 
 class ARCustomItemViewController: UIViewController {
     
+    @IBOutlet weak var imageURLField: UITextField!
+    
     @IBOutlet weak var titleTextView: UITextView!
     
     let pengImage = UIImage(named: "ReachPeng")
@@ -33,9 +35,16 @@ class ARCustomItemViewController: UIViewController {
     @IBAction func setObject(_ sender: UIButton) {
         let index = self.pickerView.selectedRow(inComponent: 0)
         let fileName = self.pickerViewImageNames[index]
-        ARAnimeState.shared.animeObject = ARAnimeObject(imageFileName: fileName)
+        if self.imageURLField.text != nil
+        {
+            ARAnimeState.shared.animeObject = ARAnimeObject(imageURL: self.imageURLField.text!)
+        }
+        else
+        {
+            ARAnimeState.shared.animeObject = ARAnimeObject(imageFileName: fileName)
+        }
         ARAnimeState.shared.title = self.titleTextView.text
-        //print(ARAnimeState.shared.title)
+
         self.dismiss(animated: true, completion: nil)
     }
     

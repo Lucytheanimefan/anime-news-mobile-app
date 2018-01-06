@@ -97,7 +97,14 @@ extension ARAnimeViewController: ARSCNViewDelegate{
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let arPlaneAnchor = anchor as? ARPlaneAnchor{
             let plane = VirtualPlane(anchor: arPlaneAnchor)
-            plane.setPlaneMaterial(imageName: "Hardwood")
+            if (AdminSettings.shared.debugAR)
+            {
+                plane.setPlaneMaterial(imageName: "Hardwood")
+            }
+            else
+            {
+                plane.noPlane()
+            }
             self.planes[arPlaneAnchor.identifier] = plane
             node.addChildNode(plane)
         }

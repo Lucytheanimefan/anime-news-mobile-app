@@ -9,8 +9,8 @@
 import UIKit
 
 protocol SwitchCellDelegate {
-    func switchOn()
-    func switchOff()
+    func switchOn(label:String?)
+    func switchOff(label:String?)
 }
 
 class SwitchTableViewCell: UITableViewCell {
@@ -31,11 +31,12 @@ class SwitchTableViewCell: UITableViewCell {
     }
     
     @IBAction func onValueChange(_ sender: UISwitch) {
+        
         if sender.isOn{
-            delegate.switchOn()
+            delegate.switchOn(label: self.textLabel?.text)
         }
         else{
-            delegate.switchOff()
+            delegate.switchOff(label: self.textLabel?.text)
         }
         //delegate.onValueChange(sender: sender)
     }
