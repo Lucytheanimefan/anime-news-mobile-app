@@ -11,6 +11,8 @@ import ARKit
 
 class ARAnimeViewController: ARViewController{
 
+    @IBOutlet weak var debugTextView: UITextView!
+    
     var anchors = [ARAnchor]()
     // set isPlaneSelected to true when user taps on the anchor plane to select.
     var isPlaneSelected = false
@@ -18,7 +20,8 @@ class ARAnimeViewController: ARViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        CoreMLManager.shared.delegate = self
+        CoreMLManager.shared.begin()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,9 +45,8 @@ class ARAnimeViewController: ARViewController{
                 
                 // keep track of selected anchor only
                 anchors = [planeAnchor]
-                // set isPlaneSelected to true
                 isPlaneSelected = true
-                //setPlaneTexture(node: sceneView.node(for: planeAnchor)!, imageFilePath: "Hardwood")
+  
             }
         }
     }
@@ -68,7 +70,7 @@ class ARAnimeViewController: ARViewController{
             
             let result: ARHitTestResult = hitResults.first!
             
-            let textLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y/2, result.worldTransform.columns.3.z)
+            let textLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y/3, result.worldTransform.columns.3.z)
             let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y + height/2, result.worldTransform.columns.3.z)
             
             clonedNode.position = newLocation
@@ -78,11 +80,8 @@ class ARAnimeViewController: ARViewController{
             let titleText = ARAnimeState.shared.title
             if (titleText!.count > 0){
                 let textNode = self.createTextNode(text: titleText!, extrusionDepth: 0.02)
-                //let position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
                 textNode.position = textLocation
-                    //SCNVector3Make(position.x, position.y, position.z)
-                //textNode.position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
-                //textNode.position.y += 10 // so that the text is visible
+
                 sceneView.scene.rootNode.addChildNode(textNode)
             }
             
@@ -131,4 +130,20 @@ extension ARAnimeViewController: ARSCNViewDelegate{
             addNodeAtLocation(location: location)
         }
     }
+}
+
+extension ARAnimeViewController: CoreMLDelegate{
+    func sceneViewCapturedImage() -> CVPixelBuffer? {
+        return (sceneView.session.currentFrame?.capturedImage)
+    }
+    
+    func displayClassifications(classifications: String) {
+        self.debugTextView.text = "Classifications: \(classifications)"
+    }
+    
+    func handleLatestPrediction(objectName: String) {
+        self.debugTextView.text = "Latest prediction: \(objectName)"
+    }
+    
+    
 }

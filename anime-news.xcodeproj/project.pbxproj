@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C5D5B6520018BBE00D87B32 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D5B6220018BBD00D87B32 /* Inceptionv3.mlmodel */; };
+		7C5D5B6820018C7600D87B32 /* CoreMLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D5B6720018C7600D87B32 /* CoreMLManager.swift */; };
 		7C5D99D21FDE4A9800FB1D5C /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99D11FDE4A9800FB1D5C /* EventController.swift */; };
 		7C66B2231FD23DAB0016FACD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2221FD23DAB0016FACD /* Constants.swift */; };
 		7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */; };
@@ -95,6 +97,8 @@
 /* Begin PBXFileReference section */
 		652B71CD3E6B9AB3714BBB96 /* Pods_anime_news.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_anime_news.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		765AE32F5C8C868B6C7F2C62 /* Pods-anime-news.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anime-news.debug.xcconfig"; path = "Pods/Target Support Files/Pods-anime-news/Pods-anime-news.debug.xcconfig"; sourceTree = "<group>"; };
+		7C5D5B6220018BBD00D87B32 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		7C5D5B6720018C7600D87B32 /* CoreMLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLManager.swift; sourceTree = "<group>"; };
 		7C5D99D11FDE4A9800FB1D5C /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		7C66B2221FD23DAB0016FACD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C66B2241FD24F8F0016FACD /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7C5D5B6620018C4000D87B32 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				7C5D5B6720018C7600D87B32 /* CoreMLManager.swift */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
 		7C66B2261FD2E7F30016FACD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +195,7 @@
 		7C8666031FE8C4A2003022D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C5D5B6620018C4000D87B32 /* ML */,
 				7C86665E1FFD8E49003022D1 /* AR */,
 				7C9BD43C1FD72F9F00C13E62 /* LocationManager.swift */,
 				7C9BD4461FD811FD00C13E62 /* ArticleStorage.swift */,
@@ -271,6 +284,7 @@
 		7CC60E281EB04AE3003FC570 /* anime-news */ = {
 			isa = PBXGroup;
 			children = (
+				7C5D5B6220018BBD00D87B32 /* Inceptionv3.mlmodel */,
 				7C8666031FE8C4A2003022D1 /* Model */,
 				7C9BD4381FD6374600C13E62 /* ViewControllers */,
 				7C66B2261FD2E7F30016FACD /* Extensions */,
@@ -459,6 +473,7 @@
 				7C8666691FFED21A003022D1 /* ARAnimeState.swift in Sources */,
 				7CC60E4C1EB04CA8003FC570 /* Utilities.swift in Sources */,
 				7CC60E2A1EB04AE3003FC570 /* AppDelegate.swift in Sources */,
+				7C5D5B6820018C7600D87B32 /* CoreMLManager.swift in Sources */,
 				7C86665D1FFD8E0C003022D1 /* ARViewController.swift in Sources */,
 				7C66B22E1FD312F70016FACD /* ShapeView.swift in Sources */,
 				7CCA81801FD3943E00CAD489 /* Reachability.swift in Sources */,
@@ -473,6 +488,7 @@
 				7C66B2251FD24F8F0016FACD /* AnimeListViewController.swift in Sources */,
 				7C8666671FFE930F003022D1 /* ARAnimeObject.swift in Sources */,
 				7CC60E4E1EB58CA5003FC570 /* ArticleViewController.swift in Sources */,
+				7C5D5B6520018BBE00D87B32 /* Inceptionv3.mlmodel in Sources */,
 				7C9BD4371FD6311300C13E62 /* AdminSettings.swift in Sources */,
 				7C86660D1FF7D53B003022D1 /* Storage.swift in Sources */,
 			);
