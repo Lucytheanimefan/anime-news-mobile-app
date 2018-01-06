@@ -59,8 +59,6 @@ class ARAnimeViewController: ARViewController{
         let hitResults = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
         if hitResults.count > 0 {
             
-            guard let pointOfView = sceneView.pointOfView else { return }
-            
             let node = ARAnimeState.shared.animeObject.node
             let clonedNode = node!.clone()
             clonedNode.eulerAngles = self.sceneView.cameraFacingRotation()
@@ -69,6 +67,8 @@ class ARAnimeViewController: ARViewController{
             let height = clonedNode.boundingBox.max.y - clonedNode.boundingBox.min.y
             
             let result: ARHitTestResult = hitResults.first!
+            
+            let textLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y/2, result.worldTransform.columns.3.z)
             let newLocation = SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y + height/2, result.worldTransform.columns.3.z)
             
             clonedNode.position = newLocation
@@ -77,9 +77,9 @@ class ARAnimeViewController: ARViewController{
             
             let titleText = ARAnimeState.shared.title
             if (titleText!.count > 0){
-                let textNode = self.createTextNode(text: titleText!)
+                let textNode = self.createTextNode(text: titleText!, extrusionDepth: 0.02)
                 //let position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
-                textNode.position = newLocation
+                textNode.position = textLocation
                     //SCNVector3Make(position.x, position.y, position.z)
                 //textNode.position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
                 //textNode.position.y += 10 // so that the text is visible

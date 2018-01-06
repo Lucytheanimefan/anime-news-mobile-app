@@ -106,7 +106,7 @@ class ARViewController: UIViewController {
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
-    func createTextNode(text:String, extrusionDepth:CGFloat = 0.09, font: UIFont = UIFont(name: "Times", size: 0.1)!, fontColor: UIColor = UIColor.blue) -> SCNNode {
+    func createTextNode(text:String, extrusionDepth:CGFloat = 0.09, font: UIFont = UIFont(name: "Times", size: 0.09)!, fontColor: UIColor = UIColor.blue) -> SCNNode {
         let material = SCNMaterial()
         material.diffuse.contents = fontColor
         let text = SCNText(string: text, extrusionDepth: extrusionDepth)
@@ -114,6 +114,13 @@ class ARViewController: UIViewController {
         text.firstMaterial = material
         let textNode = SCNNode(geometry: text)
         textNode.eulerAngles = self.sceneView.cameraFacingRotation()
+        
+        // account for the fact that SCNText origin point is positioned at bottom left corner
+        let (min, max) = textNode.boundingBox
+        let dx = min.x + 0.5 * (max.x - min.x)
+        let dy = min.y + 0.5 * (max.y - min.y)
+        let dz = min.z + 0.5 * (max.z - min.z)
+        textNode.pivot = SCNMatrix4MakeTranslation(dx, dy, dz)
         return textNode
     }
     
@@ -150,7 +157,7 @@ extension ARSCNView{
     }
     
     func cameraFacingRotation() -> SCNVector3{
-        return SCNVector3Make(Float.pi/2, Float.pi/2, self.eulerZ())
+        return SCNVector3Make(Float.pi/2, 0, self.eulerZ())
     }
     
 }
