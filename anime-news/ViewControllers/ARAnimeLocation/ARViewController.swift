@@ -49,7 +49,7 @@ class ARViewController: UIViewController {
         // Add the SCNDebugOptions options
         // showConstraints, showLightExtents are SCNDebugOptions
         // showFeaturePoints and showWorldOrigin are ARSCNDebugOptions
-        //sceneView.debugOptions  = [SCNDebugOptions.showConstraints, SCNDebugOptions.showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions  = [SCNDebugOptions.showConstraints, SCNDebugOptions.showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         //shows fps rate
         sceneView.showsStatistics = true
@@ -98,11 +98,15 @@ class ARViewController: UIViewController {
         let node = SCNNode()
         node.light = spotlight
         node.position = position
+        //node.eulerAngles = SCNVector3Make(0, 0, 1)
         node.eulerAngles = self.sceneView.cameraFacingRotation()//SCNVector3Make(Float(-Double.pi/2), 0, 0)
+        //let transform = self.sceneView.session.currentFrame?.camera.transform
+        //node.orientation =
+        
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
-    func createTextNode(text:String, extrusionDepth:CGFloat = 0.03, font: UIFont = UIFont(name: "Times", size: 0.1)!, fontColor: UIColor = UIColor.blue) -> SCNNode {
+    func createTextNode(text:String, extrusionDepth:CGFloat = 0.09, font: UIFont = UIFont(name: "Times", size: 0.1)!, fontColor: UIColor = UIColor.blue) -> SCNNode {
         let material = SCNMaterial()
         material.diffuse.contents = fontColor
         let text = SCNText(string: text, extrusionDepth: extrusionDepth)
@@ -133,11 +137,20 @@ class ARViewController: UIViewController {
 
 extension ARSCNView{
     
+    func eulerX() -> Float{
+        return (self.session.currentFrame?.camera.eulerAngles.x)!
+    }
+    
+    func eulerY() -> Float{
+        return (self.session.currentFrame?.camera.eulerAngles.y)!
+    }
+    
+    func eulerZ() -> Float{
+        return (self.session.currentFrame?.camera.eulerAngles.z)!
+    }
+    
     func cameraFacingRotation() -> SCNVector3{
-        let pitch = self.session.currentFrame?.camera.eulerAngles.x
-        let yawn = self.session.currentFrame?.camera.eulerAngles.y
-        let roll = self.session.currentFrame?.camera.eulerAngles.z
-        return SCNVector3Make(pitch!, yawn!, roll!)
+        return SCNVector3Make(Float.pi/2, Float.pi/2, self.eulerZ())
     }
     
 }

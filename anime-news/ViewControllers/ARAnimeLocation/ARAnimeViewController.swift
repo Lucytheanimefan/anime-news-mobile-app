@@ -63,7 +63,7 @@ class ARAnimeViewController: ARViewController{
             
             let node = ARAnimeState.shared.animeObject.node
             let clonedNode = node!.clone()
-            
+            clonedNode.eulerAngles = self.sceneView.cameraFacingRotation()
             
             // Deal with offset since centered
             let height = clonedNode.boundingBox.max.y - clonedNode.boundingBox.min.y
@@ -78,9 +78,9 @@ class ARAnimeViewController: ARViewController{
             let titleText = ARAnimeState.shared.title
             if (titleText!.count > 0){
                 let textNode = self.createTextNode(text: titleText!)
-                let position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
-                textNode.position =
-                    SCNVector3Make(position.x, position.y, position.z)  //newLocation
+                //let position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
+                textNode.position = newLocation
+                    //SCNVector3Make(position.x, position.y, position.z)
                 //textNode.position = pointOfView.simdPosition + pointOfView.simdWorldFront * 0.5
                 //textNode.position.y += 10 // so that the text is visible
                 sceneView.scene.rootNode.addChildNode(textNode)
