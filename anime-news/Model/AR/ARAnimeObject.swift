@@ -13,25 +13,27 @@ class ARAnimeObject: NSObject {
     
     var node: SCNNode!
     var title: String!
+    
     lazy var clonedNode: SCNNode = {
         return self.node.clone()
     }()
     
-    init(imageFileName:String) {
+    init(imageFileName:String, width:CGFloat = 0.001, height:CGFloat = 0.1, length:CGFloat = 0.1) {
         super.init()
         if let image = UIImage(named: imageFileName){
-            self.node = loadNodeObject(image: image)
+            self.node = loadNodeObject(image: image, width: width, height: height, length: length)
         }
     }
-    
-    init(image:UIImage){
+
+    init(image:UIImage, width:CGFloat = 0.001, height:CGFloat = 0.1, length:CGFloat = 0.1){
         super.init()
-        self.node = loadNodeObject(image: image)
+        self.node = loadNodeObject(image: image, width: width, height: height, length: length)
     }
+
     
-    func loadNodeObject(image: UIImage) -> SCNNode
+    func loadNodeObject(image: UIImage, width:CGFloat, height:CGFloat, length:CGFloat) -> SCNNode
     {
-        let box = SCNBox(width: 0.001, height: 0.1, length: 0.1, chamferRadius: 0)
+        let box = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
         box.firstMaterial?.diffuse.contents = image
         let boxNode = SCNNode()
         boxNode.geometry = box

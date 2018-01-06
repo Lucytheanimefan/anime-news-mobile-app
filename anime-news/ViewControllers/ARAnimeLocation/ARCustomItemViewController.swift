@@ -13,7 +13,13 @@ class ARCustomItemViewController: UIViewController {
     @IBOutlet weak var imagePicked: UIImageView!
     
     @IBOutlet weak var titleTextView: UITextView!
-
+    
+    @IBOutlet weak var widthField: UITextField!
+    
+    @IBOutlet weak var heightField: UITextField!
+    
+    @IBOutlet weak var lengthField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -27,7 +33,15 @@ class ARCustomItemViewController: UIViewController {
     
     
     @IBAction func setObject(_ sender: UIButton) {
-        ARAnimeState.shared.animeObject = ARAnimeObject(image: self.imagePicked.image!)
+        if let width = NumberFormatter().number(from: widthField.text!), let height = NumberFormatter().number(from: heightField.text!), let length = NumberFormatter().number(from: lengthField.text!) {
+            let w = CGFloat(width), h = CGFloat(height), l = CGFloat(length)
+            
+            ARAnimeState.shared.animeObject = ARAnimeObject(image: self.imagePicked.image!, width: w, height: h, length: l)
+        }
+        else
+        {
+            ARAnimeState.shared.animeObject = ARAnimeObject(image: self.imagePicked.image!)
+        }
         ARAnimeState.shared.title = self.titleTextView.text
         
         self.dismiss(animated: true, completion: nil)
